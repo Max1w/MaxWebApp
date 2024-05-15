@@ -39,7 +39,7 @@ namespace MaxWebApp
 			}
 			else
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ERRO: ", "alert('O campo código do item não pode ser vazio')", true);
+				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ERRO: ", "alert('Os campos obrigatórios não podem ser vazios')", true);
 			}
 		}
 

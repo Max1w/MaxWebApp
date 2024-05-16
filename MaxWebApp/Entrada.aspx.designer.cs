@@ -87,13 +87,13 @@ namespace MaxWebApp
 		protected global::System.Web.UI.HtmlControls.HtmlTextArea observacao;
 
 		/// <summary>
-		/// valorItem control.
+		/// cValorItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText valorItem;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText cValorItem;
 
 		/// <summary>
 		/// btnEnviar control.

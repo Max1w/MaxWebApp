@@ -11,9 +11,10 @@ namespace MaxWebApp
 {
 	public partial class Entrada : System.Web.UI.Page
 	{
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			
 		}
 
 		protected void btnSalvar_Click(object sender, EventArgs e)
@@ -31,9 +32,9 @@ namespace MaxWebApp
 			var conservacaoDoItem = conservacaoItem.Value;
 			var localizacoFisicaDoItem = localizacoFisicaItem.Value;
 			var observacaoDoItem = observacao.Value;
-			var valorDoItem = valorItem.Value;
+			var valorDoItem = cValorItem.Value;
 
-			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao) && !string.IsNullOrEmpty(valorDoItem))
+			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao))
 			{
 				SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem);
 			}

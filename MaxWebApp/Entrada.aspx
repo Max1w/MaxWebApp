@@ -99,37 +99,22 @@
                 </div>
             </div>
         </div>
-        <div id="notificacaoSalvar" class="alert alert-success notification" role="alert">
-            Cadastro salvo!
-        </div>
-
     </form>
 
 
     <script>
-
-        function MostraNotificacao() {
-            console.log("Chamou notificação");
-            var notificacao = document.getElementById('notificacaoSalvar');
-            notificacao.style.display = 'block';
-            setTimeout(() => {
-                notificacao.style.display = 'none';
-            }, 10000)
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
 
             const btnEnviar = document.getElementById('<%= btnEnviar.ClientID %>');
             btnEnviar.addEventListener('click', function () {
-                MostraNotificacao()
+                alert("Cadastro salvo com sucesso!");
             });
 
             const valorInserido = document.getElementById('<%= cValorItem.ClientID %>');
-
             const aviso = document.getElementById('aviso');
 
             valorInserido.addEventListener('keydown', function (event) {
-                console.log(valorInserido.value);
+            
                 if ([8, 13, 46, 37, 39, 110, 190].indexOf(event.keyCode) !== -1 ||
                     (event.keyCode === 65 && event.ctrlKey === true) ||
                     (event.keyCode === 88 && event.ctrlKey === true) ||
@@ -138,14 +123,16 @@
                     (event.keyCode >= 35 && event.keyCode <= 39)) {
                     return;
                 }
+                // Só Números
                 if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
                     event.preventDefault();
                     aviso.style.display = 'block';
                 } else {
                     aviso.style.display = 'none';
                 }
-            });
 
+
+            });
             valorInserido.addEventListener('input', function () {
                 let valor = valorInserido.value;
 

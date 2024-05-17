@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inventario.aspx.cs" Inherits="MaxWebApp.Inventario" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Inventário</h1>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSourceInventario" ForeColor="#333333" GridLines="None">
+    <div style="margin-top: 10em; margin-bottom: 10em;">
+    <label class="d-flex row justify-content-center"><h4>Tabela de Itens</h4></label>
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" HorizontalAlign="Center" CellPadding="4" DataSourceID="SqlDataSourceInventario" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="codigo_item" HeaderText="codigo_item" SortExpression="codigo_item" />
@@ -21,10 +24,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-    <p>
-    <a id="botaoCancelar" href="/" type="submit" class="btn btn-primary m-3">Voltar</a>
-        <asp:SqlDataSource ID="SqlDataSourceInventario" runat="server" ConnectionString="<%$ ConnectionStrings:ConectandoAoBD %>" SelectCommand="SELECT [codigo_item], [placa_item], [descricao_item], [valor_aquisicao], [data_aquisicao] FROM [itens]"></asp:SqlDataSource>
-    </p>
-    <p>
-        &nbsp;</p>
+            <asp:SqlDataSource ID="SqlDataSourceInventario" runat="server" ConnectionString="<%$ ConnectionStrings:ConectandoAoBD %>" SelectCommand="SELECT [codigo_item], [placa_item], [descricao_item], [valor_aquisicao], [data_aquisicao] FROM [itens]"></asp:SqlDataSource>
+    </div>
+    <a id="botaoCancelar" href="/" type="submit" class="btn btn-primary" style="margin-top: 5em; background:">Voltar</a>
 </asp:Content>

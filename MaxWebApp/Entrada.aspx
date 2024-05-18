@@ -2,83 +2,89 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <header>
+        <h1>CADASTRO DE ITENS</h1>
+    </header>
     <form id="meuFormulario">
-        <h1>Cadastro de Itens</h1>
         <style>
-            .notification {
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                display: none;
-                z-index: 9999;
+            input, select, textarea {
+                max-width: none;
             }
         </style>
-        <div class="d-flex">
-            <div class="form-group row m-1 col-2">
-                <label for="text">Código *</label>
-                <input type="text" class="form-control" id="codigoItem" runat="server" />
-            </div>
-            <div class="form-group row m-1 col-2">
-                <label for="text">Placa *</label>
-                <input type="text" class="form-control" id="placaItem" runat="server" />
-            </div>
-            <div class="form-group row m-1 col-8">
-                <label for="text">Descrição *</label>
-                <input type="text" class="form-control" id="descricaoItem" runat="server" />
-            </div>
-        </div>
 
-        <div class="d-flex">
-            <div class="form-group row m-1 col-2">
-                <label for="text">Data da Aquisição *</label>
-                <input type="date" class="form-control" id="dtAquisicao" runat="server" />
-            </div>
-            <div class="form-group row m-1 col-3">
-                <label for="exemplo">Grupo</label>
-                <select class="form-control" id="grupoItem" runat="server">
-                    <option>Móvel</option>
-                    <option>Imóvel</option>
-                    <option>Dominical</option>
-                </select>
-            </div>
-            <div class="form-group row m-1 col-3">
-                <label for="exemplo">Estado de Conservação</label>
-                <select class="form-control" id="conservacaoItem" runat="server">
-                    <option>Ótimo</option>
-                    <option>Bom</option>
-                    <option>Regular</option>
-                    <option>Ruim</option>
-                    <option>Péssimo</option>
-                </select>
-            </div>
-            <div class="form-group row m-1 col-4">
-                <label for="text">Localização Física</label>
-                <input type="text" class="form-control" id="localizacoFisicaItem" runat="server" />
-            </div>
-        </div>
-        <div class="d-flex">
-            <div class="form-group row m-2 col-10">
-                <label for="teste">Observação</label>
-                <textarea class="form-control" id="observacao" rows="3" runat="server"></textarea>
-            </div>
-            <div class="form-group row m-2 col-2">
-                <label for="text">Valor *</label>
-                <div class="input-group input-group-prepen">
-                    <span class="input-group-text">R$</span>
-                    <label id="lValorItem"></label>
-                    <input id="cValorItem" type="text" placeholder="0,00" class="form-control" runat="server" />
-                    <p id="aviso" style="color: red; display: none;">Favor inserir um numero</p>
+        <div class="container-fluid">
+            <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 10em; margin-bottom: 10em;">
+                <div class="col-12">
+
+                    <div class="d-flex">
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="text">Código *</label>
+                            <input type="text" class="form-control shadow p-3 bg-light" id="codigoItem" runat="server" />
+                            <p id="avisoCodigo" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
+                        </div>
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="text">Placa *</label>
+                            <input type="text" class="form-control shadow p-3 bg-light" id="placaItem" runat="server" />
+                            <p id="avisoPlaca" style="color: red; display: none;">Favor inserir um numero</p>
+                        </div>
+                        <div class="form-group m-1 col-8" style="padding-right: 0px; padding-left: 0px">
+                            <label for="text">Descrição *</label>
+                            <input type="text" class="form-control shadow p-3 bg-light" id="descricaoItem" runat="server" />
+                            <p id="avisoDescricao" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="text">Data da Aquisição *</label>
+                            <input type="date" class="form-control shadow p-3 bg-light" id="dtAquisicao" runat="server" />
+                        </div>
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="exemplo">Grupo</label>
+                            <select class="form-control" id="grupoItem" runat="server">
+                                <option>Móvel</option>
+                                <option>Imóvel</option>
+                                <option>Dominical</option>
+                            </select>
+                        </div>
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="exemplo">Estado de Conservação</label>
+                            <select class="form-control" id="conservacaoItem" runat="server">
+                                <option>Ótimo</option>
+                                <option>Bom</option>
+                                <option>Regular</option>
+                                <option>Ruim</option>
+                                <option>Péssimo</option>
+                            </select>
+                        </div>
+                        <div class="form-group m-1 col-6" style="padding-right: 8px; padding-left: 0px">
+                            <label for="text">Localização Física</label>
+                            <input type="text" class="form-control shadow p-3 bg-light" id="localizacoFisicaItem" runat="server" />
+                            <p id="avisoLocalizacao" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-group m-1 col-10" style="padding-right: 0px; padding-left: 0px">
+                            <label for="teste">Observação</label>
+                            <textarea class="form-control shadow p-3 bg-light" id="observacao" rows="3" runat="server"></textarea>
+                        </div>
+                        <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
+                            <label for="text">Valor *</label>
+                            <div class="mt-4">
+                                <input id="cValorItem" type="text" placeholder="0,00" class="form-control shadow p-3 bg-light" runat="server" />
+                                <p id="avisoValor" style="color: red; display: none;">Favor inserir um numero</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <a id="botaoCancelar" href="/" type="submit" class="btn btn-danger m-3">Cancelar</a>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success float-end m-3" data-toggle="modal" data-target="#exampleModal">
-            Salvar
-        </button>
-
+        <div class="d-flex justify-content-end">
+            <a id="botaoCancelar" href="/" type="submit" class="btn btn-danger m-3">Cancelar</a>
+            <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">
+                Salvar
+            </button>
+        </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -110,12 +116,39 @@
                 alert("Cadastro salvo com sucesso!");
             });
 
-            const valorInserido = document.getElementById('<%= cValorItem.ClientID %>');
-            const aviso = document.getElementById('aviso');
+            //Campo Placa
+            const cPlaca = document.getElementById('<%= placaItem.ClientID %>');
+            const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
-            valorInserido.addEventListener('keydown', function (event) {
-            
-                if ([8, 13, 46, 37, 39, 110, 190].indexOf(event.keyCode) !== -1 ||
+            //Campo Descrição
+            const cDescricao = document.getElementById('<%= descricaoItem.ClientID %>');
+            const avisoCampoDescricao = document.getElementById('avisoDescricao');
+
+            //Campo Valor de Aquisição
+            const cValor = document.getElementById('<%= cValorItem.ClientID %>');
+            const avisoCampoValor = document.getElementById('avisoValor');
+
+            //Campo Localização Física
+            const cLocalizacao = document.getElementById('<%= localizacoFisicaItem.ClientID %>');
+            const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
+
+            //Campo Código
+            const cCodigo = document.getElementById('<%= codigoItem.ClientID %>');
+            const avisoCampoCodigo = document.getElementById('avisoCodigo');
+
+            ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+            ValidarCampoNumerico(cValor, avisoCampoValor);
+            ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
+            ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
+            ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+
+        });
+
+        function ValidarCampoNumero(campo, aviso) {
+            const cValor = document.getElementById('<%= cValorItem.ClientID %>');
+            campo.addEventListener('keydown', function (event) {
+
+                if ([8, 13, 46, 37, 39, 110, 190, 160, 161].indexOf(event.keyCode) !== -1 ||
                     (event.keyCode === 65 && event.ctrlKey === true) ||
                     (event.keyCode === 88 && event.ctrlKey === true) ||
                     (event.keyCode === 86 && event.ctrlKey === true) ||
@@ -124,34 +157,87 @@
                     return;
                 }
                 // Só Números
-                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                if (event.shiftKey ||
+                    (event.keyCode < 48 || event.keyCode > 57) &&
+                    (event.keyCode < 96 || event.keyCode > 105) &&
+                    event.ctrlKey === false && event.keyCode !== 20 &&
+                    event.keyCode !== 9) {
+
                     event.preventDefault();
                     aviso.style.display = 'block';
                 } else {
                     aviso.style.display = 'none';
                 }
-
-
             });
-            valorInserido.addEventListener('input', function () {
-                let valor = valorInserido.value;
+            campo.addEventListener('input', function () {
+                let valor = campo.value;
 
                 valor = valor.replace(/[^0-9,]/g, '');
-
-                valorInserido.value = valor;
+                
+                campo.value = valor;
             });
-            document.getElementById('meuFormulario').addEventListener('submit', function (event) {
-                let valor = valorInserido.value;
-                let numero = parseFloat(valor);
+        }
 
-                if (isNaN(numero)) {
+        function ValidarCampoNumerico(campo, aviso) {
+            campo.addEventListener('keydown', function (event) {
+                if ([8, 13, 46, 37, 39, 110, 188, 190, 160, 161].indexOf(event.keyCode) !== -1 || 
+                    (event.keyCode === 65 && event.ctrlKey === true) ||
+                    (event.keyCode === 88 && event.ctrlKey === true) ||
+                    (event.keyCode === 86 && event.ctrlKey === true) ||
+                    (event.keyCode === 67 && event.ctrlKey === true) ||
+                    (event.keyCode >= 35 && event.keyCode <= 39)) {
+                    return;
+                }
+                
+                if (event.shiftKey ||
+                    (event.keyCode < 48 || event.keyCode > 57) &&
+                    (event.keyCode < 96 || event.keyCode > 105) &&
+                    (event.keyCode !== 188 && event.keyCode !== 190) &&
+                    event.ctrlKey === false && event.keyCode !== 20 &&
+                    event.keyCode !== 9) {
+
                     event.preventDefault();
                     aviso.style.display = 'block';
-                    aviso.textContent = 'Favor, informar um valor numero!';
                 } else {
                     aviso.style.display = 'none';
                 }
             });
-        });
+
+            campo.addEventListener('blur', function () {
+                let valor = campo.value;
+
+                campo.value = parseFloat(valor.replace(',', '.')).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+            });
+        }
+        function ValidarCampoDeTextoComNumeros(campo, aviso) {
+            campo.addEventListener('keydown', function (event) {
+
+                if ([8, 13, 46, 37, 39, 110, 190].indexOf(event.keyCode) !== -1 ||
+                    (event.keyCode === 65 && event.ctrlKey === true) ||
+                    (event.keyCode === 88 && event.ctrlKey === true) ||
+                    (event.keyCode === 86 && event.ctrlKey === true) ||
+                    (event.keyCode === 67 && event.ctrlKey === true) ||
+                    (event.keyCode >= 35 && event.keyCode <= 39)) {
+                    return;
+                }
+
+                if (event.key === '@' || event.key === '#' || event.key === '<' || event.key === '>') {
+                    event.preventDefault();
+                    aviso.style.display = 'block';
+                } else {
+                    aviso.style.display = 'none';
+                }
+            });
+            campo.addEventListener('input', function () {
+                let valor = campo.value;
+
+                valor = valor.replace(/[@#><]/g, '');
+
+                campo.value = valor;
+            });
+        }
     </script>
 </asp:Content>

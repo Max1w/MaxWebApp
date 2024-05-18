@@ -125,6 +125,9 @@
     <Content Include="Entrada.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imagens\Entrada.png" />
+    <Content Include="Imagens\Inventario.png" />
+    <Content Include="Imagens\Saida.png" />
     <Content Include="Inventario.aspx" />
     <Content Include="Saida.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />

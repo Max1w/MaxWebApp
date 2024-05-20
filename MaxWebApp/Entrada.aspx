@@ -5,7 +5,7 @@
     <header>
         <h1>CADASTRO DE ITENS</h1>
     </header>
-    <form id="meuFormulario">
+    
         <style>
             input, select, textarea {
                 max-width: none;
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    
 
 
     <script>

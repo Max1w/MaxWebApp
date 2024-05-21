@@ -44,6 +44,7 @@
         </style>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
+                <img src="/Imagens/Patrimonio.png" alt="Imagem" class="mr-2 mb-2">
                 <a class="navbar-brand" style="color: #000" runat="server" href="~/"><strong>Modulo Patrimônio</strong></a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

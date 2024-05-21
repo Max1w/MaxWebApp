@@ -8,4 +8,7 @@
     <div class="d-flex justify-content-start" style="margin-top: 150px">
         <a id="botaoCancelar" href="/" type="submit" class="btn btn-primary" style="margin-top: 5em;">Voltar</a>
     </div>
+
+    <button id='asdjkl' type='button' class='btn btn-danger mx-1' runat='server' onserverclick='ExcluirRegistroDaTabela'>Excluir</button>
+
 </asp:Content>

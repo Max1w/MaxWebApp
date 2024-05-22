@@ -59,31 +59,31 @@ namespace MaxWebApp
 						listaInventario.Add(objLista);
 						
 					}
-					html.Append("<table class='table table-light table-striped table-hover table-bordered'>");
-					html.Append($"<tr>" +
-					$"<th>Código</th>" +
-					$"<th>Placa</th>" +
-					$"<th>Descrição</th>" +
-					$"<th>Valor de Aquisição</th>" +
-					$"<th>Data de Aquisição</th>" + 
-					$"</tr>");
+					//html.Append("<table class='table table-light table-striped table-hover table-bordered'>");
+					//html.Append($"<tr>" +
+					//$"<th>Código</th>" +
+					//$"<th>Placa</th>" +
+					//$"<th>Descrição</th>" +
+					//$"<th>Valor de Aquisição</th>" +
+					//$"<th>Data de Aquisição</th>" + 
+					//$"</tr>");
 					
-					foreach (var produto in listaInventario)
-					{
-						html.Append("<body class='table-group-divider'>");
-						html.Append("<tr>");
-						html.AppendFormat("<td>{0}</td>", produto.codigo);
-						html.AppendFormat("<td>{0}</td>", produto.placa);
-						html.AppendFormat("<td>{0}</td>", produto.descricao);
-						html.AppendFormat("<td>{0}</td>", produto.valorAquisicao);
-						html.AppendFormat("<td>{0:C}</td>", produto.dtAquisicao);
-						html.Append("</tr>");
-						html.Append("</body>");
-					}
+					//foreach (var produto in listaInventario)
+					//{
+					//	html.Append("<body class='table-group-divider'>");
+					//	html.Append("<tr>");
+					//	html.AppendFormat("<td>{0}</td>", produto.codigo);
+					//	html.AppendFormat("<td>{0}</td>", produto.placa);
+					//	html.AppendFormat("<td>{0}</td>", produto.descricao);
+					//	html.AppendFormat("<td>{0}</td>", produto.valorAquisicao);
+					//	html.AppendFormat("<td>{0:C}</td>", produto.dtAquisicao);
+					//	html.Append("</tr>");
+					//	html.Append("</body>");
+					//}
 
-					html.Append("</table>");
+					//html.Append("</table>");
 
-					tabelaInventario.Text = html.ToString();
+					//tabelaInventario.Text = html.ToString();
 					return listaInventario;
 				}
 			}

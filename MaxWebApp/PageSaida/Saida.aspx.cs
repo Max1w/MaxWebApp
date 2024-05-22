@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -11,16 +12,8 @@ namespace MaxWebApp
 {
 	public partial class Saida : System.Web.UI.Page
 	{
-		/*public int ID { get; set; */
-		public string codigo { get; set; }
-		public string placa { get; set; }
-		public string descricao { get; set; }
-		public string grupo { get; set; }
-		public string localizacao { get; set; }
-		public string dtAquisicao { get; set; }
-		public string estadoConservacao { get; set; }
-		public string valorAquisicao { get; set; }
-		public string observacao { get; set; }
+		
+		public List<Inventario> inventarios = new List<Inventario>(); 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!IsPostBack)
@@ -28,7 +21,8 @@ namespace MaxWebApp
 				SaidaDeItens();
 			}
 		}
-		private List<Inventario> SaidaDeItens()
+
+		private void SaidaDeItens()
 		{
 			StringBuilder html = new StringBuilder();
 			List<Inventario> listaSaida = new List<Inventario>();
@@ -60,39 +54,35 @@ namespace MaxWebApp
 						listaSaida.Add(objLista);
 
 					}
-					html.Append("<table class='table table-light table-striped table-hover table-bordered'>");
-					html.Append($"<tr>" +
-					$"<th>Código</th>" +
-					$"<th>Placa</th>" +
-					$"<th>Descrição</th>" +
-					$"<th>Valor de Aquisição</th>" +
-					$"<th>Data de Aquisição</th>" +
-					$"<th>Opções</th>" +
-					$"</tr>");
+					//html.Append("<table class='table table-light table-striped table-hover table-bordered'>");
+					//html.Append($"<tr>" +
+					//$"<th>Código</th>" +
+					//$"<th>Placa</th>" +
+					//$"<th>Descrição</th>" +
+					//$"<th>Valor de Aquisição</th>" +
+					//$"<th>Data de Aquisição</th>" +
+					//$"<th>Opções</th>" +
+					//$"</tr>");
 
-					foreach (var produto in listaSaida)
-					{
-						html.Append("<tr>");
-						html.AppendFormat("<td>{0}</td>", produto.codigo);
-						html.AppendFormat("<td>{0}</td>", produto.placa);
-						html.AppendFormat("<td>{0}</td>", produto.descricao);
-						html.AppendFormat("<td>{0}</td>", produto.valorAquisicao);
-						html.AppendFormat("<td>{0:C}</td>", produto.dtAquisicao);
-						html.Append("<td><button id='btnExcluir_" + produto.ID.ToString() + "' type='button' class='btn btn-danger mx-1' runat='server' onserverclick='ExcluirRegistroDaTabela'>Excluir</button>");
-						html.Append("<button id='btnEditar_"+ produto.ID.ToString() +"' type='button' class='btn btn-primary mx-1' runat='server' onserverclick='btnEditar_Click'>Editar</button></td>");
-						html.Append("</tr>");
-					}
+					//foreach (var produto in listaSaida)
+					//{
+					//	html.Append("<tr>");
+					//	html.AppendFormat("<td>{0}</td>", produto.codigo);
+					//	html.AppendFormat("<td>{0}</td>", produto.placa);
+					//	html.AppendFormat("<td>{0}</td>", produto.descricao);
+					//	html.AppendFormat("<td>{0}</td>", produto.valorAquisicao);
+					//	html.AppendFormat("<td>{0:C}</td>", produto.dtAquisicao);
+					//	html.Append("<td><button id='btnExcluir_" + produto.ID.ToString() + "' type='button' class='btn btn-danger mx-1' runat='server' onserverclick='ExcluirRegistroDaTabela'>Excluir</button>");
+					//	html.Append("<button id='btnEditar_"+ produto.ID.ToString() +"' type='button' class='btn btn-primary mx-1' runat='server' onserverclick='btnEditar_Click'>Editar</button></td>");
+					//	html.Append("</tr>");
+					//}
 
-					html.Append("</table>");
+					//html.Append("</table>");
 
-					tabelaSaida.Text = html.ToString();
-					return listaSaida;
+					//tabelaSaida.Text = html.ToString();
+					inventarios = listaSaida;
 				}
 			}
-		}
-		protected void ExcluirRegistroDaTabela()
-		{
-			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
 		}
 	}
 }

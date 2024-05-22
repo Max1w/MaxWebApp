@@ -11,7 +11,7 @@ namespace MaxWebApp
 {
 
 
-	public partial class Inventario
+	public partial class Saida
 	{
 
 		/// <summary>

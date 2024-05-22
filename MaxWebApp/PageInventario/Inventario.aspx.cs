@@ -11,26 +11,27 @@ namespace MaxWebApp
 {
 	public partial class Inventario : System.Web.UI.Page
 	{
-        public int ID { get; set; }
-        public string codigo { get; set; }
-        public string placa { get; set; }
-        public string descricao { get; set; }
-        public string grupo { get; set; }
-        public string localizacao { get; set; }
-        public string dtAquisicao { get; set; }
-        public string estadoConservacao { get; set; }
-        public string valorAquisicao { get; set; }
-        public string observacao { get; set; }
-        protected void Page_Load(object sender, EventArgs e)
+		public int ID { get; set; }
+		public string codigo { get; set; }
+		public string placa { get; set; }
+		public string descricao { get; set; }
+		public string grupo { get; set; }
+		public string localizacao { get; set; }
+		public string dtAquisicao { get; set; }
+		public string estadoConservacao { get; set; }
+		public string valorAquisicao { get; set; }
+		public string observacao { get; set; }
+		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack) {
+			if (!IsPostBack)
+			{
 				InventarioDeItens();
 			}
 		}
 		private List<Inventario> InventarioDeItens()
 		{
 			StringBuilder html = new StringBuilder();
-			List<Inventario> listaInventario = new List <Inventario>();
+			List<Inventario> listaInventario = new List<Inventario>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
 			string query = "select id, codigo_item, placa_item, descricao_item, grupo_item, localizacao_fisica, data_aquisicao, estado_conservacao, valor_aquisicao, observacao FROM itens";
@@ -40,7 +41,7 @@ namespace MaxWebApp
 				connection.Open();
 
 				using (SqlCommand command = new SqlCommand(query, connection))
-				{	
+				{
 					SqlDataReader dr = command.ExecuteReader();
 
 					while (dr.Read())
@@ -57,7 +58,7 @@ namespace MaxWebApp
 						objLista.valorAquisicao = dr["valor_aquisicao"].ToString();
 						objLista.observacao = dr["observacao"].ToString();
 						listaInventario.Add(objLista);
-						
+
 					}
 					//html.Append("<table class='table table-light table-striped table-hover table-bordered'>");
 					//html.Append($"<tr>" +
@@ -67,7 +68,7 @@ namespace MaxWebApp
 					//$"<th>Valor de Aquisição</th>" +
 					//$"<th>Data de Aquisição</th>" + 
 					//$"</tr>");
-					
+
 					//foreach (var produto in listaInventario)
 					//{
 					//	html.Append("<body class='table-group-divider'>");

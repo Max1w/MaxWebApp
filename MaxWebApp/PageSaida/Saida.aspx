@@ -1,40 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Saida.aspx.cs" Inherits="MaxWebApp.Saida" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Saída de item</h1>
-    <div style="margin-top: 200px">
-        <%--<asp:Literal ID="tabelaSaida" runat="server"></asp:Literal>--%>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Placa</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Valor de Aquisição</th>
-                    <th scope="col">Data de Aquisição</th>
-                    <th scope="col">Opções</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    foreach (registro in inventarios)
-                    {
-                %>
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>info1</td>
-                    <td>info2</td>
-                    <td>info3</td>
-                </tr>
-                <%
-                    }
-                %>
-            </tbody>
-        </table>
-    </div>
-    <div class="d-flex justify-content-start" style="margin-top: 150px">
-        <a id="botaoCancelar" href="/" type="submit" class="btn btn-primary" style="margin-top: 5em;">Voltar</a>
+    <div class="container">
+        <div>
+            <h1>Genaro Veículos</h1>
+            <h2>Seu Estoque</h2>
+        </div>
+        <asp:GridView ID="GridView1" runat="server" CssClass="grid-large" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand1">
+            <Columns>
+                <asp:TemplateField>
+                    <HeaderTemplate>
+                        <asp:CheckBox ID="ckSelecionarTodos" runat="server" AutoPostBack="true" OnCheckedChanged="SelecionarTodos" />
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="ckSelecionados" runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="Codigo" HeaderText="Código do Item" />
+                <asp:BoundField DataField="Placa" HeaderText="Placa do Item" />
+                <asp:BoundField DataField="Descricao" HeaderText="Descrição do Item" />
+                <asp:BoundField DataField="ValorAquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
+                <asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnExcluir" runat="server" Text="Excluir" CommandName="Excluir" CommandArgument='<%# Eval("ID") %>' CssClass="button" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
     </div>
 </asp:Content>

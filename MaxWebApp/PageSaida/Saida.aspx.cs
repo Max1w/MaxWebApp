@@ -35,13 +35,14 @@ namespace MaxWebApp
 			}
 		}
 
-		protected void SelecionarTodos(object sender, EventArgs e)
-		{ 
+		protected void CkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
+		{
 			CheckBox ckSelecionarTodos = (CheckBox)sender;
 			foreach (GridViewRow row in GridView1.Rows)
 			{
-				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");)
-				{ 
+				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");
+				if (ckSelecionados != null)
+				{
 					ckSelecionados.Checked = ckSelecionarTodos.Checked;
 				}
 			}
@@ -49,20 +50,20 @@ namespace MaxWebApp
 
 		protected void ExcluirItensSelecionados_Click(object sender, EventArgs e)
 		{
-			List<string> placasParaExcluir = new List<string>();
+			List<string> idsParaExcluir = new List<string>();
 
-			foreach (GridViewRow row in GridView1.Rows) 
+			foreach (GridViewRow row in GridView1.Rows)
 			{
-				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionado");
+				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");
 				if (ckSelecionados != null && ckSelecionados.Checked)
-				{ 
-					string placa = GridView1.DataKeys[row.RowIndex].Value.ToString();
-					placasParaExcluir.Add(placa);
+				{
+					string id = GridView1.DataKeys[row.RowIndex].Value.ToString();
+					idsParaExcluir.Add(id);
 				}
 			}
-			if (placasParaExcluir.Count > 0)
+			if (idsParaExcluir.Count > 0)
 			{
-				ExcluirVeiculo(placasParaExcluir);
+				ExcluirVeiculos(idsParaExcluir);
 				BindGridView();
 			}
 		}
@@ -77,7 +78,30 @@ namespace MaxWebApp
 
 				using (SqlCommand cmd = new SqlCommand(query, conn))
 				{
-					cmd.Parameters.AddWithValue("@id", string.Join(",", id));
+					cmd.Parameters.AddWithValue("@id", id);
+					try
+					{
+						conn.Open();
+						cmd.ExecuteNonQuery();
+					}
+					catch (Exception ex)
+					{
+						Response.Write("Erro: " + ex.Message);
+					}
+				}
+			}
+		}
+
+		private void ExcluirVeiculos(List<string> ids)
+		{
+			string connectionString = ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			{
+				string query = "DELETE FROM itens WHERE id IN (" + string.Join(",", ids.ConvertAll(id => "'" + id + "'")) + ")";
+
+				using (SqlCommand cmd = new SqlCommand(query, conn))
+				{
 					try
 					{
 						conn.Open();

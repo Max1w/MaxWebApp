@@ -22,5 +22,14 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.GridView GridView1;
+
+		/// <summary>
+		/// ExcluirItensSelecionados control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button ExcluirItensSelecionados;
 	}
 }

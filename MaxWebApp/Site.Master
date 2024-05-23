@@ -39,7 +39,7 @@
         </asp:ScriptManager>
         <style>
             .navbar {
-                background-color: #42FF00 !important;
+                background-color: #5CB85C !important;
             }
         </style>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">

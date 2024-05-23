@@ -22,6 +22,6 @@
                 <asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
             </Columns>
         </asp:GridView>
-        <asp:Button ID="ExcluirItensSelecionados" runat="server" Text="Excluir Itens Selecionados" OnClick="ExcluirItensSelecionados_Click" CssClass="btn btn-success" style="margin-top: 20px;"/>
+        <asp:Button ID="ExcluirItensSelecionados" runat="server" Text="Excluir" OnClick="ExcluirItensSelecionados_Click" CssClass="btn btn-danger" style="margin-top: 20px;"/>
     </div>
 </asp:Content>

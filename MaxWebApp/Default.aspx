@@ -13,17 +13,17 @@
 
                     <div class="d-flex align-items-center mb-2">
                         <img src="Imagens/Entrada.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnEntrada" href="/PageEntrada/Entrada" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="height: 52px; background: #42FF00;"><strong>Entrada</strong></a>
+                        <a id="btnEntrada" href="/PageEntrada/Entrada" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="height: 52px; background: #5CB85C;"><strong>Entrada</strong></a>
                     </div>
 
                     <div class="d-flex align-items-center mb-2">
                         <img src="Imagens/Inventario.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnInventario" href="/PageInventario/Inventario" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #42FF00"><strong>Inventario</strong></a>
+                        <a id="btnInventario" href="/PageInventario/Inventario" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Inventario</strong></a>
                     </div>
 
                     <div class="d-flex align-items-center mb-2">
                         <img src="Imagens/Saida.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnSaida" href="/PageSaida/Saida" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #42FF00"><strong>Saída</strong></a>
+                        <a id="btnSaida" href="/PageSaida/Saida" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Saída</strong></a>
                     </div>
                 </div>
             </div>

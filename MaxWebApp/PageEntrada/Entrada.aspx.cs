@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static MaxWebApp.Operacao;
 
 namespace MaxWebApp
 {
@@ -14,7 +16,7 @@ namespace MaxWebApp
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		protected void btnSalvar_Click(object sender, EventArgs e)
@@ -36,11 +38,14 @@ namespace MaxWebApp
 
 			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao))
 			{
-				SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem);
+				if (VericarDuplicidade(placaDoItem, codigoDoItem))
+				{ SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem); }
+				else
+				{ClientScript.RegisterStartupScript(this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
 			}
 			else
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ERRO: ", "alert('Os campos obrigatórios não podem ser vazios')", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "NotificaçãoCadastroInvalido", "NotificaçãoCadastroInvalido();", true);
 			}
 		}
 
@@ -70,7 +75,7 @@ namespace MaxWebApp
 
 					if (rowsAffected > 0)
 					{
-						Console.WriteLine("Dados inseridos com sucesso!");
+						ClientScript.RegisterStartupScript(this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
 					}
 					else
 					{
@@ -80,5 +85,55 @@ namespace MaxWebApp
 			}
 		}
 
+		protected void Unnamed_Click(object sender, EventArgs e)
+		{
+			ExibirCastroDosItens.Visible = true;
+		}
+
+		protected bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
+		{
+
+			List<Item> valida = new List<Item>();
+
+			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
+			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = "+placaDoItem+ " or codigo_item = "+codigoDoItem;
+
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						using (SqlDataReader dr = command.ExecuteReader())
+						{
+							//var opa = dr.Read();
+							while (dr.Read())
+							{
+								Item camposAhValidar = new Item();
+								camposAhValidar.Codigo = dr["codigo_item"].ToString();
+								camposAhValidar.Placa = dr["placa_item"].ToString();
+
+								valida.Add(camposAhValidar);
+							}
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("Erro: " + ex.Message);
+				}
+
+				if (valida.Count() == 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
 	}
 }

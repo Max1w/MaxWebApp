@@ -18,7 +18,7 @@
 
                     <div class="d-flex align-items-center mb-2">
                         <img src="Imagens/Inventario.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnInventario" href="/PageInventario/Inventario" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Inventario</strong></a>
+                        <a id="btnInventario" href="/PageInventario/InventarioDeItens" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Inventario</strong></a>
                     </div>
 
                     <div class="d-flex align-items-center mb-2">

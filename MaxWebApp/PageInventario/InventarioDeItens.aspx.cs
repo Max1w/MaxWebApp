@@ -21,6 +21,7 @@ namespace MaxWebApp.PageInventario
 				BindGridView();
 			}
 		}
+
 		private void BindGridView()
 		{
 			var operacao = new Operacao();

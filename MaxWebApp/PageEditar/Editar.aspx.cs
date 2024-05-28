@@ -11,7 +11,13 @@ namespace MaxWebApp.PageEditar
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			listaItens();
+		}
 
+		protected void listaItens()
+		{
+			var operacao = new Operacao();
+			List<Operacao.Item> listaItens = operacao.ListarItensDoBancoDeDados();
 		}
 	}
 }

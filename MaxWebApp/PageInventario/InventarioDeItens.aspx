@@ -11,7 +11,7 @@
                 <asp:BoundField DataField="Placa" HeaderText="Placa" />
                 <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
                 <asp:BoundField DataField="Grupo" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
-                <asp:BoundField DataField="Localizacao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="Localizacao" HeaderText="Data de Aquisição"  />
                 <asp:BoundField DataField="Observacao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="ValorAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />

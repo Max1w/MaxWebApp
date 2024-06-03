@@ -53,6 +53,11 @@ namespace MaxWebApp.PageInventario
 			}
 		}
 
+		protected void botaoCancelar_Click(object sender, EventArgs e)
+		{
+			pnlEdit.Visible = false;
+		}
+
 		protected void btnSalvar_Click(object sender, EventArgs e)
 		{
 			var operacao = new Operacao();
@@ -72,11 +77,6 @@ namespace MaxWebApp.PageInventario
 			operacao.AtualizarItem(item);
 			pnlEdit.Visible = false;
 			BindGridView();
-		}
-
-		protected void botaoCancelar_Click(object sender, EventArgs e)
-		{
-			pnlEdit.Visible = false;
 		}
 	}
 }

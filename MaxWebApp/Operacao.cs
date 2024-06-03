@@ -119,17 +119,7 @@ namespace MaxWebApp
 				command.Parameters.AddWithValue("@valor_aquisicao", item.ValorAquisicao);
 
 				connection.Open();
-
-				int rowsAffected = command.ExecuteNonQuery();
-
-				if (rowsAffected > 0)
-				{
-					ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
-				}
-				else
-				{
-					Console.WriteLine("Falha ao inserir dados!");
-				}
+				command.ExecuteNonQuery();
 			}
 		}
 	}

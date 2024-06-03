@@ -33,6 +33,15 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.Panel pnlEdit;
 
 		/// <summary>
+		/// hfItemId control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HiddenField hfItemId;
+
+		/// <summary>
 		/// txtCodigoDoItem control.
 		/// </summary>
 		/// <remarks>

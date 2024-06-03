@@ -100,27 +100,5 @@ namespace MaxWebApp
 			}
 			return item;
 		}
-
-		public void AtualizarItem(Item item)
-		{
-			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-			string query = "UPDATE itens SET placa_item = @placa_item, descricao_item = @descricao_item, grupo_item = @grupo_item, localizacao_fisica = @localizacao_fisica, data_aquisicao = @data_aquisicao, estado_conservacao = @estado_conservacao, valor_aquisicao = @valor_aquisicao, observacao = @observacao WHERE id = " + item.ID + "";
-
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				SqlCommand command = new SqlCommand(query, connection);
-				command.Parameters.AddWithValue("@placa_item", item.Placa);
-				command.Parameters.AddWithValue("@descricao_item", item.Descricao);
-				command.Parameters.AddWithValue("@data_aquisicao", Convert.ToDateTime(item.DtAquisicao));
-				command.Parameters.AddWithValue("@grupo_item", item.Grupo);
-				command.Parameters.AddWithValue("@estado_conservacao", item.EstadoConservacao);
-				command.Parameters.AddWithValue("@localizacao_fisica", item.Localizacao);
-				command.Parameters.AddWithValue("@observacao", item.Observacao);
-				command.Parameters.AddWithValue("@valor_aquisicao", item.ValorAquisicao);
-
-				connection.Open();
-				command.ExecuteNonQuery();
-			}
-		}
 	}
 }

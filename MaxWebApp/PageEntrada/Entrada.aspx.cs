@@ -16,7 +16,7 @@ namespace MaxWebApp
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		protected void btnSalvar_Click(object sender, EventArgs e)
@@ -92,11 +92,6 @@ namespace MaxWebApp
 			}
 		}
 
-		protected void Unnamed_Click(object sender, EventArgs e)
-		{
-			ExibirCastroDosItens.Visible = true;
-		}
-
 		protected bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
 		{
 
@@ -107,31 +102,23 @@ namespace MaxWebApp
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
-				try
+				connection.Open();
+
+				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					connection.Open();
-
-					using (SqlCommand command = new SqlCommand(query, connection))
+					using (SqlDataReader dr = command.ExecuteReader())
 					{
-						using (SqlDataReader dr = command.ExecuteReader())
+						//var opa = dr.Read();
+						while (dr.Read())
 						{
-							//var opa = dr.Read();
-							while (dr.Read())
-							{
-								Item camposAhValidar = new Item();
-								camposAhValidar.Codigo = dr["codigo_item"].ToString();
-								camposAhValidar.Placa = dr["placa_item"].ToString();
+							Item camposAhValidar = new Item();
+							camposAhValidar.Codigo = dr["codigo_item"].ToString();
+							camposAhValidar.Placa = dr["placa_item"].ToString();
 
-								valida.Add(camposAhValidar);
-							}
+							valida.Add(camposAhValidar);
 						}
 					}
 				}
-				catch (Exception ex)
-				{
-					Console.WriteLine("Erro: " + ex.Message);
-				}
-
 				if (valida.Count() == 0)
 				{
 					return true;

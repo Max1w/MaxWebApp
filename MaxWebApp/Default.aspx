@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MaxWebApp._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MaxWebApp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
@@ -7,25 +6,29 @@
             <h1 id="aspnetTitle">Visão Geral</h1>
         </section>
 
-        <div class="container-fluid">
-            <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 10em; margin-bottom: 10em;">
-                <div class="col-6 text-center">
-                    <h3 class="mb-4">Escolha uma opção</h3>
+        <div class="container-fluid d-flex justify-content-center text-center" style="margin-top:100px">
+            
+            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
+            <a href="/PageEntrada/Entrada" class="btn" style="background: #5CB85C"><img src="Imagens/EntradaI.png" class="card-img-top" alt="Imagem"></a>
+                <div class="card-body rounded" style="background: #a0dea0">
+                    <h5 class="card-title">Entrada</h5>
+                    <p class="card-text">Cadastro de Itens</p>
+                </div>
+            </div>
 
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="Imagens/Entrada.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnEntrada" href="/PageEntrada/Entrada" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="height: 52px; background: #5CB85C;"><strong>Entrada</strong></a>
-                    </div>
+            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
+            <a href="/PageInventario/InventarioDeItens" class="btn" style="background: #5CB85C"><img src="Imagens/InventarioI.png" class="card-img-top" alt="Imagem"></a>
+                <div class="card-body rounded" style="background: #a0dea0">
+                    <h5 class="card-title">Inventário</h5>
+                    <p class="card-text">Relação de todos os itens cadastrados</p>
+                </div>
+            </div>
 
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="Imagens/Inventario.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnInventario" href="/PageInventario/InventarioDeItens" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Inventario</strong></a>
-                    </div>
-
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="Imagens/Saida.png" alt="Imagem" class="mr-2 mb-2">
-                        <a id="btnSaida" href="/PageSaida/Saida" class="btn custom-btn btn-lg btn-block w-100 mb-2" style="background: #5CB85C"><strong>Saída</strong></a>
-                    </div>
+            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
+            <a href="/PageSaida/Saida" class="btn" style="background: #5CB85C"><img src="Imagens/SaidaI.png" class="card-img-top" alt="Imagem"></a>
+                <div class="card-body rounded" style="background: #a0dea0">
+                    <h5 class="card-title">Saída</h5>
+                    <p class="card-text">Baixa dos itens</p>
                 </div>
             </div>
         </div>

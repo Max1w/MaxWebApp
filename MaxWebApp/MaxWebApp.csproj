@@ -102,6 +102,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagens\EntradaI.png" />
+    <Content Include="Imagens\InventarioI.png" />
+    <Content Include="Imagens\SaidaI.png" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />
     <Content Include="PageSobre\About.aspx" />
     <Content Include="PageContact\Contact.aspx" />
@@ -126,10 +129,7 @@
     <Content Include="PageEntrada\Entrada.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Imagens\Entrada.png" />
-    <Content Include="Imagens\Inventario.png" />
     <Content Include="Imagens\Patrimonio.png" />
-    <Content Include="Imagens\Saida.png" />
     <Content Include="PageSaida\Saida.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

@@ -6,10 +6,6 @@
         <h1>CADASTRO DE ITENS</h1>
     </header>
 
-    <div>
-        <asp:Button runat="server" Text="+Item" OnClick="Unnamed_Click" CssClass="btn btn-success m-3 mt-5" />
-    </div>
-
     <style>
         input, select, textarea {
             max-width: none;
@@ -23,7 +19,6 @@
         }
     </style>
 
-    <asp:Panel ID="ExibirCastroDosItens" runat="server" Visible="false">
         <div class="container-fluid">
             <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
                 <div class="col-12">
@@ -97,7 +92,7 @@
                 Salvar
             </button>
         </div>
-    </asp:Panel>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -136,7 +131,6 @@
 
     <script>
         function NotificaçãoCadastroSucesso() {
-            alert("opa")
             var alertBox = document.getElementById('notificacaoDeSucesso');
             alertBox.style.display = 'block';
             setTimeout(function () {

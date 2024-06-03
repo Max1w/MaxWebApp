@@ -5,7 +5,7 @@
         <div>
             <h1 style="margin-bottom: 20px;">Inventário</h1>
         </div>
-        <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="true" OnRowCommand="GridView1_RowCommand1">
+        <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" OnRowCommand="GridView1_RowCommand1">
             <Columns>
                 <asp:BoundField DataField="Codigo" HeaderText="Código" />
                 <asp:BoundField DataField="Placa" HeaderText="Placa" />
@@ -43,10 +43,11 @@
         <div class="container-fluid">
             <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
                 <div class="col-12">
+                    <asp:HiddenField ID="hfItemId" runat="server" />
                     <div class="d-flex">
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="txtCodigoDoItem">Código *</label>
-                            <asp:TextBox ID="txtCodigoDoItem" runat="server" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
+                            <asp:TextBox ID="txtCodigoDoItem" runat="server" CssClass=" form-control shadow p-3 bg-light" ReadOnly="true"></asp:TextBox>
                             <asp:Label ID="avisoCodigo" runat="server" Text="Favor não inserir caracteres especiais" ForeColor="Red" Style="display: none;"></asp:Label>
                         </div>
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">

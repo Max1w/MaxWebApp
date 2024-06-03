@@ -1,5 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -8,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static MaxWebApp.Operacao;
+
 
 namespace MaxWebApp
 {
@@ -26,26 +26,33 @@ namespace MaxWebApp
 
 		private void ValidarCampos()
 		{
-			var codigoDoItem = codigoItem.Value;
-			var placaDoItem = placaItem.Value;
-			var descricaoDoItem = descricaoItem.Value;
-			var dataAquisicao = dtAquisicao.Value;
-			var grupoDoItem = grupoItem.Value;
-			var conservacaoDoItem = conservacaoItem.Value;
-			var localizacoFisicaDoItem = localizacoFisicaItem.Value;
-			var observacaoDoItem = observacao.Value;
-			var valorDoItem = cValorItem.Value;
+			var codigoDoItem = txtCodigoDoItem.Text;
+			var placaDoItem = txtPlacaDoItem.Text;
+			var descricaoDoItem = txtDescricaoDoItem.Text;
+			var dataAquisicao = txtDataAquisicao.Text;
+			var grupoDoItem = ddlGrupoItem.Text;
+			var conservacaoDoItem = ddlConservacaoItem.Text;
+			var localizacoFisicaDoItem = txtLocalizacaoFisica.Text;
+			var observacaoDoItem = txtObservacao.Text;
+			var valorDoItem = txtValorItem.Text;
 
-			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao))
+			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao) && !string.IsNullOrEmpty(valorDoItem))
 			{
-				if (VericarDuplicidade(placaDoItem, codigoDoItem))
-				{ SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem); }
+				if ((codigoDoItem.Length < 10) && (placaDoItem.Length < 10) && (descricaoDoItem.Length < 2000) && (localizacoFisicaDoItem.Length < 2000) && (observacaoDoItem.Length < 4000) && (valorDoItem.Length < 999999999))
+				{
+					if (VericarDuplicidade(placaDoItem, codigoDoItem))
+					{ SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem); }
+					else
+					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
+				}
 				else
-				{ClientScript.RegisterStartupScript(this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
+				{
+					ScriptManager.RegisterStartupScript(this, this.GetType(), "LimiteUltrapassadoDeCaracteres", "LimiteUltrapassadoDeCaracteres();", true);
+				}
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "NotificaçãoCadastroInvalido", "NotificaçãoCadastroInvalido();", true);
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
 			}
 		}
 
@@ -96,7 +103,7 @@ namespace MaxWebApp
 			List<Item> valida = new List<Item>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = "+placaDoItem+ " or codigo_item = "+codigoDoItem;
+			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = " + placaDoItem + " or codigo_item = " + codigoDoItem;
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{

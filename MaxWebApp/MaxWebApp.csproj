@@ -102,7 +102,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PageEditar\Editar.aspx" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />
     <Content Include="PageSobre\About.aspx" />
     <Content Include="PageContact\Contact.aspx" />
@@ -188,7 +187,6 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="teste.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -196,13 +194,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Operacao.cs" />
-    <Compile Include="PageEditar\Editar.aspx.cs">
-      <DependentUpon>Editar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageEditar\Editar.aspx.designer.cs">
-      <DependentUpon>Editar.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PageInventario\InventarioDeItens.aspx.cs">
       <DependentUpon>InventarioDeItens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,13 +247,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="teste.aspx.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="teste.aspx.designer.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

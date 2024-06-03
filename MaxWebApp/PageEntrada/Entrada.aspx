@@ -5,9 +5,11 @@
     <header>
         <h1>CADASTRO DE ITENS</h1>
     </header>
+
     <div>
         <asp:Button runat="server" Text="+Item" OnClick="Unnamed_Click" CssClass="btn btn-success m-3 mt-5" />
     </div>
+
     <style>
         input, select, textarea {
             max-width: none;
@@ -20,6 +22,7 @@
             display: none;
         }
     </style>
+
     <asp:Panel ID="ExibirCastroDosItens" runat="server" Visible="false">
         <div class="container-fluid">
             <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
@@ -28,17 +31,17 @@
                     <div class="d-flex">
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="text">Código *</label>
-                            <input type="text" class="form-control shadow p-3 bg-light" id="codigoItem" runat="server" />
+                            <asp:TextBox runat="server" ID="txtCodigoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                             <p id="avisoCodigo" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
                         </div>
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="text">Placa *</label>
-                            <input type="text" class="form-control shadow p-3 bg-light" id="placaItem" runat="server" />
+                            <asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                             <p id="avisoPlaca" style="color: red; display: none;">Favor inserir um numero</p>
                         </div>
                         <div class="form-group m-1 col-8" style="padding-right: 0px; padding-left: 0px">
                             <label for="text">Descrição *</label>
-                            <input type="text" class="form-control shadow p-3 bg-light" id="descricaoItem" runat="server" />
+                            <asp:TextBox runat="server" ID="txtDescricaoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                             <p id="avisoDescricao" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
                         </div>
                     </div>
@@ -46,41 +49,41 @@
                     <div class="d-flex">
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="text">Data da Aquisição *</label>
-                            <input type="date" class="form-control shadow p-3 bg-light" id="dtAquisicao" runat="server" />
+                            <asp:TextBox runat="server" ID="txtDataAquisicao" TextMode="Date" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                         </div>
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="exemplo">Grupo</label>
-                            <select class="form-control" id="grupoItem" runat="server">
-                                <option>Móvel</option>
-                                <option>Imóvel</option>
-                                <option>Dominical</option>
-                            </select>
+                            <asp:DropDownList runat="server" ID="ddlGrupoItem" CssClass="form-control">
+                                <asp:ListItem>Móvel</asp:ListItem>
+                                <asp:ListItem>Imóvel</asp:ListItem>
+                                <asp:ListItem>Dominical</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="exemplo">Estado de Conservação</label>
-                            <select class="form-control" id="conservacaoItem" runat="server">
-                                <option>Ótimo</option>
-                                <option>Bom</option>
-                                <option>Regular</option>
-                                <option>Ruim</option>
-                                <option>Péssimo</option>
-                            </select>
+                            <asp:DropDownList runat="server" ID="ddlConservacaoItem" CssClass="form-control">
+                                <asp:ListItem>Ótimo</asp:ListItem>
+                                <asp:ListItem>Bom</asp:ListItem>
+                                <asp:ListItem>Regular</asp:ListItem>
+                                <asp:ListItem>Ruim</asp:ListItem>
+                                <asp:ListItem>Péssimo</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="form-group m-1 col-6" style="padding-right: 8px; padding-left: 0px">
                             <label for="text">Localização Física</label>
-                            <input type="text" class="form-control shadow p-3 bg-light" id="localizacoFisicaItem" runat="server" />
+                            <asp:TextBox runat="server" ID="txtLocalizacaoFisica" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                             <p id="avisoLocalizacao" style="color: red; display: none;">Favor não inserir caracteres especiais</p>
                         </div>
                     </div>
                     <div class="d-flex">
                         <div class="form-group m-1 col-10" style="padding-right: 0px; padding-left: 0px">
                             <label for="teste">Observação</label>
-                            <textarea class="form-control shadow p-3 bg-light" id="observacao" rows="3" runat="server"></textarea>
+                            <asp:TextBox runat="server" ID="txtObservacao" TextMode="MultiLine" Rows="3" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                         </div>
                         <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                             <label for="text">Valor *</label>
                             <div class="mt-4">
-                                <input id="cValorItem" type="text" placeholder="0,00" class="form-control shadow p-3 bg-light" runat="server" />
+                                <asp:TextBox runat="server" ID="txtValorItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                                 <p id="avisoValor" style="color: red; display: none;">Favor inserir um numero</p>
                             </div>
                         </div>
@@ -89,7 +92,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <a id="botaoCancelar" href="/" type="submit" class="btn btn-danger m-3">Cancelar</a>
+            <a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
             <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">
                 Salvar
             </button>
@@ -127,74 +130,84 @@
     <div id="cadastroDuplicado" class="alert alert-danger" role="alert">
         Cadastro duplicado!
     </div>
-
+    <div id="limiteUltrapassadoDeCaracteres" class="alert alert-danger" role="alert">
+        Foi ultrapassado o valor limite de caracteres!
+    </div>
 
     <script>
-
         function NotificaçãoCadastroSucesso() {
-            var alertBoxInvalido = document.getElementById('notificacaoDeSucesso');
-            alertBoxInvalido.style.display = 'block';
+            alert("opa")
+            var alertBox = document.getElementById('notificacaoDeSucesso');
+            alertBox.style.display = 'block';
             setTimeout(function () {
-                alertBoxInvalido.style.display = 'none';
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        function LimiteUltrapassadoDeCaracteres() {
+            var alertBox = document.getElementById('limiteUltrapassadoDeCaracteres');
+            alertBox.style.display = 'block';
+            setTimeout(function () {
+                alertBox.style.display = 'none';
             }, 5000);
         }
 
         function CadastroDuplicado() {
-            var alertBoxInvalido = document.getElementById('cadastroDuplicado');
-            alertBoxInvalido.style.display = 'block';
+            var alertBox = document.getElementById('cadastroDuplicado');
+            alertBox.style.display = 'block';
             setTimeout(function () {
-                alertBoxInvalido.style.display = 'none';
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        function NotificaçãoCampoInvalido() {
+            var alertBox = document.getElementById('notificacaoDeCampoInvalido');
+            alertBox.style.display = 'block';
+            setTimeout(function () {
+                alertBox.style.display = 'none';
             }, 5000);
         }
 
         function NotificaçãoCadastroCancelar() {
-            var alertBoxCancelar = document.getElementById('notificacaoDeCancelar');
-            alertBoxCancelar.style.display = 'block';
+            var alertBox = document.getElementById('notificacaoDeCancelar');
+            alertBox.style.display = 'block';
             setTimeout(function () {
-                alertBoxCancelar.style.display = 'none';
-            }, 5000);
-        }
-
-        function NotificaçãoCadastroInvalido() {
-            var alertBoxSucesso = document.getElementById('notificacaoDeCampoInvalido');
-            alertBoxSucesso.style.display = 'block';
-            setTimeout(function () {
-                alertBoxSucesso.style.display = 'none';
+                alertBox.style.display = 'none';
             }, 5000);
         }
 
         document.addEventListener('DOMContentLoaded', function () {
 
             //Campo Placa
-            const cPlaca = document.getElementById('<%= placaItem.ClientID %>');
-            const avisoCampoPlaca = document.getElementById('avisoPlaca');
+            const cPlaca = document.getElementById('<%= txtPlacaDoItem.ClientID %>');
+        const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
-            //Campo Descrição
-            const cDescricao = document.getElementById('<%= descricaoItem.ClientID %>');
-            const avisoCampoDescricao = document.getElementById('avisoDescricao');
+        //Campo Descrição
+        const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
+        const avisoCampoDescricao = document.getElementById('avisoDescricao');
 
-            //Campo Valor de Aquisição
-            const cValor = document.getElementById('<%= cValorItem.ClientID %>');
-            const avisoCampoValor = document.getElementById('avisoValor');
+        //Campo Valor de Aquisição
+        const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
+        const avisoCampoValor = document.getElementById('avisoValor');
 
-            //Campo Localização Física
-            const cLocalizacao = document.getElementById('<%= localizacoFisicaItem.ClientID %>');
-            const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
+        //Campo Localização Física
+        const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
+        const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
 
-            //Campo Código
-            const cCodigo = document.getElementById('<%= codigoItem.ClientID %>');
-            const avisoCampoCodigo = document.getElementById('avisoCodigo');
+        //Campo Código
+        const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
+        const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
-            ValidarCampoNumero(cPlaca, avisoCampoPlaca);
-            ValidarCampoNumerico(cValor, avisoCampoValor);
-            ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
-            ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
-            ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+        ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+        ValidarCampoNumerico(cValor, avisoCampoValor);
+        ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
+        ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
+        ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
 
-        });
+    });
 
         function ValidarCampoNumero(campo, aviso) {
-            const cValor = document.getElementById('<%= cValorItem.ClientID %>');
+            const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
             campo.addEventListener('keydown', function (event) {
 
                 if ([8, 13, 46, 37, 39, 110, 190, 160, 161].indexOf(event.keyCode) !== -1 ||
@@ -289,4 +302,5 @@
             });
         }
     </script>
+
 </asp:Content>

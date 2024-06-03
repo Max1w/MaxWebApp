@@ -24,85 +24,85 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.Panel ExibirCastroDosItens;
 
 		/// <summary>
-		/// codigoItem control.
+		/// txtCodigoDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText codigoItem;
+		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
 
 		/// <summary>
-		/// placaItem control.
+		/// txtPlacaDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText placaItem;
+		protected global::System.Web.UI.WebControls.TextBox txtPlacaDoItem;
 
 		/// <summary>
-		/// descricaoItem control.
+		/// txtDescricaoDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText descricaoItem;
+		protected global::System.Web.UI.WebControls.TextBox txtDescricaoDoItem;
 
 		/// <summary>
-		/// dtAquisicao control.
+		/// txtDataAquisicao control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtAquisicao;
+		protected global::System.Web.UI.WebControls.TextBox txtDataAquisicao;
 
 		/// <summary>
-		/// grupoItem control.
+		/// ddlGrupoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlSelect grupoItem;
+		protected global::System.Web.UI.WebControls.DropDownList ddlGrupoItem;
 
 		/// <summary>
-		/// conservacaoItem control.
+		/// ddlConservacaoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlSelect conservacaoItem;
+		protected global::System.Web.UI.WebControls.DropDownList ddlConservacaoItem;
 
 		/// <summary>
-		/// localizacoFisicaItem control.
+		/// txtLocalizacaoFisica control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText localizacoFisicaItem;
+		protected global::System.Web.UI.WebControls.TextBox txtLocalizacaoFisica;
 
 		/// <summary>
-		/// observacao control.
+		/// txtObservacao control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlTextArea observacao;
+		protected global::System.Web.UI.WebControls.TextBox txtObservacao;
 
 		/// <summary>
-		/// cValorItem control.
+		/// txtValorItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlInputText cValorItem;
+		protected global::System.Web.UI.WebControls.TextBox txtValorItem;
 
 		/// <summary>
 		/// btnEnviar control.

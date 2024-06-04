@@ -104,7 +104,10 @@
   <ItemGroup>
     <Content Include="Imagens\EntradaI.png" />
     <Content Include="Imagens\InventarioI.png" />
+    <Content Include="Imagens\movero.jpg" />
     <Content Include="Imagens\SaidaI.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="LoginEstilo.css" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />
     <Content Include="PageSobre\About.aspx" />
     <Content Include="PageContact\Contact.aspx" />
@@ -193,6 +196,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Operacao.cs" />
     <Compile Include="PageInventario\InventarioDeItens.aspx.cs">
       <DependentUpon>InventarioDeItens.aspx</DependentUpon>

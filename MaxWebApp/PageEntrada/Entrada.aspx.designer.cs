@@ -24,6 +24,15 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
 
 		/// <summary>
+		/// rfvCodigoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
+
+		/// <summary>
 		/// txtPlacaDoItem control.
 		/// </summary>
 		/// <remarks>
@@ -31,6 +40,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtPlacaDoItem;
+
+		/// <summary>
+		/// rfvPlacaDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlacaDoItem;
 
 		/// <summary>
 		/// txtDescricaoDoItem control.
@@ -42,6 +60,15 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.TextBox txtDescricaoDoItem;
 
 		/// <summary>
+		/// rfvDescricaoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricaoDoItem;
+
+		/// <summary>
 		/// txtDataAquisicao control.
 		/// </summary>
 		/// <remarks>
@@ -49,6 +76,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtDataAquisicao;
+
+		/// <summary>
+		/// rfvDataAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDataAquisicao;
 
 		/// <summary>
 		/// ddlGrupoItem control.
@@ -94,6 +130,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtValorItem;
+
+		/// <summary>
+		/// rfvalorItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvalorItem;
 
 		/// <summary>
 		/// btnEnviar control.

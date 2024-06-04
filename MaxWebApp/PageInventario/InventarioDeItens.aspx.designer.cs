@@ -51,13 +51,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
 
 		/// <summary>
-		/// avisoCodigo control.
+		/// rfvCodigoDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label avisoCodigo;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
 
 		/// <summary>
 		/// txtPlacaItem control.
@@ -69,13 +69,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.TextBox txtPlacaItem;
 
 		/// <summary>
-		/// avisoPlaca control.
+		/// rfvPlacaDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label avisoPlaca;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlacaDoItem;
 
 		/// <summary>
 		/// txtDescricaoItem control.
@@ -87,13 +87,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.TextBox txtDescricaoItem;
 
 		/// <summary>
-		/// avisoDescricao control.
+		/// rfvDescricaoDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label avisoDescricao;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricaoDoItem;
 
 		/// <summary>
 		/// txtDtAquisicao control.
@@ -103,6 +103,15 @@ namespace MaxWebApp.PageInventario
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtDtAquisicao;
+
+		/// <summary>
+		/// rfvDataAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDataAquisicao;
 
 		/// <summary>
 		/// ddlGrupoItem control.
@@ -132,15 +141,6 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.TextBox txtLocalizacoFisicaItem;
 
 		/// <summary>
-		/// avisoLocalizacao control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label avisoLocalizacao;
-
-		/// <summary>
 		/// txtObservacao control.
 		/// </summary>
 		/// <remarks>
@@ -159,13 +159,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.TextBox txtValorItem;
 
 		/// <summary>
-		/// avisoValor control.
+		/// rfvalorItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label avisoValor;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvalorItem;
 
 		/// <summary>
 		/// botaoCancelar control.

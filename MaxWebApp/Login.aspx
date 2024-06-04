@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MaxWebApp.Login" %>
+﻿<%--<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MaxWebApp.Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">--%>
 <head>
 
     <link rel="stylesheet" href="LoginEstilo.css" />
@@ -33,4 +33,4 @@
         </form>
     </div>
 </body>  
-</asp:Content>
+<%--</asp:Content>--%>

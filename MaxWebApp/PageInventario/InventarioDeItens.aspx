@@ -5,7 +5,7 @@
         <div>
             <h1 style="margin-bottom: 20px;">Inventário</h1>
         </div>
-        <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" OnRowCommand="GridView1_RowCommand1">
+        <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
             <Columns>
                 <asp:BoundField DataField="Codigo" HeaderText="Código" />
                 <asp:BoundField DataField="Placa" HeaderText="Placa" />
@@ -21,9 +21,9 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+            <PagerStyle CssClass="" />
         </asp:GridView>
     </div>
-
     <asp:Panel ID="pnlEdit" runat="server" Visible="false">
         <header>
             <h1>EDITAR ITENS</h1>
@@ -106,7 +106,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <asp:LinkButton ID="botaoCancelar" runat="server" CssClass="btn btn-danger m-3" OnClick="botaoCancelar_Click">Cancelar</asp:LinkButton>  <%-------%>
+            <asp:LinkButton ID="botaoCancelar" runat="server" CssClass="btn btn-danger m-3" OnClick="botaoCancelar_Click">Cancelar</asp:LinkButton>
+            <%-------%>
             <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
         </div>
 
@@ -115,7 +116,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -125,7 +126,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-                        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-success m-3" OnClick="btnSalvar_Click" /> <%-------%>
+                        <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-success m-3" OnClick="btnSalvar_Click" />
+                        <%-------%>
                     </div>
                 </div>
             </div>

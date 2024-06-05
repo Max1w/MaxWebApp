@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html >
+<html lang="en" >
+
+<head >
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title > Document</title >
+<link href="estilo.css" rel="stylesheet" >
+</head >
+
+<body >
+<div id="card-area" >
+<div class="wrapper" >
+<div class="box-area" >
+<div class="box" >
+<img src="img/Entrada.png" alt="" >
+<div class="overlay" >
+<h3 > Entrada</h3 >
+<p > Cadastra novo item</p >
+<a href="#" > Acessar</a >
+</div >
+</div >
+<div class="box" >
+<img src="img/Inventario.png" alt="" >
+<div class="overlay" >
+<h3 > Inventario</h3 >
+<p > Relação de todos os itens cadastrados</p >
+<a href="#" > Acessar</a >
+</div >
+</div >
+<div class="box" >
+<img src="img/Saindo.jpg" alt="" >
+<div class="overlay" >
+<h3 > Saida</h3 >
+<p > Saída do Item</p >
+<a href="#" > Acessar</a >
+</div >
+</div >
+</div >
+</div >
+</div >
+</body >
+
+</html >
+
+
+CSS
+* {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1e1f21;
+    color: #fff;
+}
+
+.wrapper {
+    padding: 10px 10%;
+}
+
+#card-area {
+    padding: 50px 0;
+}
+
+.box-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.box {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+    .box img {
+        width: 100px;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.5s;
+    }
+
+.overlay {
+    height: 0;
+    width: 100%;
+    background: linear-gradient(transparent, #1c1c1c 58%);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+
+    .overlay h3 {
+        font-weight: 500;
+        margin-bottom: 5px;
+        margin-top: 80%;
+        font-family: bebas neue;
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    .overlay a {
+        margin-top: 10px;
+        color: #262626;
+        text-decoration: none;
+        font-size: 14px;
+        background: #fff;
+        border-radius: 50px;
+        text-align: center;
+        padding: 5px 15px;
+    }
+
+.boxLhover img {
+    transform: scale(1.2);
+}
+
+.box:hover .overlay {
+    height: 100%;
+}

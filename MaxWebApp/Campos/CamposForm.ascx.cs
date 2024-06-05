@@ -30,7 +30,9 @@ namespace MaxWebApp.Campos
 			get { return this.txtLocalizacaoFisica; }
 		}
 
-		protected void Page_Load(object sender, EventArgs e)
+        public string idDeMudanca { get; set; }
+
+        protected void Page_Load(object sender, EventArgs e)
 		{
 
 		}

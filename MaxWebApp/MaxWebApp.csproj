@@ -105,10 +105,12 @@
     <Content Include="Campos\CamposForm.ascx" />
     <Content Include="Imagens\EntradaI.png" />
     <Content Include="Imagens\EstoqueI.jpg" />
+    <Content Include="Imagens\iconPatrimonio.ico" />
     <Content Include="Imagens\InventarioI.png" />
     <Content Include="Imagens\SaidaI.png" />
     <Content Include="Login.aspx" />
     <Content Include="LoginEstilo.css" />
+    <Content Include="AnimacaoCard.css" />
     <Content Include="Scripts\Notificacao.js" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />
     <Content Include="PageSobre\About.aspx" />

@@ -27,7 +27,7 @@ namespace MaxWebApp
 			List<Item> itens = new List<Item>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-			string query = "SELECT id, codigo_item, placa_item, descricao_item, grupo_item, localizacao_fisica, data_aquisicao, estado_conservacao, valor_aquisicao, observacao FROM itens";
+			string query = "SELECT TOP 60 id, codigo_item, placa_item, descricao_item, grupo_item, localizacao_fisica, data_aquisicao, estado_conservacao, valor_aquisicao, observacao FROM itens";
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{

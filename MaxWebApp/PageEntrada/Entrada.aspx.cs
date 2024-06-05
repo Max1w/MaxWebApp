@@ -17,7 +17,7 @@ namespace MaxWebApp
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			camposDoFormEntrada.idDeMudanca = "camposDoFormEntrada";
 		}
 		public void SalvarInformacoesNoBanco(string codigoDoItem, string placaDoItem, string descricaoDoItem, string dataAquisicao, string grupoDoItem, string conservacaoDoItem, string localizacoFisicaDoItem, string observacaoDoItem, string valorDoItem, Page pagina)
 		{

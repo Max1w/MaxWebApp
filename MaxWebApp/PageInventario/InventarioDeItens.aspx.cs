@@ -48,8 +48,8 @@ namespace MaxWebApp.PageInventario
 				txtPlacaDoItem.Text = item.Placa;
 				txtDescricaoDoItem.Text = item.Descricao;
 				txtDataAquisicao.Text = item.DtAquisicao.ToString("yyyy-MM-dd");
-				ddlGrupoItem.SelectedValue = item.Grupo;
-				ddlConservacaoItem.SelectedValue = item.EstadoConservacao;
+				ddlGrupoItem.Text = item.Grupo;
+				ddlConservacaoItem.Text = item.EstadoConservacao;
 				txtLocalizacaoFisica.Text = item.Localizacao;
 				txtObservacao.Text = item.Observacao;
 				txtValorItem.Text = item.ValorAquisicao.ToString();

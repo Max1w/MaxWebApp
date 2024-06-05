@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaxWebApp.Campos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -18,45 +19,7 @@ namespace MaxWebApp
 		{
 
 		}
-
-		protected void btnSalvar_Click(object sender, EventArgs e)
-		{
-			ValidarCampos();
-		}
-
-		private void ValidarCampos()
-		{
-			var codigoDoItem = txtCodigoDoItem.Text;
-			var placaDoItem = txtPlacaDoItem.Text;
-			var descricaoDoItem = txtDescricaoDoItem.Text;
-			var dataAquisicao = txtDataAquisicao.Text;
-			var grupoDoItem = ddlGrupoItem.Text;
-			var conservacaoDoItem = ddlConservacaoItem.Text;
-			var localizacoFisicaDoItem = txtLocalizacaoFisica.Text;
-			var observacaoDoItem = txtObservacao.Text;
-			var valorDoItem = txtValorItem.Text;
-
-			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao) && !string.IsNullOrEmpty(valorDoItem))
-			{
-				if ((codigoDoItem.Length < 10) && (placaDoItem.Length < 10) && (descricaoDoItem.Length < 2000) && (localizacoFisicaDoItem.Length < 2000) && (observacaoDoItem.Length < 4000) && (valorDoItem.Length < 999999999))
-				{
-					if (VericarDuplicidade(placaDoItem, codigoDoItem))
-					{ SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItem); }
-					else
-					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
-				}
-				else
-				{
-					ScriptManager.RegisterStartupScript(this, this.GetType(), "LimiteUltrapassadoDeCaracteres", "LimiteUltrapassadoDeCaracteres();", true);
-				}
-			}
-			else
-			{
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
-			}
-		}
-
-		protected void SalvarInformacoesNoBanco(string codigoDoItem, string placaDoItem, string descricaoDoItem, string dataAquisicao, string grupoDoItem, string conservacaoDoItem, string localizacoFisicaDoItem, string observacaoDoItem, string valorDoItem)
+		public void SalvarInformacoesNoBanco(string codigoDoItem, string placaDoItem, string descricaoDoItem, string dataAquisicao, string grupoDoItem, string conservacaoDoItem, string localizacoFisicaDoItem, string observacaoDoItem, string valorDoItem, Page pagina)
 		{
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
 			string query = "INSERT INTO itens (codigo_item, placa_item, descricao_item, data_aquisicao, grupo_item, estado_conservacao, localizacao_fisica, observacao, valor_aquisicao, patrimonios_id) VALUES (@codigo_item, @placa_item, @descricao_item, @data_aquisicao, @grupo_item, @estado_conservacao, @localizacao_fisica, @observacao, @valor_aquisicao, @patrimonios_id)";
@@ -82,7 +45,7 @@ namespace MaxWebApp
 
 					if (rowsAffected > 0)
 					{
-						ClientScript.RegisterStartupScript(this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
+						ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
 					}
 					else
 					{
@@ -92,7 +55,7 @@ namespace MaxWebApp
 			}
 		}
 
-		protected bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
+		public bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
 		{
 
 			List<Item> valida = new List<Item>();
@@ -108,7 +71,6 @@ namespace MaxWebApp
 				{
 					using (SqlDataReader dr = command.ExecuteReader())
 					{
-						//var opa = dr.Read();
 						while (dr.Read())
 						{
 							Item camposAhValidar = new Item();

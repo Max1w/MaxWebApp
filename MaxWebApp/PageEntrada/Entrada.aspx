@@ -27,19 +27,19 @@
                     <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                         <label for="text">Código *</label>
                         <asp:TextBox runat="server" ID="txtCodigoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                        <div id="avisoCodigo" class="invalid-feedback"> Favor inserir um numero </div>
+                        <div id="avisoCodigo" class="invalid-feedback">Favor inserir um caracter válido</div>
                         <asp:RequiredFieldValidator ID="rfvCodigoDoItem" runat="server" ControlToValidate="txtCodigoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
                         <label for="text">Placa *</label>
                         <asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                        <div id="avisoPlaca" class="invalid-feedback"> Favor inserir um numero </div>
+                        <div id="avisoPlaca" class="invalid-feedback">Favor inserir um numero </div>
                         <asp:RequiredFieldValidator ID="rfvPlacaDoItem" runat="server" ControlToValidate="txtPlacaDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group m-1 col-8" style="padding-right: 0px; padding-left: 0px">
                         <label for="text">Descrição *</label>
                         <asp:TextBox runat="server" ID="txtDescricaoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                        <div id="avisoDescricao" class="invalid-feedback"> Favor inserir um numero </div>
+                        <div id="avisoDescricao" class="invalid-feedback">Favor inserir um caracter válido</div>
                         <asp:RequiredFieldValidator ID="rfvDescricaoDoItem" runat="server" ControlToValidate="txtDescricaoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-group m-1 col-6" style="padding-right: 8px; padding-left: 0px">
                         <label for="text">Localização Física</label>
-                        <div id="avisoLocalizacao" class="invalid-feedback"> Favor inserir um numero </div>
+                        <div id="avisoLocalizacao" class="invalid-feedback">Favor inserir um caracter válido</div>
                         <asp:TextBox runat="server" ID="txtLocalizacaoFisica" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                         <label for="text">Valor *</label>
                         <div class="mt-4">
                             <asp:TextBox runat="server" ID="txtValorItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                            <div id="avisoValor" class="invalid-feedback"> Favor inserir um numero </div>
+                            <div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
                             <asp:RequiredFieldValidator ID="rfvalorItem" runat="server" ControlToValidate="txtValorItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -142,31 +142,31 @@
 
             //Campo Placa
             const cPlaca = document.getElementById('<%= txtPlacaDoItem.ClientID %>');
-            const avisoCampoPlaca = document.getElementById('avisoPlaca');
+                     const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
-            //Campo Descrição
-            const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
-            const avisoCampoDescricao = document.getElementById('avisoDescricao');
+                     //Campo Descrição
+                     const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
+                     const avisoCampoDescricao = document.getElementById('avisoDescricao');
 
-            //Campo Valor de Aquisição
-            const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
-            const avisoCampoValor = document.getElementById('avisoValor');
+                     //Campo Valor de Aquisição
+                     const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
+                     const avisoCampoValor = document.getElementById('avisoValor');
 
-            //Campo Localização Física
-            const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
-            const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
+                     //Campo Localização Física
+                     const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
+                     const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
 
-            //Campo Código
-            const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
-            const avisoCampoCodigo = document.getElementById('avisoCodigo');
+                     //Campo Código
+                     const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
+                     const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
-            ValidarCampoNumero(cPlaca, avisoCampoPlaca);
-            ValidarCampoNumerico(cValor, avisoCampoValor);
-            ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
-            ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
-            ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+                     ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+                     ValidarCampoNumerico(cValor, avisoCampoValor);
+                     ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
+                     ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
+                     ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
 
-        });
+                 });
 
         function ValidarCampoNumero(campo, aviso) {
             const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
@@ -264,5 +264,4 @@
             });
         }
     </script>
-
 </asp:Content>

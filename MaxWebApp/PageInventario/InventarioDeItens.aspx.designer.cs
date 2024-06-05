@@ -60,13 +60,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
 
 		/// <summary>
-		/// txtPlacaItem control.
+		/// txtPlacaDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtPlacaItem;
+		protected global::System.Web.UI.WebControls.TextBox txtPlacaDoItem;
 
 		/// <summary>
 		/// rfvPlacaDoItem control.
@@ -78,13 +78,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlacaDoItem;
 
 		/// <summary>
-		/// txtDescricaoItem control.
+		/// txtDescricaoDoItem control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDescricaoItem;
+		protected global::System.Web.UI.WebControls.TextBox txtDescricaoDoItem;
 
 		/// <summary>
 		/// rfvDescricaoDoItem control.
@@ -96,13 +96,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricaoDoItem;
 
 		/// <summary>
-		/// txtDtAquisicao control.
+		/// txtDataAquisicao control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDtAquisicao;
+		protected global::System.Web.UI.WebControls.TextBox txtDataAquisicao;
 
 		/// <summary>
 		/// rfvDataAquisicao control.
@@ -132,13 +132,13 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.DropDownList ddlConservacaoItem;
 
 		/// <summary>
-		/// txtLocalizacoFisicaItem control.
+		/// txtLocalizacaoFisica control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtLocalizacoFisicaItem;
+		protected global::System.Web.UI.WebControls.TextBox txtLocalizacaoFisica;
 
 		/// <summary>
 		/// txtObservacao control.

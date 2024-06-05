@@ -45,12 +45,12 @@ namespace MaxWebApp.PageInventario
 			{
 				hfItemId.Value = item.ID.ToString();
 				txtCodigoDoItem.Text = item.Codigo;
-				txtPlacaItem.Text = item.Placa;
-				txtDescricaoItem.Text = item.Descricao;
-				txtDtAquisicao.Text = item.DtAquisicao.ToString("yyyy-MM-dd");
+				txtPlacaDoItem.Text = item.Placa;
+				txtDescricaoDoItem.Text = item.Descricao;
+				txtDataAquisicao.Text = item.DtAquisicao.ToString("yyyy-MM-dd");
 				ddlGrupoItem.SelectedValue = item.Grupo;
 				ddlConservacaoItem.SelectedValue = item.EstadoConservacao;
-				txtLocalizacoFisicaItem.Text = item.Localizacao;
+				txtLocalizacaoFisica.Text = item.Localizacao;
 				txtObservacao.Text = item.Observacao;
 				txtValorItem.Text = item.ValorAquisicao.ToString();
 				pnlEdit.Visible = true;
@@ -69,12 +69,12 @@ namespace MaxWebApp.PageInventario
 			{
 				ID = int.Parse(hfItemId.Value),
 				Codigo = txtCodigoDoItem.Text,
-				Placa = txtPlacaItem.Text,
-				Descricao = txtDescricaoItem.Text,
-				DtAquisicao = DateTime.Parse(txtDtAquisicao.Text),
+				Placa = txtPlacaDoItem.Text,
+				Descricao = txtDescricaoDoItem.Text,
+				DtAquisicao = DateTime.Parse(txtDataAquisicao.Text),
 				Grupo = ddlGrupoItem.SelectedValue,
 				EstadoConservacao = ddlConservacaoItem.SelectedValue,
-				Localizacao = txtLocalizacoFisicaItem.Text,
+				Localizacao = txtLocalizacaoFisica.Text,
 				Observacao = txtObservacao.Text,
 				ValorAquisicao = txtValorItem.Text
 			};

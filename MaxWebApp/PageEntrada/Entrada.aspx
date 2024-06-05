@@ -21,30 +21,30 @@
         }
     </style>
     
-    <cp:Campos runat="server" ID="CamposDoForm"></cp:Campos>
+    <cp:Campos runat="server" ID="camposDoFormEntrada"></cp:Campos>
 
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
 
             //Campo Placa
-            const cPlaca = document.getElementById('<%= CamposDoForm.TxtPlacaDoItem.ClientID %>');
+            const cPlaca = document.getElementById('<%= camposDoFormEntrada.TxtPlacaDoItem.ClientID %>');
             const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
             //Campo Descrição
-            const cDescricao = document.getElementById('<%= CamposDoForm.TxtDescricaoDoItem.ClientID %>');
+            const cDescricao = document.getElementById('<%= camposDoFormEntrada.TxtDescricaoDoItem.ClientID %>');
             const avisoCampoDescricao = document.getElementById('avisoDescricao');
 
             //Campo Valor de Aquisição
-            const cValor = document.getElementById('<%= CamposDoForm.TxtValorItem.ClientID %>');
+            const cValor = document.getElementById('<%= camposDoFormEntrada.TxtValorItem.ClientID %>');
             const avisoCampoValor = document.getElementById('avisoValor');
 
             //Campo Localização Física
-            const cLocalizacao = document.getElementById('<%= CamposDoForm.TxtLocalizacaoFisica.ClientID %>');
+            const cLocalizacao = document.getElementById('<%= camposDoFormEntrada.TxtLocalizacaoFisica.ClientID %>');
             const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
 
             //Campo Código
-            const cCodigo = document.getElementById('<%= CamposDoForm.TxtCodigoDoItem.ClientID %>');
+            const cCodigo = document.getElementById('<%= camposDoFormEntrada.TxtCodigoDoItem.ClientID %>');
             const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
             ValidarCampoNumero(cPlaca, avisoCampoPlaca);

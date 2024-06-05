@@ -40,7 +40,7 @@ namespace MaxWebApp.Campos
 		}
 		public void ValidarCampos()
 		{
-
+			
 			var codigoDoItem = TxtCodigoDoItem.Text.ToString();
 			var placaDoItem = TxtPlacaDoItem.Text.ToString();
 			var descricaoDoItem = TxtDescricaoDoItem.Text.ToString();

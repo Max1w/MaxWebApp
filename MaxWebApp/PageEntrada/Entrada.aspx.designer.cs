@@ -15,12 +15,12 @@ namespace MaxWebApp
 	{
 
 		/// <summary>
-		/// CamposDoForm control.
+		/// camposDoFormEntrada control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::MaxWebApp.Campos.CamposForm CamposDoForm;
+		protected global::MaxWebApp.Campos.CamposForm camposDoFormEntrada;
 	}
 }

@@ -72,8 +72,8 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-end">
-    <a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
+<div class="d-flex justify-content-end" id="btnCancelar">
+    <a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a> <%-------%>
     <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">
         Salvar
     </button>
@@ -89,12 +89,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Deseja salvar esse cadastro?
+            <div class="modal-body" id="descriocaoDoModal">
+                Deseja salvar esse cadastro? <%-------%>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" id="btnSalvar">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-                <button id="btnEnviar" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Salvar</button>
+                <button id="btnEnviar" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Salvar</button> <%-------%>
             </div>
         </div>
     </div>

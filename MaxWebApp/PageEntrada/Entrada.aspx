@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="configuracao.css" />
 <script src="Scripts/configuracao.js"></script>
 
+<body>
     <header>
         <h1>CADASTRO DE ITENS</h1>
     </header>
@@ -25,7 +26,7 @@
     </style>
     
     <cp:Campos runat="server" ID="camposDoFormEntrada"></cp:Campos>
-
+</body>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {

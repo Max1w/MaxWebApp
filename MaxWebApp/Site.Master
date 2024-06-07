@@ -42,7 +42,7 @@
         </asp:ScriptManager>
         <style>
             .navbar {
-                background-color: #5CB85C !important;
+                background-color: #5CB85C;
             }
         </style>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
@@ -56,14 +56,12 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item navegacao"><a class="nav-link" style="color: #000" runat="server" href="~/"><strong>Visão Geral</strong></a></li>
-                        <li>
-                            <div class="nav-item navegacao">
-                                <asp:CheckBox ID="colormode" runat="server" CssClass="custom-control-input" OnCheckedChanged="ToggleDarkMode" AutoPostBack="true" />
-                                <label class="custom-control-label" for="colormode">Dark Mode</label>
-                            </div>
-                        </li>
                     </ul>
                 </div>
+            </div>
+            <div class="">
+                <asp:CheckBox ID="colormode" runat="server" CssClass="custom-control-input" OnCheckedChanged="ToggleDarkMode" AutoPostBack="true" />
+                <label class="custom-control-label" for="colormode">Dark Mode</label>
             </div>
         </nav>
         <div class="container body-content">

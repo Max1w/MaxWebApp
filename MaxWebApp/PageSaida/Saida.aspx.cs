@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -113,6 +114,12 @@ namespace MaxWebApp
 					}
 				}
 			}
+		}
+
+		protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+		{
+			GridView1.PageIndex = e.NewPageIndex;
+			BindGridView();
 		}
 	}
 }

@@ -6,7 +6,7 @@
     const themePreference = localStorage.getItem('themePreference');
     if (themePreference === 'dark') {
         body.classList.add('dark-mode');
-        corMode.checked = true; // Marcar o switch de modo escuro
+        corMode.checked = true;
     } else {
         body.classList.add('white-mode');
     }
@@ -16,11 +16,10 @@
         if (corMode.checked) {
             body.classList.remove('white-mode');
             body.classList.add('dark-mode');
-            localStorage.setItem('themePreference', 'dark'); // Armazenar preferência
+            localStorage.setItem('themePreference', 'dark');
         } else {
-            body.classList.remove('dark-mode');
-            body.classList.add('white-mode');
-            localStorage.setItem('themePreference', 'light'); // Armazenar preferência
+            body.classList.remove('table-dark');
+            localStorage.setItem('themePreference', 'light');
         }
     });
 });

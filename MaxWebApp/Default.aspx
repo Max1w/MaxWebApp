@@ -1,36 +1,46 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MaxWebApp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+    <link href="AnimacaoCard.css" rel="stylesheet">
+
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
             <h1 id="aspnetTitle">Visão Geral</h1>
         </section>
 
-        <div class="container-fluid d-flex justify-content-center text-center" style="margin-top:100px">
-            
-            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
-            <a href="/PageEntrada/Entrada" class="btn" style="background: #5CB85C"><img src="Imagens/EntradaI.png" class="card-img-top" alt="Imagem"></a>
-                <div class="card-body rounded" style="background: #a0dea0">
-                    <h5 class="card-title">Entrada</h5>
-                    <p class="card-text">Cadastro de Itens</p>
+        <div class="container-fluid d-flex justify-content-center text-center">
+            <body>
+                <div class="container-fluid d-flex justify-content-center text-center" style="margin-top: 100px">
+                    <div id="card-area">
+                        <div class="wrapper">
+                            <div class="box-area">
+                                <a href="/PageEntrada/Entrada" class="box">
+                                    <img src="Imagens/EntradaI.png" alt="">
+                                    <div class="overlay">
+                                        <h3>Entrada</h3>
+                                        <p>Cadastra novo item</p>
+                                    </div>
+                                </a>
+                                <a href="/PageInventario/InventarioDeItens" class="box">
+                                    <img src="Imagens/InventarioI.png" alt="">
+                                    <div class="overlay">
+                                        <h3>Inventario</h3>
+                                        <p>Relação de todos os itens cadastrados</p>
+                                    </div>
+                                </a>
+                                <a href="/PageSaida/Saida" class="box">
+                                    <img src="Imagens/SaidaI.png" alt="">
+                                    <div class="overlay">
+                                        <h3>Saida</h3>
+                                        <p>Saída do Item</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
-            <a href="/PageInventario/InventarioDeItens" class="btn" style="background: #5CB85C"><img src="Imagens/InventarioI.png" class="card-img-top" alt="Imagem"></a>
-                <div class="card-body rounded" style="background: #a0dea0">
-                    <h5 class="card-title">Inventário</h5>
-                    <p class="card-text">Relação de todos os itens cadastrados</p>
-                </div>
-            </div>
-
-            <div class="card m-4 rounded" style="width: 18rem; cursor: pointer">
-            <a href="/PageSaida/Saida" class="btn" style="background: #5CB85C"><img src="Imagens/SaidaI.png" class="card-img-top" alt="Imagem"></a>
-                <div class="card-body rounded" style="background: #a0dea0">
-                    <h5 class="card-title">Saída</h5>
-                    <p class="card-text">Baixa dos itens</p>
-                </div>
-            </div>
+            </body>
         </div>
     </main>
 </asp:Content>

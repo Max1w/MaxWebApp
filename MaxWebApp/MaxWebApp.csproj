@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="configuracao.css" />
     <Content Include="Campos\CamposForm.ascx" />
     <Content Include="Imagens\EntradaI.png" />
     <Content Include="Imagens\EstoqueI.jpg" />
@@ -111,6 +112,7 @@
     <Content Include="Login.aspx" />
     <Content Include="LoginEstilo.css" />
     <Content Include="AnimacaoCard.css" />
+    <Content Include="Scripts\configuracao.js" />
     <Content Include="Scripts\Notificacao.js" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />
     <Content Include="PageSobre\About.aspx" />

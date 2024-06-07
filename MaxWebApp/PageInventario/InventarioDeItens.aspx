@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InventarioDeItens.aspx.cs" Inherits="MaxWebApp.PageInventario.InventarioDeItens" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<body>
     <div class="container">
         <div>
             <h1 style="margin-bottom: 20px;">Inventário</h1>
@@ -150,7 +151,7 @@
     <div id="limiteUltrapassadoDeCaracteres" class="alert alert-danger" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
         Foi ultrapassado o valor limite de caracteres!
     </div>
-
+</body>
     <script src="../Scripts/Notificacao.js"></script>
 
     <script>

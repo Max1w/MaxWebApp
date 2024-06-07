@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Saida.aspx.cs" Inherits="MaxWebApp.Saida" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="container">
         <div>
             <h1 style="margin-bottom: 20px;">Saída de Itens</h1>
@@ -51,4 +52,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>

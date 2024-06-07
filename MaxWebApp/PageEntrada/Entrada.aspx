@@ -4,6 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+<link rel="stylesheet" href="configuracao.css" />
+<script src="Scripts/configuracao.js"></script>
+
     <header>
         <h1>CADASTRO DE ITENS</h1>
     </header>

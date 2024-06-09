@@ -59,10 +59,9 @@ function ValidarCampoNumerico(campo, aviso) {
     campo.addEventListener('blur', function () {
         let valor = campo.value;
 
-        campo.value = parseFloat(valor.replace(',', '.')).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        })
+        let valorSemFormatacao = valor.replace(/[^0-9,]/g, '');
+
+        campo.value = valorNumerico;
     });
 }
 function ValidarCampoDeTextoComNumeros(campo, aviso) {
@@ -89,6 +88,64 @@ function ValidarCampoDeTextoComNumeros(campo, aviso) {
 
         valor = valor.replace(/[@#><]/g, '');
 
+        campo.value = valor;
+    });
+}
+
+function ValidarCampoApenasNumeroELetras(campo, aviso) {
+    campo.addEventListener('keydown', function (event) {
+        if ([8, 13, 46, 37, 39, 110, 190].indexOf(event.keyCode) !== -1 ||
+            (event.keyCode === 65 && event.ctrlKey === true) || // Ctrl+A
+            (event.keyCode === 88 && event.ctrlKey === true) || // Ctrl+X
+            (event.keyCode === 86 && event.ctrlKey === true) || // Ctrl+V
+            (event.keyCode === 67 && event.ctrlKey === true) || // Ctrl+C
+            (event.keyCode >= 35 && event.keyCode <= 39)) { // Home, End, setas
+            return;
+        }
+
+        if (!(event.keyCode >= 48 && event.keyCode <= 57) &&  // números
+            !(event.keyCode >= 65 && event.keyCode <= 90) &&  // letras maiúsculas
+            !(event.keyCode >= 97 && event.keyCode <= 122) && event.keyCode !== 9 &&
+            event.ctrlKey === false && !event.keyCode == 32) { // letras minúsculas
+            event.preventDefault();
+            aviso.style.display = 'block';
+        } else {
+            aviso.style.display = 'none';
+        }
+    });
+
+    campo.addEventListener('input', function () {
+        let valor = campo.value;
+        valor = valor.replace(/[^a-zA-Z0-9 ]/g, '');
+        campo.value = valor;
+    });
+}
+
+
+function ValidarCampoApenasLetras(campo, aviso) {
+    campo.addEventListener('keydown', function (event) {
+        if ([8, 13, 46, 37, 39, 110, 190].indexOf(event.keyCode) !== -1 ||
+            (event.keyCode === 65 && event.ctrlKey === true) || // Ctrl+A
+            (event.keyCode === 88 && event.ctrlKey === true) || // Ctrl+X
+            (event.keyCode === 86 && event.ctrlKey === true) || // Ctrl+V
+            (event.keyCode === 67 && event.ctrlKey === true) || // Ctrl+C
+            (event.keyCode >= 35 && event.keyCode <= 39)) { // Home, End, setas
+            return;
+        }
+
+        if (!(event.keyCode >= 65 && event.keyCode <= 90) &&  // letras maiúsculas
+        !(event.keyCode >= 97 && event.keyCode <= 122) && event.keyCode !== 9 &&
+            event.ctrlKey === false && !event.keyCode == 32) { // letras minúsculas
+            event.preventDefault();
+            aviso.style.display = 'block';
+        } else {
+            aviso.style.display = 'none';
+        }
+    });
+
+    campo.addEventListener('input', function () {
+        let valor = campo.value;
+        valor = valor.replace(/[^a-zA-Z ]/g, '');
         campo.value = valor;
     });
 }

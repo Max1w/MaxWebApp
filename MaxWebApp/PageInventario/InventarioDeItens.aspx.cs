@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaxWebApp.Campos;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -13,13 +14,17 @@ namespace MaxWebApp.PageInventario
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			var c = new CamposForm();
+			c.CampoEntradaID = camposDoFormSaida.ID;
+			Session["CampoEntradaID"] = c.CampoEntradaID;
+
 			if (!IsPostBack)
 			{
 				BindGridView();
 			}
 		}
 
-		private void BindGridView()
+		public void BindGridView()
 		{
 			var operacao = new Operacao();
 			List<Operacao.Item> listaItens = operacao.ListarItensDoBancoDeDados();
@@ -29,78 +34,25 @@ namespace MaxWebApp.PageInventario
 
 		protected void GridView1_RowCommand1(object sender, GridViewCommandEventArgs e)
 		{
+			var c = new CamposForm();
+
 			if (e.CommandName == "Editar")
 			{
 				string id = e.CommandArgument.ToString();
-				CarregarDetalhesDoItem(id);
+				c.CarregarDetalhesDoItem(id);
 			}
 		}
 
-		private void CarregarDetalhesDoItem(string id)
+		public void AtivarPainel()
 		{
-			var operacao = new Operacao();
-			var item = operacao.ObterItemPorId(id);
-
-			if (item != null)
-			{
-				hfItemId.Value = item.ID.ToString();
-				txtCodigoDoItem.Text = item.Codigo;
-				txtPlacaDoItem.Text = item.Placa;
-				txtDescricaoDoItem.Text = item.Descricao;
-				txtDataAquisicao.Text = item.DtAquisicao.ToString("yyyy-MM-dd");
-				ddlGrupoItem.Text = item.Grupo;
-				ddlConservacaoItem.Text = item.EstadoConservacao;
-				txtLocalizacaoFisica.Text = item.Localizacao;
-				txtObservacao.Text = item.Observacao;
-				txtValorItem.Text = item.ValorAquisicao.ToString();
-				pnlEdit.Visible = true;
-			}
+			pnlEdit.Visible = true;
 		}
-
-		protected void botaoCancelar_Click(object sender, EventArgs e)
+		public void DesativarPainel()
 		{
 			pnlEdit.Visible = false;
 		}
-
-		protected void btnSalvar_Click(object sender, EventArgs e)
-		{
-			var operacao = new Operacao();
-			var item = new Operacao.Item()
-			{
-				ID = int.Parse(hfItemId.Value),
-				Codigo = txtCodigoDoItem.Text,
-				Placa = txtPlacaDoItem.Text,
-				Descricao = txtDescricaoDoItem.Text,
-				DtAquisicao = DateTime.Parse(txtDataAquisicao.Text),
-				Grupo = ddlGrupoItem.SelectedValue,
-				EstadoConservacao = ddlConservacaoItem.SelectedValue,
-				Localizacao = txtLocalizacaoFisica.Text,
-				Observacao = txtObservacao.Text,
-				ValorAquisicao = txtValorItem.Text
-			};
-			if (!string.IsNullOrEmpty(item.Codigo) || !string.IsNullOrEmpty(item.Placa) || !string.IsNullOrEmpty(item.Descricao) || !string.IsNullOrEmpty(item.ValorAquisicao))
-			{
-				if ((item.Codigo.Length < 10) || (item.Placa.Length < 10) || (item.Descricao.Length < 2000) || (item.Localizacao.Length < 2000) || (item.Observacao.Length < 4000) || (item.ValorAquisicao.Length < 999999999))
-				{
-					if (VericarDuplicidade(item.Placa, item.ID))
-					{ AtualizarItem(item); }
-					else
-					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
-				}
-				else
-				{
-					ScriptManager.RegisterStartupScript(this, this.GetType(), "LimiteUltrapassadoDeCaracteres", "LimiteUltrapassadoDeCaracteres();", true);
-				}
-			}
-			else
-			{
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
-			}
-			
-			pnlEdit.Visible = false;
-			BindGridView();
-		}
-		public void AtualizarItem(Item item)
+		
+		public void AtualizarItem(Item item, Page pagina)
 		{
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
 			string query = "UPDATE itens SET placa_item = @placa_item, descricao_item = @descricao_item, grupo_item = @grupo_item, localizacao_fisica = @localizacao_fisica, data_aquisicao = @data_aquisicao, estado_conservacao = @estado_conservacao, valor_aquisicao = @valor_aquisicao, observacao = @observacao WHERE id = " + item.ID + "";
@@ -123,7 +75,7 @@ namespace MaxWebApp.PageInventario
 
 				if (rowsAffected > 0)
 				{
-					ClientScript.RegisterStartupScript(this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
+					ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
 				}
 				else
 				{
@@ -131,7 +83,7 @@ namespace MaxWebApp.PageInventario
 				}
 			}
 		}
-		protected bool VericarDuplicidade(string placaDoItem, int id)
+		public bool VericarDuplicidade(string placaDoItem, int id)
 		{
 
 			List<Item> valida = new List<Item>();

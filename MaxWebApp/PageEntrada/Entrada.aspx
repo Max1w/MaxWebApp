@@ -51,11 +51,46 @@
             const cCodigo = document.getElementById('<%= camposDoFormEntrada.TxtCodigoDoItem.ClientID %>');
             const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
+            //Numero Comprovante
+            const cNumComprovante = document.getElementById('<%= camposDoFormEntrada.TxtNumeroComprovante.ClientID %>');
+            const avisoNumComprovante = document.getElementById('avisoNumeroComprovante');
+
+            //Placa do veículo
+            const cPlacaVeiculo = document.getElementById('<%= camposDoFormEntrada.TxtPlacaVeiculo.ClientID %>');
+            const avisoPlacaVeiculo = document.getElementById('avisoPlacaVeiculo');
+
+            //Modelo do veículo
+            const cModeloVeiculo = document.getElementById('<%= camposDoFormEntrada.TxtModeloVeiculo.ClientID %>');
+            const avisoModeloVeiculo = document.getElementById('avisoModeloVeiculo');
+
+            // Responsável
+            const cResponsavel = document.getElementById('<%= camposDoFormEntrada.TxtResponsavel.ClientID %>');
+            const avisoResponsavel = document.getElementById('avisoResponsavel');
+
+            // vida util
+            const cVidaUtil = document.getElementById('<%= camposDoFormEntrada.TxtVidaUtil.ClientID %>');
+            const avisoVidaUtil = document.getElementById('avisoVidaUtil');
+
+            //depreciação anual
+            const cDepreAnual = document.getElementById('<%= camposDoFormEntrada.TxtDepreciacaoAnual.ClientID %>');
+            const avisoDepreAnual = document.getElementById('avisoDepreciacaoAnual');
+
+            // valor residual
+            const cValorResidual = document.getElementById('<%= camposDoFormEntrada.TxtValorResidual.ClientID %>');
+            const avisoValorResidual = document.getElementById('avisoValorResidual');
+
             ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+            ValidarCampoNumero(cNumComprovante, avisoNumComprovante);
+            ValidarCampoNumero(cVidaUtil, avisoVidaUtil);
             ValidarCampoNumerico(cValor, avisoCampoValor);
+            ValidarCampoNumerico(cDepreAnual, avisoDepreAnual);
+            ValidarCampoNumerico(cValorResidual, avisoValorResidual);
             ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
             ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
             ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+            ValidarCampoApenasNumeroELetras(cPlacaVeiculo, avisoPlacaVeiculo);
+            ValidarCampoApenasNumeroELetras(cModeloVeiculo, avisoModeloVeiculo);
+            ValidarCampoApenasLetras(cResponsavel, avisoResponsavel);
 
         });
     </script>

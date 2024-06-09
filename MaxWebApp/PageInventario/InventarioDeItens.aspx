@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InventarioDeItens.aspx.cs" Inherits="MaxWebApp.PageInventario.InventarioDeItens" %>
 
+<%@ Register TagName="Campos" TagPrefix="cp" Src="~/Campos/CamposForm.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="configuracao.css" />
     <script src="Scripts/configuracao.js"></script>
@@ -37,158 +39,78 @@
                     max-width: none;
                 }
             </style>
-            <div class="container-fluid">
-                <div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
-                    <div class="col-12">
-                        <asp:HiddenField ID="hfItemId" runat="server" />
-                        <div class="d-flex">
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="text">Código *</label>
-                                <asp:TextBox runat="server" ID="txtCodigoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                <div id="avisoCodigo" class="invalid-feedback">Favor inserir um caracter válido</div>
-                                <asp:RequiredFieldValidator ID="rfvCodigoDoItem" runat="server" ControlToValidate="txtCodigoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="text">Placa *</label>
-                                <asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                <div id="avisoPlaca" class="invalid-feedback">Favor inserir um numero </div>
-                                <asp:RequiredFieldValidator ID="rfvPlacaDoItem" runat="server" ControlToValidate="txtPlacaDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group m-1 col-8" style="padding-right: 0px; padding-left: 0px">
-                                <label for="text">Descrição *</label>
-                                <asp:TextBox runat="server" ID="txtDescricaoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                <div id="avisoDescricao" class="invalid-feedback">Favor inserir um caracter válido</div>
-                                <asp:RequiredFieldValidator ID="rfvDescricaoDoItem" runat="server" ControlToValidate="txtDescricaoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
 
-                        <div class="d-flex">
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="text">Data da Aquisição *</label>
-                                <asp:TextBox runat="server" ID="txtDataAquisicao" TextMode="Date" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvDataAquisicao" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="exemplo">Grupo</label>
-                                <asp:DropDownList runat="server" ID="ddlGrupoItem" CssClass="form-control">
-                                    <asp:ListItem>Móvel</asp:ListItem>
-                                    <asp:ListItem>Imóvel</asp:ListItem>
-                                    <asp:ListItem>Dominical</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="exemplo">Estado de Conservação</label>
-                                <asp:DropDownList runat="server" ID="ddlConservacaoItem" CssClass="form-control">
-                                    <asp:ListItem>Ótimo</asp:ListItem>
-                                    <asp:ListItem>Bom</asp:ListItem>
-                                    <asp:ListItem>Regular</asp:ListItem>
-                                    <asp:ListItem>Ruim</asp:ListItem>
-                                    <asp:ListItem>Péssimo</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group m-1 col-6" style="padding-right: 8px; padding-left: 0px">
-                                <label for="text">Localização Física</label>
-                                <asp:TextBox runat="server" ID="txtLocalizacaoFisica" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                <div id="avisoLocalizacao" class="invalid-feedback">Favor inserir um caracter válido</div>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="form-group m-1 col-10" style="padding-right: 0px; padding-left: 0px">
-                                <label for="teste">Observação</label>
-                                <asp:TextBox runat="server" ID="txtObservacao" TextMode="MultiLine" Rows="3" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                            </div>
-                            <div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-                                <label for="text">Valor *</label>
-                                <div class="mt-4">
-                                    <asp:TextBox runat="server" ID="txtValorItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-                                    <div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
-                                    <asp:RequiredFieldValidator ID="rfvalorItem" runat="server" ControlToValidate="txtValorItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <asp:LinkButton ID="botaoCancelar" runat="server" CssClass="btn btn-danger m-3" OnClick="botaoCancelar_Click">Cancelar</asp:LinkButton>
-                <%-------%>
-                <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Deseja Editar esse cadastro? <%-------%>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="btn btn-success m-3" OnClick="btnSalvar_Click" />
-                            <%-------%>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <cp:Campos runat="server" ID="camposDoFormSaida"></cp:Campos>
 
         </asp:Panel>
-        <div id="notificacaoDeSucesso" class="alert alert-success" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
-            Cadastro salvo com sucesso!
-        </div>
-        <div id="notificacaoDeCampoInvalido" class="alert alert-warning" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
-            Favor preencher todos os campos obrigatórios *!
-        </div>
-        <div id="notificacaoDeCancelar" class="alert alert-danger" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
-            Cadastro cancelado!
-        </div>
-        <div id="cadastroDuplicado" class="alert alert-danger" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
-            Cadastro duplicado!
-        </div>
-        <div id="limiteUltrapassadoDeCaracteres" class="alert alert-danger" style="display: none; position: fixed; top: 100px; right: 10px; display: none;" role="alert">
-            Foi ultrapassado o valor limite de caracteres!
-        </div>
-    </body>
-    <script src="../Scripts/Notificacao.js"></script>
 
-    <script>
+        <script>
 
-        document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function () {
 
-            //Campo Placa
-            const cPlaca = document.getElementById('<%= txtPlacaDoItem.ClientID %>');
-            const avisoCampoPlaca = document.getElementById('avisoPlaca');
+                //Campo Placa
+                const cPlaca = document.getElementById('<%= camposDoFormSaida.TxtPlacaDoItem.ClientID %>');
+                const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
-            //Campo Descrição
-            const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
-            const avisoCampoDescricao = document.getElementById('avisoDescricao');
+                //Campo Descrição
+                const cDescricao = document.getElementById('<%= camposDoFormSaida.TxtDescricaoDoItem.ClientID %>');
+                const avisoCampoDescricao = document.getElementById('avisoDescricao');
 
-            //Campo Valor de Aquisição
-            const cValor = document.getElementById('<%= txtValorItem.ClientID %>');
-            const avisoCampoValor = document.getElementById('avisoValor');
+                //Campo Valor de Aquisição
+                const cValor = document.getElementById('<%= camposDoFormSaida.TxtValorItem.ClientID %>');
+                const avisoCampoValor = document.getElementById('avisoValor');
 
-            //Campo Localização Física
-            const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
-            const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
+                //Campo Localização Física
+                const cLocalizacao = document.getElementById('<%= camposDoFormSaida.TxtLocalizacaoFisica.ClientID %>');
+                const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
 
-            //Campo Código
-            const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
-            const avisoCampoCodigo = document.getElementById('avisoCodigo');
+                //Campo Código
+                const cCodigo = document.getElementById('<%= camposDoFormSaida.TxtCodigoDoItem.ClientID %>');
+                const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
-            ValidarCampoNumero(cPlaca, avisoCampoPlaca);
-            ValidarCampoNumerico(cValor, avisoCampoValor);
-            ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
-            ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
-            ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+                //Numero Comprovante
+                const cNumComprovante = document.getElementById('<%= camposDoFormSaida.TxtNumeroComprovante.ClientID %>');
+                const avisoNumComprovante = document.getElementById('avisoNumeroComprovante');
 
-        });
-    </script>
+                //Placa do veículo
+                const cPlacaVeiculo = document.getElementById('<%= camposDoFormSaida.TxtPlacaVeiculo.ClientID %>');
+                const avisoPlacaVeiculo = document.getElementById('avisoPlacaVeiculo');
 
-    <script src="../Scripts/Validacao.js"></script>
+                //Modelo do veículo
+                const cModeloVeiculo = document.getElementById('<%= camposDoFormSaida.TxtModeloVeiculo.ClientID %>');
+                const avisoModeloVeiculo = document.getElementById('avisoModeloVeiculo');
+
+                // Responsável
+                const cResponsavel = document.getElementById('<%= camposDoFormSaida.TxtResponsavel.ClientID %>');
+                const avisoResponsavel = document.getElementById('avisoResponsavel');
+
+                // vida util
+                const cVidaUtil = document.getElementById('<%= camposDoFormSaida.TxtVidaUtil.ClientID %>');
+                const avisoVidaUtil = document.getElementById('avisoVidaUtil');
+
+                //depreciação anual
+                const cDepreAnual = document.getElementById('<%= camposDoFormSaida.TxtDepreciacaoAnual.ClientID %>');
+                const avisoDepreAnual = document.getElementById('avisoDepreciacaoAnual');
+
+                // valor residual
+                const cValorResidual = document.getElementById('<%= camposDoFormSaida.TxtValorResidual.ClientID %>');
+                const avisoValorResidual = document.getElementById('avisoValorResidual');
+
+                ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+                ValidarCampoNumero(cNumComprovante, avisoNumComprovante);
+                ValidarCampoNumero(cVidaUtil, avisoVidaUtil);
+                ValidarCampoNumerico(cValor, avisoCampoValor);
+                ValidarCampoNumerico(cDepreAnual, avisoDepreAnual);
+                ValidarCampoNumerico(cValorResidual, avisoValorResidual);
+                ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
+                ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
+                ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+                ValidarCampoApenasNumeroELetras(cPlacaVeiculo, avisoPlacaVeiculo);
+                ValidarCampoApenasNumeroELetras(cModeloVeiculo, avisoModeloVeiculo);
+                ValidarCampoApenasLetras(cResponsavel, avisoResponsavel);
+
+            });
+        </script>
+
+        <script src="../Scripts/Validacao.js"></script>
 </asp:Content>

@@ -321,60 +321,6 @@ namespace MaxWebApp.Campos
 		protected global::System.Web.UI.HtmlControls.HtmlButton botaoCalcular;
 
 		/// <summary>
-		/// pnlEntradaCancelar control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlEntradaCancelar;
-
-		/// <summary>
-		/// pnlInventarioCancelar control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlInventarioCancelar;
-
-		/// <summary>
-		/// btnCancelarInventario control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnCancelarInventario;
-
-		/// <summary>
-		/// pnlEntradaMensagem control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlEntradaMensagem;
-
-		/// <summary>
-		/// pnlInventariooMensagem control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlInventariooMensagem;
-
-		/// <summary>
-		/// pnlEntradaSalvar control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlEntradaSalvar;
-
-		/// <summary>
 		/// btnEnviarEntrada control.
 		/// </summary>
 		/// <remarks>
@@ -382,23 +328,5 @@ namespace MaxWebApp.Campos
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.HtmlControls.HtmlButton btnEnviarEntrada;
-
-		/// <summary>
-		/// pnlInventarioSalvar control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlInventarioSalvar;
-
-		/// <summary>
-		/// Button1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button1;
 	}
 }

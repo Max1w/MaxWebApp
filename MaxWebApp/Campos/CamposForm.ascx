@@ -186,15 +186,7 @@
                         </div>
                         <div class="d-flex justify-content-end mt-5" id="btnCancelar">
                             <button id="botaoCalcular" class="btn btn-danger m-3" runat="server" onserverclick="botaoCalcular_ServerClick">calcular</button>
-
-                            <asp:Panel ID="pnlEntradaCancelar" runat="server" Visible="false">
                                 <a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
-                            </asp:Panel>
-
-                            <asp:Panel ID="pnlInventarioCancelar" runat="server" Visible="false">
-                                <asp:LinkButton ID="btnCancelarInventario" runat="server" CssClass="btn btn-danger m-3" OnClick="botaoCancelarInventario_Click">Cancelar</asp:LinkButton>
-                            </asp:Panel>
-
                             <button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
                         </div>
                     </div>
@@ -215,27 +207,11 @@
                 </button>
             </div>
             <div class="modal-body" id="descriocaoDoModal">
-
-                <asp:Panel ID="pnlEntradaMensagem" runat="server" Visible="false">
-                    Deseja salvar esse cadastro?
-                </asp:Panel>
-
-                <asp:Panel ID="pnlInventariooMensagem" runat="server" Visible="false">
-                    Deseja Editar esse cadastro? 
-                </asp:Panel>
-
+                Deseja salvar esse cadastro?
             </div>
             <div class="modal-footer" id="btnSalvar">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-                
-                <asp:Panel ID="pnlEntradaSalvar" runat="server" Visible="false">
-                    <button id="btnEnviarEntrada" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Salvar</button>
-                </asp:Panel>
-
-                <asp:Panel ID="pnlInventarioSalvar" runat="server" Visible="false">
-                    <asp:Button ID="Button1" runat="server" Text="Salvar" CssClass="btn btn-success m-3" OnClick="btnSalvarAlteracoes_Click"/>
-                </asp:Panel>
-
+                <button id="btnEnviarEntrada" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Salvar</button>
             </div>
         </div>
     </div>

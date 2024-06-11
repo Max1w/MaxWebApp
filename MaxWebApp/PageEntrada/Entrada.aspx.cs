@@ -17,9 +17,6 @@ namespace MaxWebApp
 
 		public void Page_Load(object sender, EventArgs e)
 		{
-			var c = new CamposForm();
-			c.CampoEntradaID = camposDoFormEntrada.ID;
-			Session["CampoEntradaID"] = c.CampoEntradaID;
 		}
 		public void SalvarInformacoesNoBanco(string codigoDoItem, string placaDoItem, string descricaoDoItem, string dataAquisicao, string grupoDoItem, string conservacaoDoItem, string localizacoFisicaDoItem, string observacaoDoItem, string valorDoItem,
 											 string tipoDoItem, string tipoAquisicao, string tipoComprovante, string numeroComprovante, string combustivel, string placaVeiculo, string modeloVeiculo, string vidaUtil, string depreciacaoAnual, string metodoDepreciacao,

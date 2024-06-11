@@ -33,12 +33,318 @@ namespace MaxWebApp.PageInventario
 		protected global::System.Web.UI.WebControls.Panel pnlEdit;
 
 		/// <summary>
-		/// camposDoFormSaida control.
+		/// hfItemId control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::MaxWebApp.Campos.CamposForm camposDoFormSaida;
+		protected global::System.Web.UI.WebControls.HiddenField hfItemId;
+
+		/// <summary>
+		/// txtPlacaDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtPlacaDoItem;
+
+		/// <summary>
+		/// rfvPlacaDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlacaDoItem;
+
+		/// <summary>
+		/// txtDescricaoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtDescricaoDoItem;
+
+		/// <summary>
+		/// rfvDescricaoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricaoDoItem;
+
+		/// <summary>
+		/// ddlTipoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlTipoItem;
+
+		/// <summary>
+		/// ddlGrupoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlGrupoItem;
+
+		/// <summary>
+		/// ddlConservacaoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlConservacaoItem;
+
+		/// <summary>
+		/// txtDataAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtDataAquisicao;
+
+		/// <summary>
+		/// rfvDataAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDataAquisicao;
+
+		/// <summary>
+		/// ddlTipoAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlTipoAquisicao;
+
+		/// <summary>
+		/// ddlTipoComprovante control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlTipoComprovante;
+
+		/// <summary>
+		/// txtNumeroComprovante control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtNumeroComprovante;
+
+		/// <summary>
+		/// ddlCombustivel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlCombustivel;
+
+		/// <summary>
+		/// txtPlacaVeiculo control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtPlacaVeiculo;
+
+		/// <summary>
+		/// txtModeloVeiculo control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtModeloVeiculo;
+
+		/// <summary>
+		/// txtLocalizacaoFisica control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtLocalizacaoFisica;
+
+		/// <summary>
+		/// txtObservacao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtObservacao;
+
+		/// <summary>
+		/// txtResponsavel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtResponsavel;
+
+		/// <summary>
+		/// txtCodigoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
+
+		/// <summary>
+		/// rfvCodigoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
+
+		/// <summary>
+		/// txtValorAquisicao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorAquisicao;
+
+		/// <summary>
+		/// RequiredFieldValidator1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+		/// <summary>
+		/// txtVidaUtil control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtVidaUtil;
+
+		/// <summary>
+		/// txtDepreciacaoAnual control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtDepreciacaoAnual;
+
+		/// <summary>
+		/// RequiredFieldValidator2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+		/// <summary>
+		/// ddlMetodoDepreciacao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlMetodoDepreciacao;
+
+		/// <summary>
+		/// txtValorResidual control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorResidual;
+
+		/// <summary>
+		/// txtValorDepreciavel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciavel;
+
+		/// <summary>
+		/// txtValorDepreciado control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciado;
+
+		/// <summary>
+		/// txtDataDepreciacao control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtDataDepreciacao;
+
+		/// <summary>
+		/// txtSaldoDepreciar control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSaldoDepreciar;
+
+		/// <summary>
+		/// txtValorLiquido control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorLiquido;
+
+		/// <summary>
+		/// btnCancelarInventario control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnCancelarInventario;
+
+		/// <summary>
+		/// Button1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button Button1;
 	}
 }

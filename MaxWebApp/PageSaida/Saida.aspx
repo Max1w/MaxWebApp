@@ -4,12 +4,20 @@
     <link rel="stylesheet" href="configuracao.css" />
     <script src="Scripts/configuracao.js"></script>
 
-    <body>
         <div class="container">
             <div>
-                <h1 style="margin-bottom: 20px;">Saída de Itens</h1>
+                <h1 style=" margin-top: 60px; text-align:center">Saída de Itens</h1>
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="False"  DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+			<style>
+		   .rounded-grid {
+			border-radius: 20px;
+			border-top: hidden;
+			border-left: hidden;
+			border-right: hidden;
+			border-bottom: hidden;
+			}
+			</style>
+            <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-light table-responsive-sm table-hover rounded-grid" AutoGenerateColumns="False"  DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
@@ -25,9 +33,12 @@
                     <asp:BoundField DataField="ValorAquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
                     <asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
                 </Columns>
+                
+                <PagerStyle HorizontalAlign="Center" />
+                <PagerSettings  Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior"/>
             </asp:GridView>
 
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mt-5">
                 <a id="botaoCancelar" href="/" class="btn btn-primary m-3">Voltar</a>
                 <button type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#exampleModal">
                     Excluir
@@ -55,8 +66,6 @@
                 </div>
             </div>
         </div>
-    </body>
-
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
 			var ckSelecionarTodos = document.getElementById('ckSelecionarTodos');

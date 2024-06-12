@@ -5,14 +5,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<link rel="stylesheet" href="configuracao.css" />
 	<script src="Scripts/configuracao.js"></script>
-
-	<body>
 		<div class="container">
 			<div>
-				<h1 style="margin-bottom: 20px;">Inventário</h1>
+				<h1 style="margin-top: 60px; text-align:center">Inventário</h1>
 			</div>
-
-			<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light " AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
+			<style>
+		   .rounded-grid {
+			border-radius: 20px;
+			border-top: hidden;
+			border-left: hidden;
+			border-right: hidden;
+			border-bottom: hidden;
+			}
+			</style>
+			<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light rounded-grid" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
 				<Columns>
 					<asp:BoundField DataField="Codigo" HeaderText="Código" />
 					<asp:BoundField DataField="Placa" HeaderText="Placa" />
@@ -28,6 +34,8 @@
 						</ItemTemplate>
 					</asp:TemplateField>
 				</Columns>
+				<PagerSettings  Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior"/>
+				<PagerStyle HorizontalAlign="Center"/>
 			</asp:GridView>
 		</div>
 		<asp:Panel ID="pnlEdit" runat="server" Visible="false">

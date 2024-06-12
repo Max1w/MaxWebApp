@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -26,16 +27,6 @@ namespace MaxWebApp
 			GridView1.DataBind();
 		}
 
-		protected void GridView1_RowCommand1(object sender, GridViewCommandEventArgs e)
-		{
-			if (e.CommandName == "Excluir")
-			{
-				string id = e.CommandArgument.ToString();
-				ExcluirVeiculo(id);
-				BindGridView();
-			}
-		}
-
 		protected void CkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBox ckSelecionarTodos = (CheckBox)sender;
@@ -46,6 +37,21 @@ namespace MaxWebApp
 				{
 					ckSelecionados.Checked = ckSelecionarTodos.Checked;
 				}
+			}
+		}
+
+		[WebMethod]
+		public bool ExcluirItensSelecionados_Click(List<string> ids)
+		{
+			try
+			{
+				ExcluirVeiculos(ids);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.ToString());
+				return false;
 			}
 		}
 

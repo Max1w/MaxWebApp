@@ -4,79 +4,240 @@
 
 <html lang="en">
 <head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
-    <link rel="stylesheet" href="configuracao.css" />
-    <script src="Scripts/configuracao.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><%: Page.Title %> - My ASP.NET Application</title>
+	<link rel="stylesheet" href="configuracao.css" />
 
+	<asp:PlaceHolder runat="server">
+		<%: Scripts.Render("~/bundles/modernizr") %>
+	</asp:PlaceHolder>
 
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
-
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/Imagens/IconPatrimonio.ico" rel="shortcut icon" type="image/x-icon" />
+	<webopt:BundleReference runat="server" Path="~/Content/css" />
+	<link href="~/Imagens/IconPatrimonio.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body id="body" class="" runat="server">
-    <form runat="server">
-        <asp:ScriptManager runat="server">
+	<form runat="server">
+		<asp:ScriptManager runat="server">
 
-            <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
-            </Scripts>
-        </asp:ScriptManager>
-        <style>
-            .navbar {
-                background-color: #5CB85C;
-            }
-        </style>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
-            <div class="container">
-                <img src="/Imagens/Patrimonio.png" alt="Imagem" class="mr-2 mb-2">
-                <a class="navbar-brand navegacao" style="color: #000; margin-left: 20px" runat="server" href="~/"><strong>Modulo Patrimônio</strong></a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item navegacao"><a class="nav-link" style="color: #000" runat="server" href="~/"><strong>Visão Geral</strong></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="">
-                <asp:CheckBox ID="colormode" runat="server" CssClass="custom-control-input" OnCheckedChanged="ToggleDarkMode" AutoPostBack="true" />
-                <label class="custom-control-label" for="colormode">Dark Mode</label>
-            </div>
-        </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+			<Scripts>
+				<%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+				<%--Framework Scripts--%>
+				<asp:ScriptReference Name="MsAjaxBundle" />
+				<asp:ScriptReference Name="jquery" />
+				<asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+				<asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+				<asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+				<asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+				<asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+				<asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+				<asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+				<asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+				<asp:ScriptReference Name="WebFormsBundle" />
+				<%--Site Scripts--%>
+			</Scripts>
+		</asp:ScriptManager>
+		<style>
+			.navbar {
+				background-color: #5CB85C;
+			}
+			/* The switch container */
+			.switch {
+				--transition: 300ms;
+				--transition500: 500ms;
+				--color-dark: #0c0f14;
+				--color-darkGray: #21262e;
+				--color-gray: #52555a;
+				--color-offwhite: #cecece;
+				--shadow-color: var(--color-dark);
+				position: relative;
+				display: flex;
+				align-items: center;
+				width: 60px;
+				height: fit-content;
+				background-color: var(--color-dark);
+				border-radius: 30px;
+				padding: 4px;
+				transition: var(--transition500);
+				user-select: none;
+				cursor: pointer;
+				overflow: hidden;
+			}
 
-            <footer>
-            </footer>
-        </div>
-    </form>
-    <asp:PlaceHolder runat="server">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
-    </asp:PlaceHolder>
+				/* Svg styles */
+				.switch .svg {
+					transition: var(--transition);
+					position: absolute;
+					left: 5px;
+				}
+
+				.switch .moon {
+					width: 18px;
+					fill: var(--color-gray);
+					opacity: 1;
+				}
+
+				.switch .sun {
+					transform: translateY(-50%);
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					left: calc(100% - 21.5px);
+					top: 15px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					scale: 0.8;
+					opacity: 0;
+				}
+
+					.switch .sun .dot {
+						positon: relative;
+						display: block;
+						width: 3px;
+						height: 3px;
+						border-radius: 50%;
+						background: var(--color-dark);
+						background: white;
+						z-index: 1;
+						box-shadow: 11px 0px 0px var(--shadow-color), 10.3px 0px 0px var(--shadow-color), -11px 0px 0px var(--shadow-color), -10.3px 0px 0px var(--shadow-color), 0px -11px 0px var(--shadow-color), 0px -10.3px 0px var(--shadow-color), 0px 11px 0px var(--shadow-color), 0px 10.3px 0px var(--shadow-color), 8px 8px 0px var(--shadow-color), 7.3px 7.3px 0px var(--shadow-color), 8px -8px 0px var(--shadow-color), 7.3px -7.3px 0px var(--shadow-color), -8px -8px 0px var(--shadow-color), -7.3px -7.3px 0px var(--shadow-color), -8px 8px 0px var(--shadow-color), -7.3px 7.3px 0px var(--shadow-color);
+					}
+
+						.switch .sun .dot::before {
+							content: "";
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							width: 10px;
+							height: 10px;
+							border-radius: 50%;
+							background: white;
+							border: 2px solid var(--color-dark);
+						}
+
+				/*checkbox styles */
+				.switch .circle {
+					appearance: none;
+					position: relative;
+					width: 25px;
+					height: 25px;
+					border-radius: 50%;
+					left: 0;
+					background-color: var(--color-darkGray);
+					border: 1px solid var(--color-darkGray);
+					transition: var(--transition500);
+					box-shadow: 1px 1px 20px 3px var(--color-darkGray);
+				}
+
+				.switch:has(.circle:checked) {
+					background: var(--color-offwhite);
+				}
+
+				.switch .circle:hover {
+					margin-left: 3px;
+				}
+
+				.switch .circle:checked:hover {
+					margin-left: -3px;
+				}
+
+				.switch .circle:checked {
+					left: calc(100% - 24px);
+					background: white;
+					border-color: white;
+					box-shadow: 1px 1px 30px 12px white;
+				}
+
+				.switch:has(.circle:checked) > .sun {
+					opacity: 1;
+				}
+
+				.switch:has(.circle:checked) > .moon {
+					opacity: 0;
+				}
+		</style>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+			<div class="container">
+				<img src="/Imagens/Patrimonio.png" alt="Imagem" class="mr-2 mb-2">
+				<a class="navbar-brand navegacao" style="color: #000; margin-left: 20px" runat="server" href="~/"><strong>Modulo Patrimônio</strong></a>
+				<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+					<ul class="navbar-nav flex-grow-1">
+						<li class="nav-item navegacao"><a class="nav-link" style="color: #000" runat="server" href="~/"><strong>Visão Geral</strong></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="">
+				<div>
+					<label class="switch" for="switch">
+						<input id="switch" type="checkbox" class="circle" />
+						<svg
+							viewBox="0 0 384 512"
+							xmlns="http://www.w3.org/2000/svg"
+							class="moon svg">
+							<path
+								d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
+							</path>
+						</svg>
+						<div class="sun svg">
+							<span class="dot"></span>
+						</div>
+					</label>
+				</div>
+
+			</div>
+		</nav>
+		<script>
+			window.onload = function () {
+				var darkModeCheckbox = document.getElementById('switch');
+				var isDarkMode = localStorage.getItem('DarkMode') === 'true';
+
+				if (isDarkMode) {
+					document.body.classList.add('dark-mode');
+					darkModeCheckbox.checked = false; // Invertido aqui
+				} else {
+					document.body.classList.add('white-mode');
+					darkModeCheckbox.checked = true; // Invertido aqui
+				}
+			}
+
+			function toggleDarkMode(event) {
+				event.preventDefault(); // Impede o comportamento padrão do botão
+				var darkModeCheckbox = document.getElementById('switch');
+				var isDarkMode = darkModeCheckbox.checked;
+
+				if (isDarkMode) {
+					localStorage.setItem('DarkMode', 'false'); // Invertido aqui
+					document.body.classList.remove('dark-mode');
+					document.body.classList.add('white-mode');// Adicione a classe white-mode para ativar o modo claro
+				} else {
+					localStorage.setItem('DarkMode', 'true'); // Invertido aqui
+					document.body.classList.remove('white-mode');
+					document.body.classList.add('dark-mode'); // Remova a classe white-mode para ativar o modo escuro
+				}
+			}
+
+			// Adiciona um event listener para o evento de mudança (change) no checkbox
+			document.getElementById('switch').addEventListener('change', toggleDarkMode);
+		</script>
+		<div class="container body-content">
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
+			</asp:ContentPlaceHolder>
+
+			<footer>
+			</footer>
+		</div>
+	</form>
+	<asp:PlaceHolder runat="server">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<%: Scripts.Render("~/Scripts/bootstrap.js") %>
+	</asp:PlaceHolder>
 </body>
 </html>

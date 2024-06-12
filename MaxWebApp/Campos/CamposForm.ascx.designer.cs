@@ -60,6 +60,24 @@ namespace MaxWebApp.Campos
 		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescricaoDoItem;
 
 		/// <summary>
+		/// txtCodigoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
+
+		/// <summary>
+		/// rfvCodigoDoItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
+
+		/// <summary>
 		/// ddlTipoItem control.
 		/// </summary>
 		/// <remarks>
@@ -184,24 +202,6 @@ namespace MaxWebApp.Campos
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtResponsavel;
-
-		/// <summary>
-		/// txtCodigoDoItem control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtCodigoDoItem;
-
-		/// <summary>
-		/// rfvCodigoDoItem control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCodigoDoItem;
 
 		/// <summary>
 		/// txtValorAquisicao control.

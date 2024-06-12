@@ -9,11 +9,11 @@
             <div>
                 <h1 style="margin-bottom: 20px;">Saída de Itens</h1>
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand1" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+            <asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light" AutoGenerateColumns="False"  DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
-                                <input type="checkbox" id="ckSelecionarTodos" class="form-check-input" onchange="ckSelecionarTodos()">
+                                <input type="checkbox" id="ckSelecionarTodos" class="form-check-input" style="margin-left: 0px">
                         </HeaderTemplate>
                         <ItemTemplate>
                             <asp:CheckBox ID="ckSelecionados" CssClass="ckSelecionados" runat="server" />
@@ -58,32 +58,50 @@
     </body>
 
     <script>
-        function ckSelecionarTodos(sender) {
-            var ckSelecionarTodos = sender;
-            var gridViewRows = document.querySelectorAll("#GridView1 tr");
-
-            gridViewRows.forEach(function (row) {
-                var ckSelecionados = row.querySelector(".ckSelecionados");
-
-                console.log(ckSelecionados)
-                if (ckSelecionados !== null) {
-                    ckSelecionados.checked = ckSelecionarTodos.checked;
-                }
+		document.addEventListener("DOMContentLoaded", function () {
+			var ckSelecionarTodos = document.getElementById('ckSelecionarTodos');
+			ckSelecionarTodos.addEventListener('change', function () {
+				var checkboxes = document.querySelectorAll('#<%= GridView1.ClientID %> .ckSelecionados input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = ckSelecionarTodos.checked;
             });
-        }
+        });
 
-    </script>
+        document.getElementById('ExcluirItensSelecionados').addEventListener('click', function() {
+            var idsDosItensSelecionadosParaAExclusao = [];
+            var checkboxes = document.querySelectorAll('#<%= GridView1.ClientID %> .ckSelecionados input[type="checkbox"]');
+			checkboxes.forEach(function (checkbox) {
+				if (checkbox.checked) {
+					var linha = checkbox.closest('tr');
+					var id = linha.querySelector('input[data-key]').dataset.key;
+					idsDosItensSelecionadosParaAExclusao.push(id);
+				}
+			});
+
+			if (idsDosItensSelecionadosParaAExclusao.length > 0) {
+				var req = new XMLHttpRequest();
+				req.open('POST', 'SeuCaminhoParaExcluir', true);
+				req.setRequestHeader('Content-Type', 'application/json');
+				req.onreadystatechange = function () {
+					if (req.readyState === 4 && req.status === 200) {
+						var response = JSON.parse(req.responseText);
+						if (response.success) {
+							// Atualize o GridView ou faça algo após a exclusão bem-sucedida
+							location.reload();
+						} else {
+							alert('Erro ao excluir itens.');
+						}
+					} else if (req.readyState === 4) {
+						console.error('Erro:', req.statusText);
+					}
+				};
+				req.send(JSON.stringify({ ids: idsDosItensSelecionadosParaAExclusao }));
+			} else {
+				alert('Nenhum item selecionado.');
+			}
+		});
+	});
+	</script>
+
 
 </asp:Content>
-<%--protected void CkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
-{
-	CheckBox ckSelecionarTodos = (CheckBox)sender;
-	foreach (GridViewRow row in GridView1.Rows)
-	{
-		CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");
-		if (ckSelecionados != null)
-		{
-			ckSelecionados.Checked = ckSelecionarTodos.Checked;
-		}
-	}
-}--%>

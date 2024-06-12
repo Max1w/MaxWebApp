@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="configuracao.css" />
     <Content Include="Campos\CamposForm.ascx" />
+    <Content Include="EstiloButton.css" />
     <Content Include="Imagens\EntradaI.png" />
     <Content Include="Imagens\EstoqueI.jpg" />
     <Content Include="Imagens\iconPatrimonio.ico" />

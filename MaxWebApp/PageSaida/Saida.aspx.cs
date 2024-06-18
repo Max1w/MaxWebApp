@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MaxWebApp.Modelo;
 
 namespace MaxWebApp
 {
@@ -22,7 +23,7 @@ namespace MaxWebApp
 		private void BindGridView()
 		{
 			var operacao = new Operacao();
-			List<Operacao.Item> listaItens = operacao.ListarItensDoBancoDeDados();
+			List<ItemModelo> listaItens = operacao.ListarItensDoBancoDeDados();
 			GridView1.DataSource = listaItens;
 			GridView1.DataBind();
 		}

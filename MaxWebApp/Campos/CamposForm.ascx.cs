@@ -6,7 +6,8 @@ using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebGrease;
+using MaxWebApp.Modelo;
+using System.Text.RegularExpressions;
 
 namespace MaxWebApp.Campos
 {
@@ -65,9 +66,41 @@ namespace MaxWebApp.Campos
 		protected void Page_Load(object sender, EventArgs e)
 		{
 		}
-		protected void btnSalvar_Click(object sender, EventArgs e)
+		protected async void btnSalvar_Click(object sender, EventArgs e)
 		{
-			ValidarCampos();
+			//ValidarCampos();
+			string apiUrl = "https://localhost:7279/v1/TodosOsItens";
+			var novoItem = new ItemModelo()
+			{
+				CodigoItem = txtCodigoDoItem.Text.ToString(),
+				PlacaItem = txtPlacaDoItem.Text.ToString(),
+				DescricaoItem = txtDescricaoDoItem.Text.ToString(),
+				TipoItem = ddlTipoItem.Text.ToString(),
+				GrupoItem = ddlGrupoItem.Text.ToString(),
+				EstadoConservacao = ddlConservacaoItem.Text.ToString(),
+				DataAquisicao = Convert.ToDateTime(txtDataAquisicao.Text),
+				ValorAquisicao = txtValorAquisicao.Text.ToString(),
+				LocalizacaoFisica = txtLocalizacaoFisica.Text.ToString(),
+				InicioDepreciacao = Convert.ToDateTime(txtDataDepreciacao.Text),
+				Observacao = txtObservacao.Text.ToString(),
+				TipoAquisicao = ddlTipoAquisicao.Text.ToString(),
+				TipoComprovante = ddlTipoComprovante.Text.ToString(),
+				NumeroComprovante = txtNumeroComprovante.Text.ToString(),
+				TemCombustivel = ddlCombustivel.Text.ToString(),
+				PlacaVeiculo = txtPlacaVeiculo.Text.ToString(),
+				ModeloVeiculo = txtModeloVeiculo.Text.ToString(),
+				Responsavel = txtResponsavel.Text.ToString(),
+				MetodoDepreciacao = ddlMetodoDepreciacao.Text.ToString(),
+				ValorResidual = txtValorResidual.Text.ToString(),
+				ValorDepreciavel = txtValorDepreciavel.Text.ToString(),
+				VidaUtil = txtVidaUtil.Text.ToString(),
+				DepreciacaoAnual = txtDepreciacaoAnual.Text.ToString(),
+				ValorDepreciado = txtValorDepreciado.Text.ToString(),
+				SaldoDepreciar = txtSaldoDepreciar.Text.ToString(),
+				ValorLiquido = txtValorLiquido.Text.ToString(),
+				PatrimoniosId = 1
+			};
+			await MetodosBancoDeDadosApi.AdicionarItemPOST(apiUrl, novoItem);
 		}
 
 		public void ValidarCampos()
@@ -124,8 +157,8 @@ namespace MaxWebApp.Campos
 				{
 					if (entrada.VericarDuplicidade(placaDoItem, codigoDoItem))
 					{
-						Page pagina = this.Page;
-						entrada.SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItemS, tipoDoItem, tipoAquisicao, tipoComprovante, numeroComprovante, combustivel, placaVeiculo, modeloVeiculo, vidaUtilS, depreciacaoAnualS, metodoDepreciacao, valorResidual, valorDepreciavel, valorDepreciado, saldoDepreciar, valorLiquido, dataInicioDepreciacao, responsavel, pagina);
+						//Page pagina = this.Page;
+						//entrada.SalvarInformacoesNoBanco(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, localizacoFisicaDoItem, observacaoDoItem, valorDoItemS, tipoDoItem, tipoAquisicao, tipoComprovante, numeroComprovante, combustivel, placaVeiculo, modeloVeiculo, vidaUtilS, depreciacaoAnualS, metodoDepreciacao, valorResidual, valorDepreciavel, valorDepreciado, saldoDepreciar, valorLiquido, dataInicioDepreciacao, responsavel, pagina);
 					}
 					else
 					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }

@@ -257,6 +257,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MetodosBancoDeDadosApi.cs" />
+    <Compile Include="Modelo\ItemModelo.cs" />
     <Compile Include="Operacao.cs" />
     <Compile Include="PageInventario\InventarioDeItens.aspx.cs">
       <DependentUpon>InventarioDeItens.aspx</DependentUpon>

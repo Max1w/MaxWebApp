@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static MaxWebApp.Operacao;
+using MaxWebApp.Modelo;
 
 
 namespace MaxWebApp
@@ -74,13 +74,10 @@ namespace MaxWebApp
 		//	}
 		//}
 
-		protected async void SalvarInformacoesNoBanco()
-
-
 		public bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
 		{
 
-			List<Item> valida = new List<Item>();
+			List<ItemModelo> valida = new List<ItemModelo>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
 			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = " + placaDoItem + " or codigo_item = " + codigoDoItem;
@@ -95,9 +92,9 @@ namespace MaxWebApp
 					{
 						while (dr.Read())
 						{
-							Item camposAhValidar = new Item();
-							camposAhValidar.Codigo = dr["codigo_item"].ToString();
-							camposAhValidar.Placa = dr["placa_item"].ToString();
+							ItemModelo camposAhValidar = new ItemModelo();
+							camposAhValidar.CodigoItem = dr["codigo_item"].ToString();
+							camposAhValidar.PlacaItem = dr["placa_item"].ToString();
 
 							valida.Add(camposAhValidar);
 						}

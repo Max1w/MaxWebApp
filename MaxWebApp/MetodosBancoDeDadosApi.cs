@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
-using static MaxWebApp.Operacao;
+using MaxWebApp.Modelo;
 using System.Security.Policy;
 using System.Text;
+
 
 namespace MaxWebApp
 {
 	public class MetodosBancoDeDadosApi
 	{
-		public static async Task<List<Item>> CarregarItensDoInventarioGET(string url)
+		public static async Task<List<ItemModelo>> CarregarItensDoInventarioGET(string url)
 		{
 			using (HttpClient client = new HttpClient())
 			{
 				HttpResponseMessage response = await client.GetAsync(url);
 				response.EnsureSuccessStatusCode();
 				string responseBody = await response.Content.ReadAsStringAsync();
-				return JsonConvert.DeserializeObject<List<Item>>(responseBody);
+				return JsonConvert.DeserializeObject<List<ItemModelo>>(responseBody);
 			}
 		}
-		public static async Task AdicionarItemPOST(string url, Item item)
+		public static async Task AdicionarItemPOST(string url, ItemModelo item)
 		{
 			using (HttpClient client = new HttpClient())
 			{
@@ -30,7 +31,7 @@ namespace MaxWebApp
 				responseMessage.EnsureSuccessStatusCode();
 			}
 		}
-		public static async Task AtualizarItemPUT(string url, Item item)
+		public static async Task AtualizarItemPUT(string url, ItemModelo item)
 		{
 			using (HttpClient client = new HttpClient())
 			{

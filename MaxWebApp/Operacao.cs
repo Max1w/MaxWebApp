@@ -30,15 +30,15 @@ namespace MaxWebApp
 							{
 								ItemModelo item = new ItemModelo();
 								item.Id = Convert.ToInt32(dr["id"]);
-								item.CodigoItem = dr["codigo_item"].ToString();
-								item.PlacaItem = dr["placa_item"].ToString();
-								item.DescricaoItem = dr["descricao_item"].ToString();
-								item.GrupoItem = dr["grupo_item"].ToString();
-								item.LocalizacaoFisica = dr["localizacao_fisica"].ToString();
-								item.DataAquisicao = Convert.ToDateTime(dr["data_aquisicao"]);
-								item.EstadoConservacao = dr["estado_conservacao"].ToString();
-								item.ValorAquisicao = dr["valor_aquisicao"].ToString();
-								item.Observacao = dr["observacao"].ToString();
+								item.codigo_item = dr["codigo_item"].ToString();
+								item.placa_item = dr["placa_item"].ToString();
+								item.descricao_item = dr["descricao_item"].ToString();
+								item.grupo_item = dr["grupo_item"].ToString();
+								item.localizacao_fisica = dr["localizacao_fisica"].ToString();
+								item.data_aquisicao = Convert.ToDateTime(dr["data_aquisicao"]);
+								item.estado_conservacao = dr["estado_conservacao"].ToString();
+								item.valor_aquisicao = dr["valor_aquisicao"].ToString();
+								item.observacao = dr["observacao"].ToString();
 								itens.Add(item);
 							}
 						}
@@ -72,32 +72,32 @@ namespace MaxWebApp
 						item = new ItemModelo
 						{
 							Id = Convert.ToInt32(reader["id"]),
-							CodigoItem = reader["codigo_item"].ToString(),
-							PlacaItem = reader["placa_item"].ToString(),
-							DescricaoItem = reader["descricao_item"].ToString(),
-							GrupoItem = reader["grupo_item"].ToString(),
-							EstadoConservacao = reader["estado_conservacao"].ToString(),
-							TipoItem = reader["tipo_item"].ToString(),
-							TipoAquisicao = reader["tipo_aquisicao"].ToString(),
-							TipoComprovante = reader["tipo_comprovante"].ToString(),
-							NumeroComprovante = reader["numero_comprovante"].ToString(),
-							TemCombustivel = reader["tem_combustivel"].ToString(),
-							PlacaVeiculo = reader["placa_veiculo"].ToString(),
-							ModeloVeiculo = reader["modelo_veiculo"].ToString(),
-							LocalizacaoFisica = reader["localizacao_fisica"].ToString(),
-							Responsavel = reader["responsavel"].ToString(),
-							Observacao = reader["observacao"].ToString(),
-							ValorAquisicao = reader["valor_aquisicao"].ToString(),
-							MetodoDepreciacao = reader["metodo_depreciacao"].ToString(),
-							ValorResidual = reader["valor_residual"].ToString(),
-							ValorDepreciavel = reader["valor_depreciavel"].ToString(),
-							VidaUtil = reader["vida_util"].ToString(),
-							DepreciacaoAnual = reader["depreciacao_anual"].ToString(),
-							InicioDepreciacao = Convert.ToDateTime(reader["inicio_depreciacao"]),
-							ValorDepreciado = reader["valor_depreciado"].ToString(),
-							SaldoDepreciar = reader["saldo_depreciar"].ToString(),
-							ValorLiquido = reader["valor_liquido"].ToString(),
-							DataAquisicao = Convert.ToDateTime(reader["data_aquisicao"])
+							codigo_item = reader["codigo_item"].ToString(),
+							placa_item = reader["placa_item"].ToString(),
+							descricao_item = reader["descricao_item"].ToString(),
+							grupo_item = reader["grupo_item"].ToString(),
+							estado_conservacao = reader["estado_conservacao"].ToString(),
+							tipo_item = reader["tipo_item"].ToString(),
+							tipo_aquisicao = reader["tipo_aquisicao"].ToString(),
+							tipo_comprovante = reader["tipo_comprovante"].ToString(),
+							numero_comprovante = reader["numero_comprovante"].ToString(),
+							tem_combustivel = reader["tem_combustivel"].ToString(),
+							placa_veiculo = reader["placa_veiculo"].ToString(),
+							modelo_veiculo = reader["modelo_veiculo"].ToString(),
+							localizacao_fisica = reader["localizacao_fisica"].ToString(),
+							responsavel = reader["responsavel"].ToString(),
+							observacao = reader["observacao"].ToString(),
+							valor_aquisicao = reader["valor_aquisicao"].ToString(),
+							metodo_depreciacao = reader["metodo_depreciacao"].ToString(),
+							valor_residual = reader["valor_residual"].ToString(),
+							valor_depreciavel = reader["valor_depreciavel"].ToString(),
+							vida_util = reader["vida_util"].ToString(),
+							depreciacao_anual = reader["depreciacao_anual"].ToString(),
+							inicio_depreciacao = Convert.ToDateTime(reader["inicio_depreciacao"]),
+							valor_depreciado = reader["valor_depreciado"].ToString(),
+							saldo_depreciar = reader["saldo_depreciar"].ToString(),
+							valor_liquido = reader["valor_liquido"].ToString(),
+							data_aquisicao = Convert.ToDateTime(reader["data_aquisicao"])
 						};
 					}
 				}

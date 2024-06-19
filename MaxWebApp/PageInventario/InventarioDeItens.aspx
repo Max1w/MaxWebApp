@@ -20,14 +20,14 @@
 			</style>
 			<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light rounded-grid" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
 				<Columns>
-					<asp:BoundField DataField="Codigo" HeaderText="Código" />
-					<asp:BoundField DataField="Placa" HeaderText="Placa" />
-					<asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-					<asp:BoundField DataField="Grupo" HeaderText="Grupo" />
-					<asp:BoundField DataField="Localizacao" HeaderText="Localização" />
-					<asp:BoundField DataField="Observacao" HeaderText="Observação" />
-					<asp:BoundField DataField="ValorAquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
-					<asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
+					<asp:BoundField DataField="codigo_item" HeaderText="Código" />
+					<asp:BoundField DataField="placa_item" HeaderText="Placa" />
+					<asp:BoundField DataField="descricao_item" HeaderText="Descrição" />
+					<asp:BoundField DataField="grupo_item" HeaderText="Grupo" />
+					<asp:BoundField DataField="localizacao_fisica" HeaderText="Localização" />
+					<asp:BoundField DataField="observacao" HeaderText="Observação" />
+					<asp:BoundField DataField="valor_aquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
+					<asp:BoundField DataField="data_aquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
 					<asp:TemplateField>
 						<ItemTemplate>
 							<asp:Button runat="server" CommandArgument='<%# Eval("ID") %>' CommandName="Editar" Text="Editar" CssClass="btn btn-outline-primary" />

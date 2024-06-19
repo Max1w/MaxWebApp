@@ -27,11 +27,11 @@
                             <asp:CheckBox ID="ckSelecionados" CssClass="ckSelecionados" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Codigo" HeaderText="Código" />
-                    <asp:BoundField DataField="Placa" HeaderText="Placa" />
-                    <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                    <asp:BoundField DataField="ValorAquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
-                    <asp:BoundField DataField="DtAquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
+                    <asp:BoundField DataField="codigo_item" HeaderText="Código" />
+                    <asp:BoundField DataField="placa_item" HeaderText="Placa" />
+                    <asp:BoundField DataField="descricao_item" HeaderText="Descrição" />
+                    <asp:BoundField DataField="valor_aquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
+                    <asp:BoundField DataField="data_aquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
                 </Columns>
                 
                 <PagerStyle HorizontalAlign="Center" />

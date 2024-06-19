@@ -8,32 +8,32 @@ namespace MaxWebApp.Modelo
 	public class ItemModelo
 	{
 		public int Id { get; set; }
-		public string CodigoItem { get; set; }
-		public string PlacaItem { get; set; }
-		public string DescricaoItem { get; set; }
-		public string TipoItem { get; set; }
-		public string GrupoItem { get; set; }
-		public string EstadoConservacao { get; set; }
-		public string TipoAquisicao { get; set; }
-		public string ValorAquisicao { get; set; }
-		public string MetodoDepreciacao { get; set; }
-		public string ValorResidual { get; set; }
-		public string Responsavel { get; set; }
-		public string VidaUtil { get; set; }
-		public string DepreciacaoAnual { get; set; }
-		public DateTime InicioDepreciacao { get; set; }
-		public DateTime DataAquisicao { get; set; }
-		public string ValorDepreciavel { get; set; }
-		public string ValorDepreciado { get; set; }
-		public string SaldoDepreciar { get; set; }
-		public string ValorLiquido { get; set; }
-		public string TipoComprovante { get; set; }
-		public string NumeroComprovante { get; set; }
-		public string TemCombustivel { get; set; }
-		public string PlacaVeiculo { get; set; }
-		public string ModeloVeiculo { get; set; }
-		public string LocalizacaoFisica { get; set; }
-		public string Observacao { get; set; }
-		public int PatrimoniosId { get; set; }
+		public string codigo_item { get; set; }
+		public string placa_item { get; set; }
+		public string descricao_item { get; set; }
+		public string tipo_item { get; set; }
+		public string grupo_item { get; set; }
+		public string estado_conservacao { get; set; }
+		public string tipo_aquisicao { get; set; }
+		public string valor_aquisicao { get; set; }
+		public string metodo_depreciacao { get; set; }
+		public string valor_residual { get; set; }
+		public string responsavel { get; set; }
+		public string vida_util { get; set; }
+		public string depreciacao_anual { get; set; }
+		public DateTime inicio_depreciacao { get; set; }
+		public DateTime data_aquisicao { get; set; }
+		public string valor_depreciavel { get; set; }
+		public string valor_depreciado { get; set; }
+		public string saldo_depreciar { get; set; }
+		public string valor_liquido { get; set; }
+		public string tipo_comprovante { get; set; }
+		public string numero_comprovante { get; set; }
+		public string tem_combustivel { get; set; }
+		public string placa_veiculo { get; set; }
+		public string modelo_veiculo { get; set; }
+		public string localizacao_fisica { get; set; }
+		public string observacao { get; set; }
+		public int patrimonios_id { get; set; }
 	}
 }

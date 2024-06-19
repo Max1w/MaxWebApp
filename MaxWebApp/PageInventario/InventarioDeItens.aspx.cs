@@ -47,32 +47,32 @@ namespace MaxWebApp.PageInventario
 			if (item != null)
 			{
 				hfItemId.Value = item.Id.ToString();
-				txtCodigoDoItem.Text = item.CodigoItem.ToString();
-				txtPlacaDoItem.Text = item.PlacaItem.ToString();
-				txtDescricaoDoItem.Text = item.DescricaoItem;
-				txtDataAquisicao.Text = item.DataAquisicao.ToString("yyyy-MM-dd");
-				ddlGrupoItem.Text = item.GrupoItem.ToString();
-				ddlConservacaoItem.Text = item.EstadoConservacao.ToString();
-				txtLocalizacaoFisica.Text = item.LocalizacaoFisica.ToString();
-				txtObservacao.Text = item.Observacao;
-				txtValorAquisicao.Text = item.ValorAquisicao.ToString();
-				ddlTipoItem.Text = item.TipoItem.ToString();
-				ddlTipoAquisicao.Text = item.TipoAquisicao.ToString();
-				ddlTipoComprovante.Text = item.TipoComprovante.ToString();
-				txtNumeroComprovante.Text = item.NumeroComprovante.ToString();
-				txtPlacaVeiculo.Text = item.PlacaVeiculo.ToString();
-				txtModeloVeiculo.Text = item.ModeloVeiculo.ToString();
-				txtVidaUtil.Text = item.VidaUtil.ToString();
-				txtDepreciacaoAnual.Text = item.DepreciacaoAnual.ToString();
-				ddlMetodoDepreciacao.Text = item.MetodoDepreciacao.ToString();
-				ddlCombustivel.Text = item.TemCombustivel.ToString();
-				txtResponsavel.Text = item.Responsavel.ToString();
-				txtDataDepreciacao.Text = item.InicioDepreciacao.ToString("yyyy-MM-dd");
-				txtValorResidual.Text = item.ValorResidual.ToString();
-				txtValorDepreciavel.Text = item.ValorDepreciavel.ToString();
-				txtValorDepreciado.Text = item.ValorDepreciado.ToString();
-				txtSaldoDepreciar.Text = item.SaldoDepreciar.ToString();
-				txtValorLiquido.Text = item.ValorLiquido.ToString();
+				txtCodigoDoItem.Text = item.codigo_item.ToString();
+				txtPlacaDoItem.Text = item.placa_item.ToString();
+				txtDescricaoDoItem.Text = item.descricao_item;
+				txtDataAquisicao.Text = item.data_aquisicao.ToString("yyyy-MM-dd");
+				ddlGrupoItem.Text = item.grupo_item.ToString();
+				ddlConservacaoItem.Text = item.estado_conservacao.ToString();
+				txtLocalizacaoFisica.Text = item.localizacao_fisica.ToString();
+				txtObservacao.Text = item.observacao;
+				txtValorAquisicao.Text = item.valor_aquisicao.ToString();
+				ddlTipoItem.Text = item.tipo_item.ToString();
+				ddlTipoAquisicao.Text = item.tipo_aquisicao.ToString();
+				ddlTipoComprovante.Text = item.tipo_comprovante.ToString();
+				txtNumeroComprovante.Text = item.numero_comprovante.ToString();
+				txtPlacaVeiculo.Text = item.placa_veiculo.ToString();
+				txtModeloVeiculo.Text = item.modelo_veiculo.ToString();
+				txtVidaUtil.Text = item.vida_util.ToString();
+				txtDepreciacaoAnual.Text = item.depreciacao_anual.ToString();
+				ddlMetodoDepreciacao.Text = item.metodo_depreciacao.ToString();
+				ddlCombustivel.Text = item.tem_combustivel.ToString();
+				txtResponsavel.Text = item.responsavel.ToString();
+				txtDataDepreciacao.Text = item.inicio_depreciacao.ToString("yyyy-MM-dd");
+				txtValorResidual.Text = item.valor_residual.ToString();
+				txtValorDepreciavel.Text = item.valor_depreciavel.ToString();
+				txtValorDepreciado.Text = item.valor_depreciado.ToString();
+				txtSaldoDepreciar.Text = item.saldo_depreciar.ToString();
+				txtValorLiquido.Text = item.valor_liquido.ToString();
 
 				pnlEdit.Visible = true;
 			}
@@ -89,39 +89,39 @@ namespace MaxWebApp.PageInventario
 			var item = new ItemModelo()
 			{
 				Id = int.Parse(hfItemId.Value),
-				CodigoItem = txtCodigoDoItem.Text,
-				PlacaItem = txtPlacaDoItem.Text,
-				DescricaoItem = txtDescricaoDoItem.Text,
-				DataAquisicao = DateTime.Parse(txtDataAquisicao.Text),
-				InicioDepreciacao = DateTime.Parse(txtDataDepreciacao.Text),
-				GrupoItem = ddlGrupoItem.SelectedValue,
-				EstadoConservacao = ddlConservacaoItem.SelectedValue,
-				LocalizacaoFisica = txtLocalizacaoFisica.Text,
-				Observacao = txtObservacao.Text,
-				ValorAquisicao = txtValorAquisicao.Text,
-				TipoItem = ddlTipoItem.SelectedValue,
-				TipoAquisicao = ddlTipoAquisicao.SelectedValue,
-				TipoComprovante = ddlTipoComprovante.SelectedValue,
-				NumeroComprovante = txtNumeroComprovante.Text,
-				PlacaVeiculo = txtPlacaVeiculo.Text,
-				ModeloVeiculo = txtModeloVeiculo.Text,
-				VidaUtil = txtVidaUtil.Text,
-				DepreciacaoAnual = txtDepreciacaoAnual.Text,
-				MetodoDepreciacao = ddlMetodoDepreciacao.SelectedValue,
-				TemCombustivel = ddlCombustivel.SelectedValue,
-				Responsavel = txtResponsavel.Text,
-				ValorResidual = txtValorResidual.Text,
-				ValorDepreciavel = txtValorDepreciavel.Text,
-				ValorDepreciado = txtValorDepreciado.Text,
-				SaldoDepreciar = txtSaldoDepreciar.Text,
-				ValorLiquido = txtValorLiquido.Text
+				codigo_item = txtCodigoDoItem.Text,
+				placa_item = txtPlacaDoItem.Text,
+				descricao_item = txtDescricaoDoItem.Text,
+				data_aquisicao = DateTime.Parse(txtDataAquisicao.Text),
+				inicio_depreciacao = DateTime.Parse(txtDataDepreciacao.Text),
+				grupo_item = ddlGrupoItem.SelectedValue,
+				estado_conservacao = ddlConservacaoItem.SelectedValue,
+				localizacao_fisica = txtLocalizacaoFisica.Text,
+				observacao = txtObservacao.Text,
+				valor_aquisicao = txtValorAquisicao.Text,
+				tipo_item = ddlTipoItem.SelectedValue,
+				tipo_aquisicao = ddlTipoAquisicao.SelectedValue,
+				tipo_comprovante = ddlTipoComprovante.SelectedValue,
+				numero_comprovante = txtNumeroComprovante.Text,
+				placa_veiculo = txtPlacaVeiculo.Text,
+				modelo_veiculo = txtModeloVeiculo.Text,
+				vida_util = txtVidaUtil.Text,
+				depreciacao_anual = txtDepreciacaoAnual.Text,
+				metodo_depreciacao = ddlMetodoDepreciacao.SelectedValue,
+				tem_combustivel = ddlCombustivel.SelectedValue,
+				responsavel = txtResponsavel.Text,
+				valor_residual = txtValorResidual.Text,
+				valor_depreciavel = txtValorDepreciavel.Text,
+				valor_depreciado = txtValorDepreciado.Text,
+				saldo_depreciar = txtSaldoDepreciar.Text,
+				valor_liquido = txtValorLiquido.Text
 			};
 
-			if (!string.IsNullOrEmpty(item.CodigoItem) && !string.IsNullOrEmpty(item.PlacaItem) && !string.IsNullOrEmpty(item.DescricaoItem) && !string.IsNullOrEmpty(item.ValorAquisicao) && !string.IsNullOrEmpty(item.GrupoItem) && !string.IsNullOrEmpty(item.EstadoConservacao) && !string.IsNullOrEmpty(item.TipoItem) && !string.IsNullOrEmpty(item.TipoAquisicao) && !string.IsNullOrEmpty(item.DepreciacaoAnual) && !string.IsNullOrEmpty(item.MetodoDepreciacao) && !string.IsNullOrEmpty(item.ValorResidual) && !string.IsNullOrEmpty(item.Responsavel))
+			if (!string.IsNullOrEmpty(item.codigo_item) && !string.IsNullOrEmpty(item.placa_item) && !string.IsNullOrEmpty(item.descricao_item) && !string.IsNullOrEmpty(item.valor_aquisicao) && !string.IsNullOrEmpty(item.grupo_item) && !string.IsNullOrEmpty(item.estado_conservacao) && !string.IsNullOrEmpty(item.tipo_item) && !string.IsNullOrEmpty(item.tipo_aquisicao) && !string.IsNullOrEmpty(item.depreciacao_anual) && !string.IsNullOrEmpty(item.metodo_depreciacao) && !string.IsNullOrEmpty(item.valor_residual) && !string.IsNullOrEmpty(item.responsavel))
 			{
-				if ((item.CodigoItem.Length < 10) && (item.PlacaItem.Length < 10) && (item.DescricaoItem.Length < 2000) && (item.LocalizacaoFisica.Length < 2000) && (item.Observacao.Length < 4000) && (item.ValorAquisicao.Length < 999999) && (item.NumeroComprovante.Length < 20) && (item.PlacaVeiculo.Length < 10) && (item.ModeloVeiculo.Length < 50) && (item.VidaUtil.Length < 5) && (item.DepreciacaoAnual.Length < 10) && (item.ValorResidual.Length < 999999) && (item.ValorDepreciavel.Length < 999999) && (item.ValorDepreciado.Length < 999999) && (item.SaldoDepreciar.Length < 999999) && (item.ValorLiquido.Length < 999999) && (item.Responsavel.Length < 161))
+				if ((item.codigo_item.Length < 10) && (item.placa_item.Length < 10) && (item.descricao_item.Length < 2000) && (item.localizacao_fisica.Length < 2000) && (item.observacao.Length < 4000) && (item.valor_aquisicao.Length < 999999) && (item.numero_comprovante.Length < 20) && (item.placa_veiculo.Length < 10) && (item.modelo_veiculo.Length < 50) && (item.vida_util.Length < 5) && (item.depreciacao_anual.Length < 10) && (item.valor_residual.Length < 999999) && (item.valor_depreciavel.Length < 999999) && (item.valor_depreciado.Length < 999999) && (item.saldo_depreciar.Length < 999999) && (item.valor_liquido.Length < 999999) && (item.responsavel.Length < 161))
 				{
-					if (VericarDuplicidade(item.PlacaItem, item.Id))
+					if (VericarDuplicidade(item.placa_item, item.Id))
 					{
 						Page pagina = this.Page;
 						AtualizarItem(item, pagina);
@@ -196,7 +196,7 @@ namespace MaxWebApp.PageInventario
 							while (dr.Read())
 							{
 								ItemModelo camposAhValidar = new ItemModelo();
-								camposAhValidar.PlacaItem = dr["placa_item"].ToString();
+								camposAhValidar.placa_item = dr["placa_item"].ToString();
 
 								valida.Add(camposAhValidar);
 							}
@@ -228,31 +228,31 @@ namespace MaxWebApp.PageInventario
 			{
 
 				SqlCommand command = new SqlCommand(query, connection);
-				command.Parameters.AddWithValue("@placa_item", item.PlacaItem);
-				command.Parameters.AddWithValue("@descricao_item", item.DescricaoItem);
-				command.Parameters.AddWithValue("@data_aquisicao", Convert.ToDateTime(item.DataAquisicao));
-				command.Parameters.AddWithValue("@grupo_item", item.GrupoItem);
-				command.Parameters.AddWithValue("@estado_conservacao", item.EstadoConservacao);
-				command.Parameters.AddWithValue("@localizacao_fisica", item.LocalizacaoFisica);
-				command.Parameters.AddWithValue("@observacao", item.Observacao);
-				command.Parameters.AddWithValue("@valor_aquisicao", item.ValorAquisicao);
-				command.Parameters.AddWithValue("@tipo_item", item.TipoItem);
-				command.Parameters.AddWithValue("@tipo_aquisicao", item.TipoAquisicao);
-				command.Parameters.AddWithValue("@tipo_comprovante", item.TipoComprovante);
-				command.Parameters.AddWithValue("@numero_comprovante", item.NumeroComprovante);
-				command.Parameters.AddWithValue("@tem_combustivel", item.TemCombustivel);
-				command.Parameters.AddWithValue("@placa_veiculo", item.PlacaVeiculo);
-				command.Parameters.AddWithValue("@modelo_veiculo", item.ModeloVeiculo);
-				command.Parameters.AddWithValue("@responsavel", item.Responsavel);
-				command.Parameters.AddWithValue("@vida_util", item.VidaUtil);
-				command.Parameters.AddWithValue("@depreciacao_anual", item.DepreciacaoAnual);
-				command.Parameters.AddWithValue("@metodo_depreciacao", item.MetodoDepreciacao);
-				command.Parameters.AddWithValue("@inicio_depreciacao", item.InicioDepreciacao);
-				command.Parameters.AddWithValue("@valor_residual", item.ValorResidual);
-				command.Parameters.AddWithValue("@valor_depreciavel", item.ValorDepreciavel);
-				command.Parameters.AddWithValue("@valor_depreciado", item.ValorDepreciado);
-				command.Parameters.AddWithValue("@saldo_depreciar", item.SaldoDepreciar);
-				command.Parameters.AddWithValue("@valor_liquido", item.ValorLiquido);
+				command.Parameters.AddWithValue("@placa_item", item.placa_item);
+				command.Parameters.AddWithValue("@descricao_item", item.descricao_item);
+				command.Parameters.AddWithValue("@data_aquisicao", Convert.ToDateTime(item.data_aquisicao));
+				command.Parameters.AddWithValue("@grupo_item", item.grupo_item);
+				command.Parameters.AddWithValue("@estado_conservacao", item.estado_conservacao);
+				command.Parameters.AddWithValue("@localizacao_fisica", item.localizacao_fisica);
+				command.Parameters.AddWithValue("@observacao", item.observacao);
+				command.Parameters.AddWithValue("@valor_aquisicao", item.valor_aquisicao);
+				command.Parameters.AddWithValue("@tipo_item", item.tipo_item);
+				command.Parameters.AddWithValue("@tipo_aquisicao", item.tipo_aquisicao);
+				command.Parameters.AddWithValue("@tipo_comprovante", item.tipo_comprovante);
+				command.Parameters.AddWithValue("@numero_comprovante", item.numero_comprovante);
+				command.Parameters.AddWithValue("@tem_combustivel", item.tem_combustivel);
+				command.Parameters.AddWithValue("@placa_veiculo", item.placa_veiculo);
+				command.Parameters.AddWithValue("@modelo_veiculo", item.modelo_veiculo);
+				command.Parameters.AddWithValue("@responsavel", item.responsavel);
+				command.Parameters.AddWithValue("@vida_util", item.vida_util);
+				command.Parameters.AddWithValue("@depreciacao_anual", item.depreciacao_anual);
+				command.Parameters.AddWithValue("@metodo_depreciacao", item.metodo_depreciacao);
+				command.Parameters.AddWithValue("@inicio_depreciacao", item.inicio_depreciacao);
+				command.Parameters.AddWithValue("@valor_residual", item.valor_residual);
+				command.Parameters.AddWithValue("@valor_depreciavel", item.valor_depreciavel);
+				command.Parameters.AddWithValue("@valor_depreciado", item.valor_depreciado);
+				command.Parameters.AddWithValue("@saldo_depreciar", item.saldo_depreciar);
+				command.Parameters.AddWithValue("@valor_liquido", item.valor_liquido);
 
 				connection.Open();
 

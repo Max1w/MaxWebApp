@@ -20,10 +20,10 @@ namespace MaxWebApp.PageInventario
 			}
 		}
 
-		public void BindGridView()
+		public async void BindGridView()
 		{
-			var operacao = new Operacao();
-			List<ItemModelo> listaItens = operacao.ListarItensDoBancoDeDados();
+			string url = "https://localhost:7279/v1/TodosOsItens";
+			List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url);
 			GridView1.DataSource = listaItens;
 			GridView1.DataBind();
 		}
@@ -38,35 +38,36 @@ namespace MaxWebApp.PageInventario
 			}
 		}
 
-		public void CarregarDetalhesDoItem(string id)
+		public async void CarregarDetalhesDoItem(string id)
 		{
-			var inv = new InventarioDeItens();
-			var operacao = new Operacao();
-			var item = operacao.ObterItemPorId(id);
+			string url = "https://localhost:7279/v1/TodosOsItens";
+			List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url);
 
-			if (item != null)
+			if (listaItens != null && listaItens.Count > 0)
 			{
+				ItemModelo item = listaItens[0]; // Supondo que você quer o primeiro item da lista
+
 				hfItemId.Value = item.Id.ToString();
-				txtCodigoDoItem.Text = item.codigo_item.ToString();
-				txtPlacaDoItem.Text = item.placa_item.ToString();
+				txtCodigoDoItem.Text = item.codigo_item;
+				txtPlacaDoItem.Text = item.placa_item;
 				txtDescricaoDoItem.Text = item.descricao_item;
 				txtDataAquisicao.Text = item.data_aquisicao.ToString("yyyy-MM-dd");
-				ddlGrupoItem.Text = item.grupo_item.ToString();
-				ddlConservacaoItem.Text = item.estado_conservacao.ToString();
-				txtLocalizacaoFisica.Text = item.localizacao_fisica.ToString();
+				ddlConservacaoItem.SelectedValue = item.estado_conservacao;
+				ddlGrupoItem.SelectedValue = item.grupo_item;
+				txtLocalizacaoFisica.Text = item.localizacao_fisica;
 				txtObservacao.Text = item.observacao;
 				txtValorAquisicao.Text = item.valor_aquisicao.ToString();
-				ddlTipoItem.Text = item.tipo_item.ToString();
-				ddlTipoAquisicao.Text = item.tipo_aquisicao.ToString();
-				ddlTipoComprovante.Text = item.tipo_comprovante.ToString();
-				txtNumeroComprovante.Text = item.numero_comprovante.ToString();
-				txtPlacaVeiculo.Text = item.placa_veiculo.ToString();
-				txtModeloVeiculo.Text = item.modelo_veiculo.ToString();
+				ddlTipoItem.SelectedValue = item.tipo_item;
+				ddlTipoAquisicao.SelectedValue = item.tipo_aquisicao;
+				ddlTipoComprovante.SelectedValue = item.tipo_comprovante;
+				txtNumeroComprovante.Text = item.numero_comprovante;
+				txtPlacaVeiculo.Text = item.placa_veiculo;
+				txtModeloVeiculo.Text = item.modelo_veiculo;
 				txtVidaUtil.Text = item.vida_util.ToString();
 				txtDepreciacaoAnual.Text = item.depreciacao_anual.ToString();
-				ddlMetodoDepreciacao.Text = item.metodo_depreciacao.ToString();
-				ddlCombustivel.Text = item.tem_combustivel.ToString();
-				txtResponsavel.Text = item.responsavel.ToString();
+				ddlMetodoDepreciacao.SelectedValue = item.metodo_depreciacao;
+				ddlCombustivel.SelectedValue = item.tem_combustivel;
+				txtResponsavel.Text = item.responsavel;
 				txtDataDepreciacao.Text = item.inicio_depreciacao.ToString("yyyy-MM-dd");
 				txtValorResidual.Text = item.valor_residual.ToString();
 				txtValorDepreciavel.Text = item.valor_depreciavel.ToString();
@@ -78,14 +79,14 @@ namespace MaxWebApp.PageInventario
 			}
 		}
 
+
 		protected void botaoCancelarInventario_Click(object sender, EventArgs e)
 		{
 			pnlEdit.Visible = false;
 		}
 
-		protected void btnSalvarAlteracoes_Click(object sender, EventArgs e)
+		protected async void btnSalvarAlteracoes_Click(object sender, EventArgs e)
 		{
-			var operacao = new Operacao();
 			var item = new ItemModelo()
 			{
 				Id = int.Parse(hfItemId.Value),
@@ -124,7 +125,8 @@ namespace MaxWebApp.PageInventario
 					if (VericarDuplicidade(item.placa_item, item.Id))
 					{
 						Page pagina = this.Page;
-						AtualizarItem(item, pagina);
+						string url = $"https://localhost:7279/v1/TodosOsItens/{item.Id}";
+						await MetodosBancoDeDadosApi.AtualizarItemPUT(url, item);
 					}
 					else
 					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }

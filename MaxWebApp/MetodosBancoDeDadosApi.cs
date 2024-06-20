@@ -22,6 +22,7 @@ namespace MaxWebApp
 				return JsonConvert.DeserializeObject<List<ItemModelo>>(responseBody);
 			}
 		}
+
 		public static async Task AdicionarItemPOST(string url, ItemModelo item, Page pag)
 		{
 			using (HttpClient client = new HttpClient())

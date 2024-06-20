@@ -40,87 +40,31 @@ namespace MaxWebApp
 				}
 			}
 		}
-
-		[WebMethod]
-		public bool ExcluirItensSelecionados_Click(List<string> ids)
+		protected async void ExcluirItensSelecionados_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				ExcluirVeiculos(ids);
-				return true;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.ToString());
-				return false;
-			}
-		}
-
-		protected void ExcluirItensSelecionados_Click(object sender, EventArgs e)
-		{
-			List<string> idsParaExcluir = new List<string>();
+			List<int> idsParaExcluir = new List<int>();
 
 			foreach (GridViewRow row in GridView1.Rows)
 			{
 				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");
 				if (ckSelecionados != null && ckSelecionados.Checked)
 				{
-					string id = GridView1.DataKeys[row.RowIndex].Value.ToString();
+					int id = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);
 					idsParaExcluir.Add(id);
 				}
 			}
 			if (idsParaExcluir.Count > 0)
 			{
-				ExcluirVeiculos(idsParaExcluir);
+				await MetodosBancoDeDadosApi.DeletarItemDELETEemLote("https://localhost:7279/v1/TodosOsItens", idsParaExcluir);
 				BindGridView();
 			}
+
 		}
 
-		private void ExcluirVeiculo(string id)
+		private async void ExcluirVeiculo(string id)
 		{
-			string connectionString = ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-
-			using (SqlConnection conn = new SqlConnection(connectionString))
-			{
-				string query = "DELETE FROM itens WHERE id = @id";
-
-				using (SqlCommand cmd = new SqlCommand(query, conn))
-				{
-					cmd.Parameters.AddWithValue("@id", id);
-					try
-					{
-						conn.Open();
-						cmd.ExecuteNonQuery();
-					}
-					catch (Exception ex)
-					{
-						Response.Write("Erro: " + ex.Message);
-					}
-				}
-			}
-		}
-
-		private void ExcluirVeiculos(List<string> ids)
-		{
-			string connectionString = ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-
-			using (SqlConnection conn = new SqlConnection(connectionString))
-			{
-				string query = "DELETE FROM itens WHERE id IN (" + string.Join(",", ids.ConvertAll(id => "'" + id + "'")) + ")";
-
-				using (SqlCommand cmd = new SqlCommand(query, conn))
-				{
-					try
-					{
-						conn.Open();
-						cmd.ExecuteNonQuery();
-					}
-					catch (Exception ex)
-					{
-						Response.Write("Erro: " + ex.Message);
-					}
-				}
-			}
+			var url = $"https://localhost:7279/v1/TodosOsItens/{id}";
+			await MetodosBancoDeDadosApi.DeletarItemDELETE(url);
 		}
 
 		protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

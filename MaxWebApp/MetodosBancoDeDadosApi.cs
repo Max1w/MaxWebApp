@@ -6,6 +6,7 @@ using MaxWebApp.Modelo;
 using System.Security.Policy;
 using System.Text;
 using System.Web.UI;
+using System;
 
 
 namespace MaxWebApp
@@ -57,5 +58,33 @@ namespace MaxWebApp
 				responseMessage.EnsureSuccessStatusCode();
 			}
 		}
+
+		public static async Task DeletarItemDELETEemLote(string url, List<int> ids)
+		{
+			using (var httpClient = new HttpClient())
+			{
+				var json = JsonConvert.SerializeObject(ids);
+				var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				var request = new HttpRequestMessage
+				{
+					Method = HttpMethod.Delete,
+					RequestUri = new Uri(url),
+					Content = content
+				};
+
+				var response = await httpClient.SendAsync(request);
+
+				if (response.IsSuccessStatusCode)
+				{
+					Console.WriteLine("Itens deletados com sucesso!");
+				}
+				else
+				{
+					Console.WriteLine("Erro ao deletar itens: " + response.StatusCode);
+				}
+			}
+		}
+
 	}
 }

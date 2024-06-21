@@ -70,7 +70,7 @@ namespace MaxWebApp.Campos
 			string apiUrl = "https://localhost:7279/v1/TodosOsItens";
 			var novoItem = new ItemModelo()
 			{
-				codigo_item = .Text.ToString(),
+				codigo_item = txtCodigoDoItem.Text.ToString(),
 				placa_item = txtPlacaDoItem.Text.ToString(),
 				descricao_item = txtDescricaoDoItem.Text.ToString(),
 				tipo_item = ddlTipoItem.Text.ToString(),

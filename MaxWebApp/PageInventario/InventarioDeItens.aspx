@@ -59,7 +59,7 @@
 				<div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
 					<div class="col-12">
 						<asp:HiddenField ID="hfItemId" runat="server" />
-						<div class="d-flex rounded justify-content-center mb-2" style="background: rgb(177, 174, 174, 0.5);">
+						<div class="d-flex rounded justify-content-center mb-2" style="background: rgb(177, 174, 174, 0.1);">
 
 							<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
 								<label class="mt-2" for="text">Placa *</label>
@@ -292,6 +292,26 @@
 		<script src="../Scripts/Notificacao.js"></script>
 
 		<script>
+			
+			function AbriModal() {
+				var modal = document.getElementById('modal');
+				modal.style.display = 'block'
+			}
+
+			function FecharModal() {
+				var modal = document.getElementById('modal');
+				modal.style.display = 'none'
+			}
+
+			document..getElementById('AbrirModal').addEventListener('click', AbriModal)
+			document..getElementById('FecharModal').addEventListener('click', FecharModal)
+
+			window.onclick = function (event) {
+				var modal = document.getElementById('modal')
+				if (event.target == modal) {
+					modal.style.display = 'none';
+				}
+			}
 
 			function teste() {
 				var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');

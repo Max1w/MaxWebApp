@@ -1,4 +1,4 @@
-﻿﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CamposForm.ascx.cs" Inherits="MaxWebApp.Campos.CamposForm" %>
+﻿﻿﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CamposForm.ascx.cs" Inherits="MaxWebApp.Campos.CamposForm" %>
 
 <style>
 	.nav-tabs {

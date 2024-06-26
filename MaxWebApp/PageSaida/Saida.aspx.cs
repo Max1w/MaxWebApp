@@ -27,19 +27,6 @@ namespace MaxWebApp
 			GridView1.DataSource = listaItens;
 			GridView1.DataBind();
 		}
-
-		protected void CkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
-		{
-			CheckBox ckSelecionarTodos = (CheckBox)sender;
-			foreach (GridViewRow row in GridView1.Rows)
-			{
-				CheckBox ckSelecionados = (CheckBox)row.FindControl("ckSelecionados");
-				if (ckSelecionados != null)
-				{
-					ckSelecionados.Checked = ckSelecionarTodos.Checked;
-				}
-			}
-		}
 		protected async void ExcluirItensSelecionados_Click(object sender, EventArgs e)
 		{
 			List<int> idsParaExcluir = new List<int>();

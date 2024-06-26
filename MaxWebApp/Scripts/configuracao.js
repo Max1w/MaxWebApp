@@ -1,20 +1,10 @@
-﻿window.onload = function () {
-	var darkModeCheckbox = document.getElementById('checkboxTheme');
-	if (localStorage.getItem('DarkMode') === 'true') {
-		document.body.classList.add('dark-mode');
-		document.body.classList.remove('white-mode');
-		darkModeCheckbox.checked = true;
-	}
-}
+﻿document.getElementById('toggle-dark-mode').addEventListener('click', function (event) {
+    event.preventDefault(); // Impede o postback
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+});
 
-function toggleDarkMode() {
-	var darkModeCheckbox = document.getElementById('checkboxTheme');
-	if (darkModeCheckbox.checked) {
-		localStorage.setItem('DarkMode', 'true');
-		document.body.classList.add('dark-mode');
-	} else {
-		localStorage.setItem('DarkMode', 'false');
-		document.body.classList.add('white-mode');
-		document.body.classList.remove('dark-mode');
-	}
+// Verifica a preferência salva do usuário
+if (localStorage.getItem('dark-mode') === 'true') {
+    document.body.classList.add('dark-mode');
 }

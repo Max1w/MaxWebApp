@@ -15,31 +15,14 @@ namespace MaxWebApp
 	{
 		public static async Task<List<ItemModelo>> CarregarItensDoInventarioGET(string url)
 		{
-			try
+			using (HttpClient client = new HttpClient())
 			{
-				using (HttpClient client = new HttpClient())
-				{
-					HttpResponseMessage response = await client.GetAsync(url);
-					if (response.IsSuccessStatusCode)
-					{
-						string json = await response.Content.ReadAsStringAsync();
-						List<ItemModelo> itens = JsonConvert.DeserializeObject<List<ItemModelo>>(json);
-						return itens;
-					}
-					else
-					{
-						Console.WriteLine("Erro na resposta da API: " + response.StatusCode);
-					}
-				}
+				HttpResponseMessage response = await client.GetAsync(url);
+				response.EnsureSuccessStatusCode();
+				string responseBody = await response.Content.ReadAsStringAsync();
+				return JsonConvert.DeserializeObject<List<ItemModelo>>(responseBody);
 			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("Erro ao chamar a API externa: " + ex.Message);
-			}
-			return null;
 		}
-
-
 		public static async Task AdicionarItemPOST(string url, ItemModelo item, Page pag)
 		{
 			using (HttpClient client = new HttpClient())

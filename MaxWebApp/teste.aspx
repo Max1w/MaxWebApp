@@ -277,19 +277,13 @@
 	function CarregarItensNosCampos(id) {
 		console.log('Starting AJAX request with id:', id);
 		$.ajax({
-			url: '/teste.aspx/CarregarDetalhesDoItemAsync',
+			url: 'teste.aspx/CarregarDetalhesDoItemAsync',
 			type: 'POST',
 			contentType: 'application/json; charset=utf-8',
 			dataType: 'json',
 			data: JSON.stringify({ id: id }),
-			success: function (data) {
-				console.log('Detalhes do item:', data);
-				if (data && data.d) {
-					$('#MainContent_txtCodigoDoItem').val(data.d.codigo_item);
-					$('#MainContent_txtPlacaDoItem').val(data.d.placa_item);
-				} else {
-					console.warn('Unexpected data format:', data);
-				}
+			success: function (response) {
+				alert("Success: " + response.d);
 			},
 			error: function (xhr, status, error) {
 				console.error('Erro ao carregar detalhes do item:', error);

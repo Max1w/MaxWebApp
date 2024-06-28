@@ -1,4 +1,5 @@
 ﻿using MaxWebApp.Modelo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -38,16 +39,26 @@ namespace MaxWebApp
 		}
 
 		[WebMethod]
-		public static async Task<ItemModelo> CarregarDetalhesDoItemAsync(string id)
+		public static async Task<string> CarregarDetalhesDoItemAsync(string id)
 		{
 			string url = "https://localhost:7279/v1/TodosOsItens";
 			try
 			{
+				Console.WriteLine($"Iniciando a carga de itens com id: {id}");
 				List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url);
 				if (listaItens != null && listaItens.Count > 0)
 				{
 					ItemModelo item = listaItens.FirstOrDefault(i => i.Id.ToString() == id);
-					return item;
+					if (item != null)
+					{
+						string itemJson = JsonConvert.SerializeObject(item);
+						Console.WriteLine($"Item encontrado: {itemJson}");
+						return itemJson; // Serializando o item para JSON
+					}
+					else
+					{
+						Console.WriteLine($"Item com id {id} não encontrado na lista.");
+					}
 				}
 				else
 				{
@@ -60,6 +71,7 @@ namespace MaxWebApp
 			}
 			return null;
 		}
+
 
 		protected async void btnSalvarAlteracoes_Click(object sender, EventArgs e)
 		{

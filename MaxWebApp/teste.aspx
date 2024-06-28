@@ -274,25 +274,32 @@
 
 <script>
 
-	function CarregarItensNosCampos(id) {
-		console.log('Starting AJAX request with id:', id);
-		$.ajax({
-			url: 'teste.aspx/CarregarDetalhesDoItemAsync',
-			type: 'POST',
-			contentType: 'application/json; charset=utf-8',
-			dataType: 'json',
-			data: JSON.stringify({ id: id }),
-			success: function (response) {
-				alert("Success: " + response.d);
-			},
-			error: function (xhr, status, error) {
-				console.error('Erro ao carregar detalhes do item:', error);
-				console.log('Status:', status);
-				console.log('XHR:', xhr);
-			}
-		});
-	}
+async function CarregarItensNosCampos(id) {
+    try {
+        // Use your specific API endpoint to fetch item details
+        const response = await fetch(`https://localhost:7279/v1/TodosOsItens/13751`);
+        if (!response.ok) {
+            throw new Error('Erro ao carregar detalhes do item.');
+        }
+        const data = await response.json();
 
+        // Populate modal fields with fetched data
+        document.getElementById('modalCenterTitle').innerText = `Detalhes do Item ${id}`;
+        document.getElementById('itemDetails').innerHTML = `
+            <p><strong>ID:</strong> ${data.id}</p>
+            <p><strong>Nome:</strong> ${data.nome}</p>
+            <p><strong>Descrição:</strong> ${data.descricao}</p>
+            <!-- Add more fields as needed -->
+        `;
+
+        // Show the modal
+        $('#modalCenter').modal('show');
+    } catch (error) {
+        console.error('Erro:', error);
+        // Handle error, e.g., show an alert to the user
+        alert('Erro ao carregar detalhes do item.');
+    }
+}
 
 function teste() {
 		var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');

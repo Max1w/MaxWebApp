@@ -40,8 +40,8 @@ namespace MaxWebApp.PageInventario
 
 		public async void CarregarDetalhesDoItem(string id)
 		{
-			string url = $"https://localhost:7279/v1/TodosOsItens{id}";
-			List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url);
+			string url = "https://localhost:7279/v1/TodosOsItens";
+			List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url, id);
 
 			if (listaItens != null && listaItens.Count > 0)
 			{

@@ -13,16 +13,21 @@ namespace MaxWebApp
 {
 	public class MetodosBancoDeDadosApi
 	{
-		public static async Task<List<ItemModelo>> CarregarItensDoInventarioGET(string url)
+		public static async Task<List<ItemModelo>> CarregarItensDoInventarioGET(string url, string id = "")
 		{
 			using (HttpClient client = new HttpClient())
 			{
-				HttpResponseMessage response = await client.GetAsync(url);
+				var fullUrl = string.IsNullOrEmpty(id) ? url : $"{url}/{id}";
+				Console.WriteLine($"Fazendo requisição GET para URL: {fullUrl}");
+				HttpResponseMessage response = await client.GetAsync(fullUrl);
 				response.EnsureSuccessStatusCode();
 				string responseBody = await response.Content.ReadAsStringAsync();
+				Console.WriteLine($"Resposta recebida: {responseBody}");
 				return JsonConvert.DeserializeObject<List<ItemModelo>>(responseBody);
 			}
 		}
+
+
 		public static async Task AdicionarItemPOST(string url, ItemModelo item, Page pag)
 		{
 			using (HttpClient client = new HttpClient())

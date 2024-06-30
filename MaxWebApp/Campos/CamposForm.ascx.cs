@@ -98,8 +98,8 @@ namespace MaxWebApp.Campos
 				observacao = txtObservacao.Text.ToString(),
 				patrimonios_id = 1
 			};
-			Page pag = new Page();
-			await MetodosBancoDeDadosApi.AdicionarItemPOST(apiUrl, novoItem, pag);
+			await MetodosBancoDeDadosApi.AdicionarItemPOST(apiUrl, novoItem);
+			ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
 		}
 
 
@@ -142,42 +142,33 @@ namespace MaxWebApp.Campos
 			string depreciacaoAnualS = depreciacaoAnual.ToString();
 			string vidaUtilS = vidaUtil.ToString();
 
-
-			if (!string.IsNullOrEmpty(codigoDoItem) &&
-				!string.IsNullOrEmpty(placaDoItem) &&
-				!string.IsNullOrEmpty(descricaoDoItem) &&
-				!string.IsNullOrEmpty(dataAquisicao) &&
-				!string.IsNullOrEmpty(grupoDoItem) &&
-				!string.IsNullOrEmpty(conservacaoDoItem) &&
-				!string.IsNullOrEmpty(tipoDoItem) &&
-				!string.IsNullOrEmpty(tipoAquisicao) &&
-				!string.IsNullOrEmpty(metodoDepreciacao) &&
-				!string.IsNullOrEmpty(responsavel) &&
-				!string.IsNullOrEmpty(dataInicioDepreciacao) &&
-				codigoDoItem.Length < 10 &&
-				placaDoItem.Length < 10 &&
-				descricaoDoItem.Length < 2000 &&
-				localizacoFisicaDoItem.Length < 2000 &&
-				observacaoDoItem.Length < 4000 &&
-				valorDoItem < 999999 &&
-				numeroComprovante.Length < 20 &&
-				placaVeiculo.Length < 10 &&
-				modeloVeiculo.Length < 50 &&
-				vidaUtil < 150 &&
-				depreciacaoAnual < 100)
+			var valida = new ValidacaoDosCampos();
+			if (valida.CampoVazioOuNull(codigoDoItem, placaDoItem, descricaoDoItem, dataAquisicao, grupoDoItem, conservacaoDoItem, tipoDoItem,
+										tipoAquisicao, metodoDepreciacao, responsavel, dataInicioDepreciacao, valorResidual, valorDepreciavel,
+										valorDepreciado, saldoDepreciar, valorLiquido, valorDoItemS, vidaUtilS, depreciacaoAnualS))
 			{
-				if (entrada.VericarDuplicidade(placaDoItem, codigoDoItem))
+				if (valida.TamanhoLimiteDeCaracteres(codigoDoItem, placaDoItem, descricaoDoItem, placaVeiculo, modeloVeiculo,
+													 responsavel, valorResidual, localizacoFisicaDoItem, numeroComprovante,
+													 valorDepreciavel, valorDepreciado, saldoDepreciar, observacaoDoItem,
+													 valorLiquido, valorDoItemS, vidaUtilS, depreciacaoAnualS))
 				{
-					SalvarInformacoesNoBanco();
+					if (entrada.VericarDuplicidade(placaDoItem, codigoDoItem))
+					{
+						SalvarInformacoesNoBanco();
+					}
+					else
+					{
+						ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true);
+					}
 				}
 				else
 				{
-					ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true);
+					ScriptManager.RegisterStartupScript(this, this.GetType(), "LimiteUltrapassadoDeCaracteres", "LimiteUltrapassadoDeCaracteres();", true);
 				}
 			}
 			else
 			{
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "LimiteUltrapassadoDeCaracteres", "LimiteUltrapassadoDeCaracteres();", true);
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
 			}
 		}
 

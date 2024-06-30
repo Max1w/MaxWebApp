@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaxWebApp.Modelo;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Web.Services;
 
 namespace MaxWebApp.PageInventario
 {
@@ -33,57 +36,43 @@ namespace MaxWebApp.PageInventario
 			if (e.CommandName == "Editar")
 			{
 				string id = e.CommandArgument.ToString();
-				pnlEdit.Visible = true;
-				CarregarDetalhesDoItem(id);
 			}
 		}
 
-		public async void CarregarDetalhesDoItem(string id)
+		[WebMethod]
+		public static async Task<string> CarregarDetalhesDoItemAsync(string id)
 		{
 			string url = "https://localhost:7279/v1/TodosOsItens";
-			List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url, id);
-
-			if (listaItens != null && listaItens.Count > 0)
+			try
 			{
-				ItemModelo item = listaItens[0]; // Supondo que você quer o primeiro item da lista
-
-				hfItemId.Value = item.Id.ToString();
-				txtCodigoDoItem.Text = item.codigo_item;
-				txtPlacaDoItem.Text = item.placa_item;
-				txtDescricaoDoItem.Text = item.descricao_item;
-				txtDataAquisicao.Text = item.data_aquisicao.ToString("yyyy-MM-dd");
-				ddlConservacaoItem.SelectedValue = item.estado_conservacao;
-				ddlGrupoItem.SelectedValue = item.grupo_item;
-				txtLocalizacaoFisica.Text = item.localizacao_fisica;
-				txtObservacao.Text = item.observacao;
-				txtValorAquisicao.Text = item.valor_aquisicao.ToString();
-				ddlTipoItem.SelectedValue = item.tipo_item;
-				ddlTipoAquisicao.SelectedValue = item.tipo_aquisicao;
-				ddlTipoComprovante.SelectedValue = item.tipo_comprovante;
-				txtNumeroComprovante.Text = item.numero_comprovante;
-				txtPlacaVeiculo.Text = item.placa_veiculo;
-				txtModeloVeiculo.Text = item.modelo_veiculo;
-				txtVidaUtil.Text = item.vida_util.ToString();
-				txtDepreciacaoAnual.Text = item.depreciacao_anual.ToString();
-				ddlMetodoDepreciacao.SelectedValue = item.metodo_depreciacao;
-				ddlCombustivel.SelectedValue = item.tem_combustivel;
-				txtResponsavel.Text = item.responsavel;
-				txtDataDepreciacao.Text = item.inicio_depreciacao.ToString("yyyy-MM-dd");
-				txtValorResidual.Text = item.valor_residual.ToString();
-				txtValorDepreciavel.Text = item.valor_depreciavel.ToString();
-				txtValorDepreciado.Text = item.valor_depreciado.ToString();
-				txtSaldoDepreciar.Text = item.saldo_depreciar.ToString();
-				txtValorLiquido.Text = item.valor_liquido.ToString();
-
-				pnlEdit.Visible = true;
+				Console.WriteLine($"Iniciando a carga de itens com id: {id}");
+				List<ItemModelo> listaItens = await MetodosBancoDeDadosApi.CarregarItensDoInventarioGET(url);
+				if (listaItens != null && listaItens.Count > 0)
+				{
+					ItemModelo item = listaItens.FirstOrDefault(i => i.Id.ToString() == id);
+					if (item != null)
+					{
+						string itemJson = JsonConvert.SerializeObject(item);
+						Console.WriteLine($"Item encontrado: {itemJson}");
+						return itemJson; // Serializando o item para JSON
+					}
+					else
+					{
+						Console.WriteLine($"Item com id {id} não encontrado na lista.");
+					}
+				}
+				else
+				{
+					Console.WriteLine("Lista de itens está vazia ou nula");
+				}
 			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Erro ao carregar itens do inventário: " + ex.Message);
+			}
+			return null;
 		}
 
-
-		protected void botaoCancelarInventario_Click(object sender, EventArgs e)
-		{
-			pnlEdit.Visible = false;
-		}
 
 		protected async void btnSalvarAlteracoes_Click(object sender, EventArgs e)
 		{
@@ -117,16 +106,22 @@ namespace MaxWebApp.PageInventario
 				saldo_depreciar = txtSaldoDepreciar.Text,
 				valor_liquido = txtValorLiquido.Text
 			};
-
-			if (!string.IsNullOrEmpty(item.codigo_item) && !string.IsNullOrEmpty(item.placa_item) && !string.IsNullOrEmpty(item.descricao_item) && !string.IsNullOrEmpty(item.valor_aquisicao) && !string.IsNullOrEmpty(item.grupo_item) && !string.IsNullOrEmpty(item.estado_conservacao) && !string.IsNullOrEmpty(item.tipo_item) && !string.IsNullOrEmpty(item.tipo_aquisicao) && !string.IsNullOrEmpty(item.depreciacao_anual) && !string.IsNullOrEmpty(item.metodo_depreciacao) && !string.IsNullOrEmpty(item.valor_residual) && !string.IsNullOrEmpty(item.responsavel))
+			var valida = new ValidacaoDosCampos();
+			if (valida.CampoVazioOuNull(item.codigo_item, item.placa_item, item.descricao_item, item.data_aquisicao.ToString(), item.grupo_item, item.estado_conservacao, item.tipo_item,
+										item.tipo_aquisicao, item.metodo_depreciacao, item.responsavel, item.inicio_depreciacao.ToString(), item.valor_residual, item.valor_depreciavel,
+										item.valor_depreciado, item.saldo_depreciar, item.valor_liquido, item.valor_aquisicao, item.vida_util, item.depreciacao_anual))
 			{
-				if ((item.codigo_item.Length < 10) && (item.placa_item.Length < 10) && (item.descricao_item.Length < 2000) && (item.localizacao_fisica.Length < 2000) && (item.observacao.Length < 4000) && (item.valor_aquisicao.Length < 999999) && (item.numero_comprovante.Length < 20) && (item.placa_veiculo.Length < 10) && (item.modelo_veiculo.Length < 50) && (item.vida_util.Length < 5) && (item.depreciacao_anual.Length < 10) && (item.valor_residual.Length < 999999) && (item.valor_depreciavel.Length < 999999) && (item.valor_depreciado.Length < 999999) && (item.saldo_depreciar.Length < 999999) && (item.valor_liquido.Length < 999999) && (item.responsavel.Length < 161))
+				if (valida.TamanhoLimiteDeCaracteres(item.codigo_item, item.placa_item, item.descricao_item, item.placa_veiculo, item.modelo_veiculo,
+													 item.responsavel, item.valor_residual, item.localizacao_fisica, item.numero_comprovante,
+													 item.valor_depreciavel, item.valor_depreciado, item.saldo_depreciar, item.observacao,
+													 item.valor_liquido, item.valor_aquisicao, item.vida_util, item.depreciacao_anual))
 				{
 					if (VericarDuplicidade(item.placa_item, item.Id))
 					{
 						Page pagina = this.Page;
 						string url = $"https://localhost:7279/v1/TodosOsItens/{item.Id}";
 						await MetodosBancoDeDadosApi.AtualizarItemPUT(url, item);
+						ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
 					}
 					else
 					{ ScriptManager.RegisterStartupScript(this, this.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true); }
@@ -141,7 +136,6 @@ namespace MaxWebApp.PageInventario
 				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
 			}
 
-			pnlEdit.Visible = false;
 			BindGridView();
 		}
 

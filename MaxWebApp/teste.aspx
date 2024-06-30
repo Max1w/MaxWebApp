@@ -1,8 +1,6 @@
 ﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="teste.aspx.cs" Inherits="MaxWebApp.teste1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	<link rel="stylesheet" href="configuracao.css" />
-	<script src="Scripts/configuracao.js"></script>
 	<div class="container">
 		<div>
 			<h1 style="margin-top: 60px; text-align: center">Inventário</h1>
@@ -254,7 +252,12 @@
 							</div>
 						</div>
 					</div>
-						<div id="notificacaoDeSucesso" class="alert alert-success" role="alert">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="notificacaoDeSucesso" class="alert alert-success" role="alert">
 		Cadastro salvo com sucesso!
 	</div>
 	<div id="notificacaoDeCampoInvalido" class="alert alert-warning" role="alert">
@@ -270,144 +273,161 @@
 		Foi ultrapassado o valor limite de caracteres!
 	</div>
 
-<script src="../Scripts/Notificacao.js"></script>
+	<script src="../Scripts/Notificacao.js"></script>
 
-<script>
+	<script>
 
-async function CarregarItensNosCampos(id) {
-    try {
-        // Use your specific API endpoint to fetch item details
-        const response = await fetch(`https://localhost:7279/v1/TodosOsItens/13751`);
-        if (!response.ok) {
-            throw new Error('Erro ao carregar detalhes do item.');
-        }
-        const data = await response.json();
-
-        // Populate modal fields with fetched data
-        document.getElementById('modalCenterTitle').innerText = `Detalhes do Item ${id}`;
-        document.getElementById('itemDetails').innerHTML = `
-            <p><strong>ID:</strong> ${data.id}</p>
-            <p><strong>Nome:</strong> ${data.nome}</p>
-            <p><strong>Descrição:</strong> ${data.descricao}</p>
-            <!-- Add more fields as needed -->
-        `;
-
-        // Show the modal
-        $('#modalCenter').modal('show');
-    } catch (error) {
-        console.error('Erro:', error);
-        // Handle error, e.g., show an alert to the user
-        alert('Erro ao carregar detalhes do item.');
-    }
-}
-
-function teste() {
-		var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');
-		var combustivel = document.getElementById('<%= ddlCombustivel.ClientID %>');
-		var placaVeiculo = document.getElementById('<%= txtPlacaVeiculo.ClientID %>');
-		var modeloVeiculo = document.getElementById('<%= txtModeloVeiculo.ClientID %>');
-
-		if (grupo.value == "Móvel Veículo") {
-			combustivel.disabled = false;
-			combustivel.classList.remove("disabled");
-		} else {
-			combustivel.disabled = true;
-			combustivel.classList.add("disabled");
-			combustivel.value = "Não";
-			placaVeiculo.value = "";
-			modeloVeiculo.value = "";
+		function CarregarItensNosCampos(id) {
+			console.log('Starting AJAX request with id:', id);
+			$.ajax({
+				url: 'https://localhost:7279/v1/TodosOsItens/' + id,
+				type: 'GET',
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				success: function (response) {
+					$('#<%= hfItemId.ClientID %>').val(response.id);
+					$('#<%= txtCodigoDoItem.ClientID %>').val(response.codigo_item);
+					$('#<%= txtPlacaDoItem.ClientID %>').val(response.placa_item);
+					$('#<%= txtDescricaoDoItem.ClientID %>').val(response.descricao_item);
+					$('#<%= txtDataAquisicao.ClientID %>').val(new Date(response.data_aquisicao).toISOString().substring(0, 10));
+					$('#<%= txtDataDepreciacao.ClientID %>').val(new Date(response.inicio_depreciacao).toISOString().substring(0, 10));
+					$('#<%= ddlGrupoItem.ClientID %>').val(response.grupo_item);
+					$('#<%= ddlConservacaoItem.ClientID %>').val(response.estado_conservacao);
+					$('#<%= txtLocalizacaoFisica.ClientID %>').val(response.localizacao_fisica);
+					$('#<%= txtObservacao.ClientID %>').val(response.observacao);
+					$('#<%= txtValorAquisicao.ClientID %>').val(response.valor_aquisicao);
+					$('#<%= ddlTipoItem.ClientID %>').val(response.tipo_item);
+					$('#<%= ddlTipoAquisicao.ClientID %>').val(response.tipo_aquisicao);
+					$('#<%= ddlTipoComprovante.ClientID %>').val(response.tipo_comprovante);
+					$('#<%= txtNumeroComprovante.ClientID %>').val(response.numero_comprovante);
+					$('#<%= txtPlacaVeiculo.ClientID %>').val(response.placa_veiculo);
+					$('#<%= txtModeloVeiculo.ClientID %>').val(response.modelo_veiculo);
+					$('#<%= txtVidaUtil.ClientID %>').val(response.vida_util);
+					$('#<%= txtDepreciacaoAnual.ClientID %>').val(response.depreciacao_anual);
+					$('#<%= ddlMetodoDepreciacao.ClientID %>').val(response.metodo_depreciacao);
+					$('#<%= ddlCombustivel.ClientID %>').val(response.tem_combustivel);
+					$('#<%= txtResponsavel.ClientID %>').val(response.responsavel);
+					$('#<%= txtValorResidual.ClientID %>').val(response.valor_residual);
+					$('#<%= txtValorDepreciavel.ClientID %>').val(response.valor_depreciavel);
+					$('#<%= txtValorDepreciado.ClientID %>').val(response.valor_depreciado);
+					$('#<%= txtSaldoDepreciar.ClientID %>').val(response.saldo_depreciar);
+					$('#<%= txtValorLiquido.ClientID %>').val(response.valor_liquido);
+				},
+				error: function (xhr, status, error) {
+					console.error('Erro ao carregar detalhes do item:', error);
+					console.log('Status:', status);
+					console.log('XHR:', xhr);
+				}
+			});
 		}
 
-		if (combustivel.value == "Sim") {
+		function teste() {
+			var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');
+			var combustivel = document.getElementById('<%= ddlCombustivel.ClientID %>');
+			var placaVeiculo = document.getElementById('<%= txtPlacaVeiculo.ClientID %>');
+			var modeloVeiculo = document.getElementById('<%= txtModeloVeiculo.ClientID %>');
 
-			placaVeiculo.disabled = false;
-			placaVeiculo.classList.remove("disabled");
-			placaVeiculo.classList.add("bg-light");
+			if (grupo.value == "Móvel Veículo") {
+				combustivel.disabled = false;
+				combustivel.classList.remove("disabled");
+			} else {
+				combustivel.disabled = true;
+				combustivel.classList.add("disabled");
+				combustivel.value = "Não";
+				placaVeiculo.value = "";
+				modeloVeiculo.value = "";
+			}
 
-			modeloVeiculo.disabled = false;
-			modeloVeiculo.classList.remove("disabled");
-			modeloVeiculo.classList.add("bg-light");
+			if (combustivel.value == "Sim") {
 
-		} else if (combustivel.value == "Não") {
+				placaVeiculo.disabled = false;
+				placaVeiculo.classList.remove("disabled");
+				placaVeiculo.classList.add("bg-light");
 
-			placaVeiculo.disabled = true;
-			placaVeiculo.classList.add("disabled");
-			placaVeiculo.classList.remove("bg-light");
+				modeloVeiculo.disabled = false;
+				modeloVeiculo.classList.remove("disabled");
+				modeloVeiculo.classList.add("bg-light");
 
-			placaVeiculo.value = "";
-			modeloVeiculo.value = "";
+			} else if (combustivel.value == "Não") {
 
-			modeloVeiculo.disabled = true;
-			modeloVeiculo.classList.add("disabled");
-			modeloVeiculo.classList.remove("bg-light");
+				placaVeiculo.disabled = true;
+				placaVeiculo.classList.add("disabled");
+				placaVeiculo.classList.remove("bg-light");
+
+				placaVeiculo.value = "";
+				modeloVeiculo.value = "";
+
+				modeloVeiculo.disabled = true;
+				modeloVeiculo.classList.add("disabled");
+				modeloVeiculo.classList.remove("bg-light");
+			}
 		}
-	}
 
-	document.addEventListener('DOMContentLoaded', function () {
+		document.addEventListener('DOMContentLoaded', function () {
 
-		//Campo Placa
-		const cPlaca = document.getElementById('<%= txtPlacaDoItem.ClientID %>');
-		const avisoCampoPlaca = document.getElementById('avisoPlaca');
+			//Campo Placa
+			const cPlaca = document.getElementById('<%= txtPlacaDoItem.ClientID %>');
+			const avisoCampoPlaca = document.getElementById('avisoPlaca');
 
-		//Campo Descrição
-		const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
-		const avisoCampoDescricao = document.getElementById('avisoDescricao');
+			//Campo Descrição
+			const cDescricao = document.getElementById('<%= txtDescricaoDoItem.ClientID %>');
+			const avisoCampoDescricao = document.getElementById('avisoDescricao');
 
-		//Campo Valor de Aquisição
-		const cValor = document.getElementById('<%= txtValorAquisicao.ClientID %>');
-		const avisoCampoValor = document.getElementById('avisoValor');
+			//Campo Valor de Aquisição
+			const cValor = document.getElementById('<%= txtValorAquisicao.ClientID %>');
+			const avisoCampoValor = document.getElementById('avisoValor');
 
-		//Campo Localização Física
-		const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
-		const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
+			//Campo Localização Física
+			const cLocalizacao = document.getElementById('<%= txtLocalizacaoFisica.ClientID %>');
+			const avisoCampoLocalizacao = document.getElementById('avisoLocalizacao');
 
-		//Campo Código
-		const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
-		const avisoCampoCodigo = document.getElementById('avisoCodigo');
+			//Campo Código
+			const cCodigo = document.getElementById('<%= txtCodigoDoItem.ClientID %>');
+			const avisoCampoCodigo = document.getElementById('avisoCodigo');
 
-		//Numero Comprovante
-		const cNumComprovante = document.getElementById('<%= txtNumeroComprovante.ClientID %>');
-		const avisoNumComprovante = document.getElementById('avisoNumeroComprovante');
+			//Numero Comprovante
+			const cNumComprovante = document.getElementById('<%= txtNumeroComprovante.ClientID %>');
+			const avisoNumComprovante = document.getElementById('avisoNumeroComprovante');
 
-		//Placa do veículo
-		const cPlacaVeiculo = document.getElementById('<%= txtPlacaVeiculo.ClientID %>');
-		const avisoPlacaVeiculo = document.getElementById('avisoPlacaVeiculo');
+			//Placa do veículo
+			const cPlacaVeiculo = document.getElementById('<%= txtPlacaVeiculo.ClientID %>');
+			const avisoPlacaVeiculo = document.getElementById('avisoPlacaVeiculo');
 
-		//Modelo do veículo
-		const cModeloVeiculo = document.getElementById('<%= txtModeloVeiculo.ClientID %>');
-		const avisoModeloVeiculo = document.getElementById('avisoModeloVeiculo');
+			//Modelo do veículo
+			const cModeloVeiculo = document.getElementById('<%= txtModeloVeiculo.ClientID %>');
+			const avisoModeloVeiculo = document.getElementById('avisoModeloVeiculo');
 
-		// Responsável
-		const cResponsavel = document.getElementById('<%= txtResponsavel.ClientID %>');
-		const avisoResponsavel = document.getElementById('avisoResponsavel');
+			// Responsável
+			const cResponsavel = document.getElementById('<%= txtResponsavel.ClientID %>');
+			const avisoResponsavel = document.getElementById('avisoResponsavel');
 
-		// vida util
-		const cVidaUtil = document.getElementById('<%= txtVidaUtil.ClientID %>');
-		const avisoVidaUtil = document.getElementById('avisoVidaUtil');
+			// vida util
+			const cVidaUtil = document.getElementById('<%= txtVidaUtil.ClientID %>');
+			const avisoVidaUtil = document.getElementById('avisoVidaUtil');
 
-		//depreciação anual
-		const cDepreAnual = document.getElementById('<%= txtDepreciacaoAnual.ClientID %>');
-		const avisoDepreAnual = document.getElementById('avisoDepreciacaoAnual');
+			//depreciação anual
+			const cDepreAnual = document.getElementById('<%= txtDepreciacaoAnual.ClientID %>');
+			const avisoDepreAnual = document.getElementById('avisoDepreciacaoAnual');
 
-		// valor residual
-		const cValorResidual = document.getElementById('<%= txtValorResidual.ClientID %>');
-		const avisoValorResidual = document.getElementById('avisoValorResidual');
+			// valor residual
+			const cValorResidual = document.getElementById('<%= txtValorResidual.ClientID %>');
+			const avisoValorResidual = document.getElementById('avisoValorResidual');
 
-		ValidarCampoNumero(cPlaca, avisoCampoPlaca);
-		ValidarCampoNumero(cNumComprovante, avisoNumComprovante);
-		ValidarCampoNumero(cVidaUtil, avisoVidaUtil);
-		ValidarCampoNumerico(cValor, avisoCampoValor);
-		ValidarCampoNumerico(cDepreAnual, avisoDepreAnual);
-		ValidarCampoNumerico(cValorResidual, avisoValorResidual);
-		ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
-		ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
-		ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
-		ValidarCampoApenasNumeroELetras(cPlacaVeiculo, avisoPlacaVeiculo);
-		ValidarCampoApenasNumeroELetras(cModeloVeiculo, avisoModeloVeiculo);
-		ValidarCampoApenasLetras(cResponsavel, avisoResponsavel);
+			ValidarCampoNumero(cPlaca, avisoCampoPlaca);
+			ValidarCampoNumero(cNumComprovante, avisoNumComprovante);
+			ValidarCampoNumero(cVidaUtil, avisoVidaUtil);
+			ValidarCampoNumerico(cValor, avisoCampoValor);
+			ValidarCampoNumerico(cDepreAnual, avisoDepreAnual);
+			ValidarCampoNumerico(cValorResidual, avisoValorResidual);
+			ValidarCampoDeTextoComNumeros(cDescricao, avisoCampoDescricao);
+			ValidarCampoDeTextoComNumeros(cLocalizacao, avisoCampoLocalizacao);
+			ValidarCampoDeTextoComNumeros(cCodigo, avisoCampoCodigo);
+			ValidarCampoApenasNumeroELetras(cPlacaVeiculo, avisoPlacaVeiculo);
+			ValidarCampoApenasNumeroELetras(cModeloVeiculo, avisoModeloVeiculo);
+			ValidarCampoApenasLetras(cResponsavel, avisoResponsavel);
 
-	});
-</script>
+		});
+	</script>
 
-<script src="../Scripts/Validacao.js"></script>
+	<script src="../Scripts/Validacao.js"></script>
 </asp:Content>

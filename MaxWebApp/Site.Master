@@ -7,14 +7,15 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title><%: Page.Title %> - My ASP.NET Application</title>
-	<link rel="stylesheet" href="configuracao.css" />
+	<link rel="stylesheet" href="/configuracao.css" />
 
 	<asp:PlaceHolder runat="server">
 		<%: Scripts.Render("~/bundles/modernizr") %>
 	</asp:PlaceHolder>
 
 	<webopt:BundleReference runat="server" Path="~/Content/css" />
-	<link href="~/Imagens/IconPatrimonio.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="~/Imagens/iconPatrimonio.ico" rel="shortcut icon" type="image/x-icon" />
+
 
 </head>
 <body id="body" class="" runat="server">
@@ -160,7 +161,7 @@
 		</style>
 		<nav class="navbar navbar-expand-sm navbar-toggleable-sm">
 			<div class="container" style="margin-left: 0px">
-				<img src="Imagens/Patrimonio.png" alt="Imagem" class="mr-2 mb-2">
+				<img src="/Imagens/Patrimonio.png" alt="Imagem" class="mr-2 mb-2">
 				<a class="navbar-brand navegacao" style="color: #000; margin-left: 20px" runat="server" href="~/"><strong>Modulo Patrimônio</strong></a>
 				<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
 					aria-expanded="false" aria-label="Toggle navigation">

@@ -18,17 +18,14 @@ namespace MaxWebApp
 			using (HttpClient client = new HttpClient())
 			{
 				var fullUrl = string.IsNullOrEmpty(id) ? url : $"{url}/{id}";
-				Console.WriteLine($"Fazendo requisição GET para URL: {fullUrl}");
 				HttpResponseMessage response = await client.GetAsync(fullUrl);
 				response.EnsureSuccessStatusCode();
 				string responseBody = await response.Content.ReadAsStringAsync();
-				Console.WriteLine($"Resposta recebida: {responseBody}");
 				return JsonConvert.DeserializeObject<List<ItemModelo>>(responseBody);
 			}
 		}
 
-
-		public static async Task AdicionarItemPOST(string url, ItemModelo item, Page pag)
+		public static async Task AdicionarItemPOST(string url, ItemModelo item)
 		{
 			using (HttpClient client = new HttpClient())
 			{
@@ -36,10 +33,6 @@ namespace MaxWebApp
 				var content = new StringContent(json, Encoding.UTF8, "application/json");
 				HttpResponseMessage responseMessage = await client.PostAsync(url, content);
 				var responseContent = await responseMessage.Content.ReadAsStringAsync();
-				if (!responseMessage.IsSuccessStatusCode)
-				{
-					ScriptManager.RegisterStartupScript(pag, pag.GetType(), "CadastroDuplicado", "CadastroDuplicado();", true);
-				}
 				responseMessage.EnsureSuccessStatusCode();
 			}
 		}

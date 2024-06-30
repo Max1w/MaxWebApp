@@ -321,6 +321,7 @@
     <Compile Include="teste.aspx.designer.cs">
       <DependentUpon>teste.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ValidacaoDosCampos.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

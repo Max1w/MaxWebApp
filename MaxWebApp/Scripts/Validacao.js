@@ -1,6 +1,9 @@
-﻿function ValidarCampoNumero(campo, aviso) {
-    campo.addEventListener('keydown', function (event) {
+﻿function removerEspacosExcesso(valor) {
+    return valor.replace(/\s+/g, ' ').trim();
+}
 
+function ValidarCampoNumero(campo, aviso) {
+    campo.addEventListener('keydown', function (event) {
         if ([8, 13, 46, 37, 39, 110, 190, 160, 161].indexOf(event.keyCode) !== -1 ||
             (event.keyCode === 65 && event.ctrlKey === true) ||
             (event.keyCode === 88 && event.ctrlKey === true) ||
@@ -28,6 +31,9 @@
         valor = valor.replace(/[^0-9,]/g, '');
 
         campo.value = valor;
+    });
+    campo.addEventListener('blur', function () {
+        campo.value = removerEspacosExcesso(campo.value);
     });
 }
 
@@ -61,9 +67,10 @@ function ValidarCampoNumerico(campo, aviso) {
 
         let valorSemFormatacao = valor.replace(/[^0-9,]/g, '');
 
-        campo.value = valorNumerico;
+        campo.value = removerEspacosExcesso(valorSemFormatacao);
     });
 }
+
 function ValidarCampoDeTextoComNumeros(campo, aviso) {
     campo.addEventListener('keydown', function (event) {
 
@@ -89,6 +96,9 @@ function ValidarCampoDeTextoComNumeros(campo, aviso) {
         valor = valor.replace(/[@#><]/g, '');
 
         campo.value = valor;
+    });
+    campo.addEventListener('blur', function () {
+        campo.value = removerEspacosExcesso(campo.value);
     });
 }
 
@@ -119,8 +129,10 @@ function ValidarCampoApenasNumeroELetras(campo, aviso) {
         valor = valor.replace(/[^a-zA-Z0-9 ]/g, '');
         campo.value = valor;
     });
+    campo.addEventListener('blur', function () {
+        campo.value = removerEspacosExcesso(campo.value);
+    });
 }
-
 
 function ValidarCampoApenasLetras(campo, aviso) {
     campo.addEventListener('keydown', function (event) {
@@ -134,7 +146,7 @@ function ValidarCampoApenasLetras(campo, aviso) {
         }
 
         if (!(event.keyCode >= 65 && event.keyCode <= 90) &&  // letras maiúsculas
-        !(event.keyCode >= 97 && event.keyCode <= 122) && event.keyCode !== 9 &&
+            !(event.keyCode >= 97 && event.keyCode <= 122) && event.keyCode !== 9 &&
             event.ctrlKey === false && !event.keyCode == 32) { // letras minúsculas
             event.preventDefault();
             aviso.style.display = 'block';
@@ -147,5 +159,8 @@ function ValidarCampoApenasLetras(campo, aviso) {
         let valor = campo.value;
         valor = valor.replace(/[^a-zA-Z ]/g, '');
         campo.value = valor;
+    });
+    campo.addEventListener('blur', function () {
+        campo.value = removerEspacosExcesso(campo.value);
     });
 }

@@ -184,6 +184,7 @@
 							<label for="text">Responsável *</label>
 							<asp:TextBox runat="server" ID="txtResponsavel" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
 							<div id="avisoResponsavel" class="invalid-feedback">Favor inserir apenas letras</div>
+							<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtResponsavel" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 						</div>
 					</div>
 				</div>
@@ -202,6 +203,7 @@
 								<label for="text">Vida Útil</label>
 								<asp:TextBox runat="server" ID="txtVidaUtil" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
 								<div id="avisoVidaUtil" class="invalid-feedback">Favor inserir Apenas numeros</div>
+							<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 							</div>
 							<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
 								<label for="text">Depreciação Anual *</label>

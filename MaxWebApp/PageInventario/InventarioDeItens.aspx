@@ -15,24 +15,25 @@
 			}
 		</style>
 		<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light rounded-grid" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
-			<Columns>
-				<asp:BoundField DataField="codigo_item" HeaderText="Código" />
-				<asp:BoundField DataField="placa_item" HeaderText="Placa" />
-				<asp:BoundField DataField="descricao_item" HeaderText="Descrição" />
-				<asp:BoundField DataField="grupo_item" HeaderText="Grupo" />
-				<asp:BoundField DataField="localizacao_fisica" HeaderText="Localização" />
-				<asp:BoundField DataField="observacao" HeaderText="Observação" />
-				<asp:BoundField DataField="valor_aquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
-				<asp:BoundField DataField="data_aquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
-				<asp:TemplateField>
-					<ItemTemplate>
-						<button type="button" data-toggle="modal" data-target="#modalCenter" onclick="CarregarItensNosCampos('<%# Eval("ID") %>')" class="btn btn-outline-primary">Editar</button>
-					</ItemTemplate>
-				</asp:TemplateField>
-			</Columns>
-			<PagerSettings Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior" />
-			<PagerStyle HorizontalAlign="Center" />
-		</asp:GridView>
+    <Columns>
+        <asp:BoundField DataField="codigo_item" HeaderText="Código" />
+        <asp:BoundField DataField="placa_item" HeaderText="Placa" />
+        <asp:BoundField DataField="descricao_item" HeaderText="Descrição" />
+        <asp:BoundField DataField="grupo_item" HeaderText="Grupo" />
+        <asp:BoundField DataField="localizacao_fisica" HeaderText="Localização" />
+        <asp:BoundField DataField="observacao" HeaderText="Observação" />
+        <asp:BoundField DataField="valor_aquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
+        <asp:BoundField DataField="data_aquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
+        <asp:TemplateField>
+            <ItemTemplate>
+                <button type="button" data-toggle="modal" data-target="#modalCenter" onclick="CarregarItensNosCampos('<%# Eval("ID") %>')" class="btn btn-outline-primary">Editar</button>
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+    <PagerSettings Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior" />
+    <PagerStyle HorizontalAlign="Center" />
+</asp:GridView>
+
 	</div>
 	<style>
 		input, select, textarea {
@@ -182,6 +183,7 @@
 												<label for="text">Responsável *</label>
 												<asp:TextBox runat="server" ID="txtResponsavel" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
 												<div id="avisoResponsavel" class="invalid-feedback">Favor inserir apenas letras</div>
+												<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtResponsavel" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 											</div>
 										</div>
 									</div>
@@ -199,6 +201,7 @@
 													<label for="text">Vida Útil</label>
 													<asp:TextBox runat="server" ID="txtVidaUtil" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
 													<div id="avisoVidaUtil" class="invalid-feedback">Favor inserir Apenas numeros</div>
+													<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 												</div>
 												<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
 													<label for="text">Depreciação Anual *</label>

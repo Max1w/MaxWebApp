@@ -70,7 +70,7 @@ namespace MaxWebApp.Campos
 			string apiUrl = "https://localhost:7279/v1/TodosOsItens";
 			var novoItem = new ItemModelo()
 			{
-				codigo_item = txtCodigoDoItem.Text.ToString(),
+				codigo_item = txtCodigoDoItem.Text.ToString().ToUpper(),
 				placa_item = txtPlacaDoItem.Text.ToString(),
 				descricao_item = txtDescricaoDoItem.Text.ToString(),
 				tipo_item = ddlTipoItem.Text.ToString(),
@@ -80,7 +80,7 @@ namespace MaxWebApp.Campos
 				valor_aquisicao = txtValorAquisicao.Text.ToString(),
 				metodo_depreciacao = ddlMetodoDepreciacao.Text.ToString(),
 				valor_residual = txtValorResidual.Text.ToString(),
-				responsavel = txtResponsavel.Text.ToString(),
+				responsavel = txtResponsavel.Text.ToString().ToUpper(),
 				vida_util = txtVidaUtil.Text.ToString(),
 				depreciacao_anual = txtDepreciacaoAnual.Text.ToString(),
 				inicio_depreciacao = Convert.ToDateTime(txtDataDepreciacao.Text),

@@ -196,6 +196,7 @@
 							<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
 								<label for="text">Valor de Aquisição *</label>
 								<asp:TextBox runat="server" ID="txtValorAquisicao" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+								<input oninput=""/>
 								<div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
 								<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 							</div>
@@ -203,7 +204,7 @@
 								<label for="text">Vida Útil</label>
 								<asp:TextBox runat="server" ID="txtVidaUtil" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
 								<div id="avisoVidaUtil" class="invalid-feedback">Favor inserir Apenas numeros</div>
-							<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 							</div>
 							<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
 								<label for="text">Depreciação Anual *</label>
@@ -247,7 +248,7 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-end mt-5" id="btnCancelar">
-							<button id="botaoCalcular" class="btn btn-danger m-3" runat="server" onserverclick="botaoCalcular_ServerClick">calcular</button>
+							<button id="botaoCalcular" class="btn btn-info m-3" runat="server" onserverclick="botaoCalcular_ServerClick">Calcular Depreciacao</button>
 							<a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
 							<button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
 						</div>
@@ -263,17 +264,17 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Salvar Cadastro</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body" id="descriocaoDoModal">
-				Deseja salvar esse cadastro?
+				Deseja salvar este cadastro?
 			</div>
 			<div class="modal-footer" id="btnSalvar">
-				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-				<button id="btnEnviarEntrada" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Salvar</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Não</button>
+				<button id="btnEnviarEntrada" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Sim</button>
 			</div>
 		</div>
 	</div>
@@ -298,6 +299,8 @@
 <script src="../Scripts/Notificacao.js"></script>
 
 <script>
+	
+
 	function teste() {
 		var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');
 		var combustivel = document.getElementById('<%= ddlCombustivel.ClientID %>');

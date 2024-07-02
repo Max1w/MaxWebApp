@@ -39,7 +39,7 @@
 		<div class="d-flex justify-content-end mt-5">
 			<a id="botaoCancelar" href="/" class="btn btn-primary m-3">Voltar</a>
 			<button type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#exampleModal">
-				Excluir
+				Baixar Item(ns)
 			</button>
 		</div>
 
@@ -48,17 +48,17 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Saída de Item</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						Deseja realmente excluir este cadastro?
+						Deseja realizar a Saída do(s) Item(ns)?
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Cancelar</button>
-						<asp:Button ID="ExcluirItensSelecionados" runat="server" Text="Excluir" OnClick="ExcluirItensSelecionados_Click" CssClass="btn btn-warning" />
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Não</button>
+						<asp:Button ID="ExcluirItensSelecionados" runat="server" Text="Sim" OnClick="ExcluirItensSelecionados_Click" CssClass="btn btn-warning" />
 					</div>
 				</div>
 			</div>

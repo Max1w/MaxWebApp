@@ -14,7 +14,7 @@
 				border-bottom: hidden;
 			}
 		</style>
-		<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light rounded-grid" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand1">
+		<asp:GridView ID="GridView1" runat="server" CssClass="grid-large table table-striped mt-5 table-hover table-light rounded-grid" AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
     <Columns>
         <asp:BoundField DataField="codigo_item" HeaderText="Código" />
         <asp:BoundField DataField="placa_item" HeaderText="Placa" />

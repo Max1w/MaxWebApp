@@ -201,6 +201,7 @@
     <Content Include="Login.aspx" />
     <Content Include="LoginEstilo.css" />
     <Content Include="AnimacaoCard.css" />
+    <Content Include="Scripts\CalculoDepreciacao.js" />
     <Content Include="Scripts\configuracao.js" />
     <Content Include="Scripts\Notificacao.js" />
     <Content Include="PageInventario\InventarioDeItens.aspx" />

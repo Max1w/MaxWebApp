@@ -18,42 +18,58 @@ namespace MaxWebApp
 		public void Page_Load(object sender, EventArgs e)
 		{
 		}
-
 		public bool VericarDuplicidade(string placaDoItem, string codigoDoItem)
 		{
-
 			List<ItemModelo> valida = new List<ItemModelo>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = " + placaDoItem + " or codigo_item = " + codigoDoItem;
+			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = @placa_item OR codigo_item = @codigo_item";
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
-				connection.Open();
-
-				using (SqlCommand command = new SqlCommand(query, connection))
+				try
 				{
-					using (SqlDataReader dr = command.ExecuteReader())
-					{
-						while (dr.Read())
-						{
-							ItemModelo camposAhValidar = new ItemModelo();
-							camposAhValidar.codigo_item = dr["codigo_item"].ToString();
-							camposAhValidar.placa_item = dr["placa_item"].ToString();
+					connection.Open();
 
-							valida.Add(camposAhValidar);
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						// Adicionando os parâmetros para evitar SQL Injection
+						command.Parameters.AddWithValue("@placa_item", placaDoItem);
+						command.Parameters.AddWithValue("@codigo_item", codigoDoItem);
+
+						using (SqlDataReader dr = command.ExecuteReader())
+						{
+							while (dr.Read())
+							{
+								ItemModelo camposAhValidar = new ItemModelo
+								{
+									codigo_item = dr["codigo_item"].ToString(),
+									placa_item = dr["placa_item"].ToString()
+								};
+
+								valida.Add(camposAhValidar);
+							}
 						}
 					}
 				}
-				if (valida.Count() == 0)
+				catch (SqlException ex)
 				{
-					return true;
+					// Trate a exceção de SQL aqui (ex: logar o erro)
+					Console.WriteLine("SQL Error: " + ex.Message);
+					return false;
 				}
-				else
+				catch (Exception ex)
 				{
+					// Trate outras exceções aqui
+					Console.WriteLine("General Error: " + ex.Message);
 					return false;
 				}
 			}
+
+			// Verifica se a lista está vazia
+			return valida.Count == 0;
 		}
+
+
 	}
 }

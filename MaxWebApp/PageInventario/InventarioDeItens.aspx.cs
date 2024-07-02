@@ -116,7 +116,7 @@ namespace MaxWebApp.PageInventario
 													 item.valor_depreciavel, item.valor_depreciado, item.saldo_depreciar, item.observacao,
 													 item.valor_liquido, item.valor_aquisicao, item.vida_util, item.depreciacao_anual))
 				{
-					if (VericarDuplicidade(item.placa_item, item.Id))
+					if (VericarDuplicidade(item.placa_item, item.codigo_item, item.Id))
 					{
 						Page pagina = this.Page;
 						string url = $"https://localhost:7279/v1/TodosOsItens/{item.Id}";
@@ -170,40 +170,32 @@ namespace MaxWebApp.PageInventario
 				ScriptManager.RegisterStartupScript(this, this.GetType(), "ErroGeral", $"alert('Ocorreu um erro: {ex.Message}');", true);
 			}
 		}
-		public bool VericarDuplicidade(string placaDoItem, int id)
+		public bool VericarDuplicidade(string placaDoItem, string codigoDoItem, int id)
 		{
 
 			List<ItemModelo> valida = new List<ItemModelo>();
 
 			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
-			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = " + placaDoItem + " AND id <> " + id;
+			string query = "SELECT codigo_item, placa_item FROM itens WHERE placa_item = " + placaDoItem + " or codigo_item = " + codigoDoItem + "AND id <> " + id;
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
-				try
+				connection.Open();
+
+				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					connection.Open();
-
-					using (SqlCommand command = new SqlCommand(query, connection))
+					using (SqlDataReader dr = command.ExecuteReader())
 					{
-						using (SqlDataReader dr = command.ExecuteReader())
+						while (dr.Read())
 						{
-							//var opa = dr.Read();
-							while (dr.Read())
-							{
-								ItemModelo camposAhValidar = new ItemModelo();
-								camposAhValidar.placa_item = dr["placa_item"].ToString();
+							ItemModelo camposAhValidar = new ItemModelo();
+							camposAhValidar.codigo_item = dr["codigo_item"].ToString();
+							camposAhValidar.placa_item = dr["placa_item"].ToString();
 
-								valida.Add(camposAhValidar);
-							}
+							valida.Add(camposAhValidar);
 						}
 					}
 				}
-				catch (Exception ex)
-				{
-					Console.WriteLine("Erro: " + ex.Message);
-				}
-
 				if (valida.Count() == 0)
 				{
 					return true;

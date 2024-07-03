@@ -228,16 +228,7 @@ namespace MaxWebApp.PageInventario
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtValorAquisicao;
-
-		/// <summary>
-		/// RequiredFieldValidator1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtValorAquisicao;
 
 		/// <summary>
 		/// txtVidaUtil control.
@@ -246,16 +237,7 @@ namespace MaxWebApp.PageInventario
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtVidaUtil;
-
-		/// <summary>
-		/// RequiredFieldValidator4 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtVidaUtil;
 
 		/// <summary>
 		/// txtDepreciacaoAnual control.
@@ -264,16 +246,7 @@ namespace MaxWebApp.PageInventario
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDepreciacaoAnual;
-
-		/// <summary>
-		/// RequiredFieldValidator2 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtDepreciacaoAnual;
 
 		/// <summary>
 		/// ddlMetodoDepreciacao control.

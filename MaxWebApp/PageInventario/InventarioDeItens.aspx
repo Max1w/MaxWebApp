@@ -30,7 +30,6 @@
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
-    <PagerSettings Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior" />
     <PagerStyle HorizontalAlign="Center" />
 </asp:GridView>
 
@@ -192,22 +191,19 @@
 
 											<div class="d-flex justify-content-center">
 												<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-													<label for="text">Valor de Aquisição *</label>
-													<asp:TextBox runat="server" ID="txtValorAquisicao" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+													<label for="txtValorAquisicao">Valor de Aquisição *</label>
+													<input runat="server" class="form-control shadow p-3 bg-light col-12" type="text" id="txtValorAquisicao" oninput="calucularDepreciacao()" required/>
 													<div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 												</div>
 												<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-													<label for="text">Vida Útil</label>
-													<asp:TextBox runat="server" ID="txtVidaUtil" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+													<label for="txtVidaUtil">Vida Útil</label>
+													<input runat="server" type="text" class="form-control shadow p-3 bg-light col-12" id="txtVidaUtil" oninput="calucularDepreciacao()" required/>
 													<div id="avisoVidaUtil" class="invalid-feedback">Favor inserir Apenas numeros</div>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 												</div>
 												<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-													<label for="text">Depreciação Anual *</label>
-													<asp:TextBox runat="server" ID="txtDepreciacaoAnual" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+													<label for="txtDepreciacaoAnual">Depreciação Anual *</label>
+													<input runat="server" class="form-control shadow p-3 bg-light col-12" type="text" id="txtDepreciacaoAnual" oninput="calucularDepreciacao()" required/>
 													<div id="avisoDepreciacaoAnual" class="invalid-feedback">Favor inserir um valor (R$)</div>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDepreciacaoAnual" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 												</div>
 												<div class="form-group m-1 col-4" style="padding-right: 0px; padding-left: 0px;">
 													<label for="exemplo">Método de Depreciação *</label>
@@ -278,6 +274,88 @@
 	<script src="../Scripts/Notificacao.js"></script>
 
 	<script>
+
+		function calucularDepreciacao() {
+			
+			let valorAquisicao = parseFloat(document.getElementById('<%= txtValorAquisicao.ClientID %>').value)
+			let vidaUtil = parseInt(document.getElementById('<%= txtVidaUtil.ClientID %>').value)
+			let depreciacaoAnual = parseInt(document.getElementById('<%= txtDepreciacaoAnual.ClientID %>').value)
+
+			if (isNaN(valorAquisicao) || isNaN(vidaUtil) || isNaN(depreciacaoAnual)) {
+				return true;
+			}
+
+			function ValorResidual(valorAquisicao, vidaUtil) {
+				let result = valorAquisicao * vidaUtil;
+				let valorResidual = result / 100;
+				return valorResidual;
+			}
+
+			function ValorDepreciavel(valorResidual, valorAquisicao) {
+				let valorDepreciavel = valorAquisicao - valorResidual;
+				return valorDepreciavel;
+			}
+
+			function ValorDepreciado(valorDepreciavel, depreciacaoAnual) {
+				let valorDepreciado = valorDepreciavel * depreciacaoAnual / 100;
+				return valorDepreciado;
+			}
+
+			function ValorLiquidoContabil(valorAquisicao, valorDepreciado) {
+				let valorLiquidoContabil = valorAquisicao - valorDepreciado;
+				return valorLiquidoContabil;
+			}
+
+			function SaldoADepreciar(valorDepreciavel, valorDepreciado) {
+				let saldoADepreciar = valorDepreciavel - valorDepreciado;
+				return saldoADepreciar;
+			}
+
+			function CalcularDepreciacao_Parte2(valorAquisicao, vidaUtil, valorDepreciado, valorDepreciavel) {
+				let valorDepreciadoAcumulado = 0;
+				let valorLiquido = 0;
+				let saldoADepreciar = 0;
+
+				for (let i = 0; i < 2; i++) {
+					valorDepreciadoAcumulado += valorDepreciado;
+					valorLiquido = ValorLiquidoContabil(valorAquisicao, valorDepreciadoAcumulado);
+					saldoADepreciar = SaldoADepreciar(valorDepreciavel, valorDepreciadoAcumulado);
+				}
+
+				return {
+					saldoADepreciar: saldoADepreciar,
+					valorLiquido: valorLiquido,
+					valorDepreciadoAcumulado: valorDepreciadoAcumulado
+				};
+			}
+
+			function CalcularDepreciacao_Parte1(valorAquisicao, vidaUtil, depreciacaoAnual) {
+				let valorResidual = ValorResidual(valorAquisicao, vidaUtil);
+				let valorDepreciavel = ValorDepreciavel(valorResidual, valorAquisicao);
+				let valorDepreciado = ValorDepreciado(valorDepreciavel, depreciacaoAnual);
+
+				let parte2 = CalcularDepreciacao_Parte2(valorAquisicao, vidaUtil, valorDepreciado, valorDepreciavel);
+
+				return {
+					valorResidual: valorResidual,
+					valorDepreciavel: valorDepreciavel,
+					valorDepreciado: valorDepreciado,
+					saldoADepreciar: parte2.saldoADepreciar,
+					valorLiquido: parte2.valorLiquido,
+					valorDepreciadoAcumulado: parte2.valorDepreciadoAcumulado
+				};
+			}
+
+			// Calcular os valores
+			let resultado = CalcularDepreciacao_Parte1(valorAquisicao, vidaUtil, depreciacaoAnual);
+
+			// Exibir os resultados
+			document.getElementById("MainContent_txtValorResidual").value = resultado.valorResidual.toFixed(2);
+			document.getElementById("MainContent_txtValorDepreciavel").value = resultado.valorDepreciavel.toFixed(2);
+			document.getElementById("MainContent_txtValorDepreciado").value = resultado.valorDepreciadoAcumulado.toFixed(2);
+			document.getElementById("MainContent_txtSaldoDepreciar").value = resultado.saldoADepreciar.toFixed(2);
+			document.getElementById("MainContent_txtValorLiquido").value = resultado.valorLiquido.toFixed(2);
+		}
 
 		function CarregarItensNosCampos(id) {
 			console.log('Starting AJAX request with id:', id);

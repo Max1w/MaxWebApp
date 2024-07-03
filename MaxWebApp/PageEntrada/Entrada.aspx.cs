@@ -36,12 +36,12 @@ namespace MaxWebApp
 				grupo_item = ddlGrupoItem.Text,
 				estado_conservacao = ddlConservacaoItem.Text,
 				tipo_aquisicao = ddlTipoAquisicao.Text,
-				valor_aquisicao = txtValorAquisicao.Text,
+				valor_aquisicao = txtValorAquisicao.Value,
 				metodo_depreciacao = ddlMetodoDepreciacao.Text,
 				valor_residual = txtValorResidual.Text,
 				responsavel = txtResponsavel.Text.ToUpper(),
-				vida_util = txtVidaUtil.Text,
-				depreciacao_anual = txtDepreciacaoAnual.Text,
+				vida_util = txtVidaUtil.Value,
+				depreciacao_anual = txtDepreciacaoAnual.Value,
 				inicio_depreciacao = Convert.ToDateTime(txtDataDepreciacao.Text),
 				data_aquisicao = Convert.ToDateTime(txtDataAquisicao.Text),
 				valor_depreciavel = txtValorDepreciavel.Text,
@@ -65,9 +65,9 @@ namespace MaxWebApp
 
 			try
 			{
-				var valorDoItem = Convert.ToDecimal(txtValorAquisicao.Text);
-				var vidaUtil = Convert.ToInt32(txtVidaUtil.Text);
-				var depreciacaoAnual = Convert.ToInt32(txtDepreciacaoAnual.Text);
+				var valorDoItem = Convert.ToDecimal(txtValorAquisicao.Value);
+				var vidaUtil = Convert.ToInt32(txtVidaUtil.Value);
+				var depreciacaoAnual = Convert.ToInt32(txtDepreciacaoAnual.Value);
 
 				var resultadoDepreciacao_pt1 = calc.CalcularDepreciacao_Parte1(valorDoItem, vidaUtil, depreciacaoAnual);
 				var resultadoDepreciacao_pt2 = calc.CalcularDepreciacao_Parte2(valorDoItem, vidaUtil, resultadoDepreciacao_pt1.Item3, resultadoDepreciacao_pt1.Item2);
@@ -133,14 +133,18 @@ namespace MaxWebApp
 
 			try
 			{
-				var valorDoItem = Convert.ToDecimal(txtValorAquisicao.Text);
-				var vidaUtil = Convert.ToInt32(txtVidaUtil.Text);
-				var depreciacaoAnual = Convert.ToInt32(txtDepreciacaoAnual.Text);
+				var valorDoItem = Convert.ToDecimal(txtValorAquisicao.Value);
+				var vidaUtil = Convert.ToInt32(txtVidaUtil.Value);
+				var depreciacaoAnual = Convert.ToInt32(txtDepreciacaoAnual.Value);
 
 				var resultadoDepreciacao_pt1 = calc.CalcularDepreciacao_Parte1(valorDoItem, vidaUtil, depreciacaoAnual);
 				var resultadoDepreciacao_pt2 = calc.CalcularDepreciacao_Parte2(valorDoItem, vidaUtil, resultadoDepreciacao_pt1.Item3, resultadoDepreciacao_pt1.Item2);
 
-
+				txtValorResidual.Text = resultadoDepreciacao_pt1.Item1.ToString();
+				txtValorDepreciavel.Text = resultadoDepreciacao_pt1.Item2.ToString();
+				txtValorDepreciado.Text = resultadoDepreciacao_pt2.Item3.ToString();
+				txtSaldoDepreciar.Text = resultadoDepreciacao_pt2.Item1.ToString();
+				txtValorLiquido.Text = resultadoDepreciacao_pt2.Item2.ToString();
 			}
 			catch (FormatException ex)
 			{

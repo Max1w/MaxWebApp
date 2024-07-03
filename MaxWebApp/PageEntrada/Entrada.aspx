@@ -1,7 +1,5 @@
 ﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Entrada.aspx.cs" Inherits="MaxWebApp.Entrada" %>
 
-<%@ Register TagName="Campos" TagPrefix="cp" Src="~/Campos/CamposForm.ascx" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 	<body>
@@ -219,7 +217,6 @@
 									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
 										<label for="text">Valor de Aquisição *</label>
 										<asp:TextBox runat="server" ID="txtValorAquisicao" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
-										<input oninput="" />
 										<div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
 										<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>

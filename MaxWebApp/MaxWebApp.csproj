@@ -191,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="configuracao.css" />
-    <Content Include="Campos\CamposForm.ascx" />
     <Content Include="EstiloButton.css" />
     <Content Include="Imagens\EntradaI.png" />
     <Content Include="Imagens\EstoqueI.jpg" />
@@ -296,13 +295,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Calc\CalculoDepreciacaoDosItens.cs" />
-    <Compile Include="Campos\CamposForm.ascx.cs">
-      <DependentUpon>CamposForm.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Campos\CamposForm.ascx.designer.cs">
-      <DependentUpon>CamposForm.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

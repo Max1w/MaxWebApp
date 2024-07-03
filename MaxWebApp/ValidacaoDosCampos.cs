@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MaxWebApp.Modelo;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -7,30 +9,76 @@ namespace MaxWebApp
 {
 	public class ValidacaoDosCampos
 	{
-		public bool CampoVazioOuNull(string codigoDoItem, string placaDoItem, string descricaoDoItem,
-										string dataAquisicao, string grupoDoItem, string conservacaoDoItem,
-										string tipoDoItem, string tipoAquisicao, string metodoDepreciacao,
-										string responsavel, string dataInicioDepreciacao, string valorResidual,
-										string valorDepreciavel, string valorDepreciado, string saldoDepreciar,
-										string valorLiquido, string valorDoItemS, string vidaUtilS, string depreciacaoAnualS)
+		public bool CampoVazioOuNull(ItemModelo item)
 		{
-			if (!string.IsNullOrEmpty(codigoDoItem) && !string.IsNullOrEmpty(placaDoItem) && !string.IsNullOrEmpty(descricaoDoItem) && !string.IsNullOrEmpty(dataAquisicao) &&
-				!string.IsNullOrEmpty(grupoDoItem) && !string.IsNullOrEmpty(conservacaoDoItem) && !string.IsNullOrEmpty(tipoDoItem) && !string.IsNullOrEmpty(tipoAquisicao) &&
-				!string.IsNullOrEmpty(metodoDepreciacao) && !string.IsNullOrEmpty(responsavel) && !string.IsNullOrEmpty(dataInicioDepreciacao) && !string.IsNullOrEmpty(valorResidual) &&
-				!string.IsNullOrEmpty(valorDepreciavel) && !string.IsNullOrEmpty(valorDepreciado) && !string.IsNullOrEmpty(saldoDepreciar) && !string.IsNullOrEmpty(valorLiquido) &&
-				!string.IsNullOrEmpty(valorDoItemS) && !string.IsNullOrEmpty(valorLiquido) && !string.IsNullOrEmpty(vidaUtilS) && !string.IsNullOrEmpty(depreciacaoAnualS))
-			{ return true; } else { return false; }
+			return !string.IsNullOrEmpty(item.codigo_item) && !string.IsNullOrEmpty(item.placa_item) && !string.IsNullOrEmpty(item.descricao_item) && !string.IsNullOrEmpty(item.data_aquisicao.ToString()) &&
+				   !string.IsNullOrEmpty(item.grupo_item) && !string.IsNullOrEmpty(item.estado_conservacao) && !string.IsNullOrEmpty(item.tipo_item) && !string.IsNullOrEmpty(item.tipo_aquisicao) &&
+				   !string.IsNullOrEmpty(item.metodo_depreciacao) && !string.IsNullOrEmpty(item.responsavel) && !string.IsNullOrEmpty(item.inicio_depreciacao.ToString()) && !string.IsNullOrEmpty(item.valor_residual) &&
+				   !string.IsNullOrEmpty(item.valor_depreciavel) && !string.IsNullOrEmpty(item.valor_depreciado) && !string.IsNullOrEmpty(item.saldo_depreciar) && !string.IsNullOrEmpty(item.valor_liquido) &&
+				   !string.IsNullOrEmpty(item.valor_aquisicao) && !string.IsNullOrEmpty(item.vida_util) && !string.IsNullOrEmpty(item.depreciacao_anual);
 		}
-		public bool TamanhoLimiteDeCaracteres(string codigoDoItem, string placaDoItem, string descricaoDoItem, string placaVeiculo, string modeloVeiculo,
-												string responsavel, string valorResidual, string localizacoFisicaDoItem, string numeroComprovante,
-												string valorDepreciavel, string valorDepreciado, string saldoDepreciar, string observacaoDoItem,
-												string valorLiquido, string valorDoItemS, string vidaUtilS, string depreciacaoAnualS)
+		public bool TamanhoLimiteDeCaracteres(ItemModelo item)
 		{
-			if (codigoDoItem.Length < 10 && placaDoItem.Length < 10 && descricaoDoItem.Length < 2000 && localizacoFisicaDoItem.Length < 2000 &&
-				observacaoDoItem.Length < 4000 && numeroComprovante.Length < 20 && placaVeiculo.Length < 10 && modeloVeiculo.Length < 50 &&
-				valorDoItemS.Length < 50 && vidaUtilS.Length < 50 && depreciacaoAnualS.Length < 50 && valorResidual.Length < 50 &&
-				valorDepreciavel.Length < 50 && valorDepreciado.Length < 50 && saldoDepreciar.Length < 50 && valorLiquido.Length < 50 && responsavel.Length < 50)
-			{return true; } else { return false; }
+			return item.codigo_item.Length < 10 && item.placa_item.Length < 10 && item.descricao_item.Length < 2000 && item.localizacao_fisica.Length < 2000 &&
+				   item.observacao.Length < 4000 && item.numero_comprovante.Length < 20 && item.placa_veiculo.Length < 10 && item.modelo_veiculo.Length < 50 &&
+				   item.valor_aquisicao.Length < 50 && item.vida_util.Length < 50 && item.depreciacao_anual.Length < 50 && item.valor_residual.Length < 50 &&
+				   item.valor_depreciavel.Length < 50 && item.valor_depreciado.Length < 50 && item.saldo_depreciar.Length < 50 && item.valor_liquido.Length < 50 && item.responsavel.Length < 50;
 		}
+		public bool VericarDuplicidade(string placaDoItem, string codigoDoItem, int? id = null)
+		{
+			List<ItemModelo> valida = new List<ItemModelo>();
+
+			string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConectandoAoBD"].ConnectionString;
+			string query = "SELECT codigo_item, placa_item FROM itens WHERE (placa_item = @placa_item OR codigo_item = @codigo_item)";
+
+			if (id.HasValue)
+			{
+				query += " AND id <> @id";
+			}
+
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@placa_item", placaDoItem);
+						command.Parameters.AddWithValue("@codigo_item", codigoDoItem);
+
+						if (id.HasValue)
+						{
+							command.Parameters.AddWithValue("@id", id.Value);
+						}
+
+						using (SqlDataReader dr = command.ExecuteReader())
+						{
+							while (dr.Read())
+							{
+								ItemModelo camposAhValidar = new ItemModelo
+								{
+									codigo_item = dr["codigo_item"].ToString(),
+									placa_item = dr["placa_item"].ToString()
+								};
+								valida.Add(camposAhValidar);
+							}
+						}
+					}
+				}
+				catch (SqlException ex)
+				{
+					Console.WriteLine("SQL Error: " + ex.Message);
+					return false;
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("General Error: " + ex.Message);
+					return false;
+				}
+			}
+			return valida.Count == 0;
+		}
+
 	}
 }

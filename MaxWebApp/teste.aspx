@@ -8,8 +8,8 @@
 				<div class="d-flex rounded justify-content-center" style="background: rgb(177, 174, 174, 0.1);">
 
 					<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-						<label class="mt-2" for="text">Placa *</label>
-						<asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
+						<label class="mt-3" for="text">Placa *</label>
+						<asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control mt-1 shadow p-3 bg-light"></asp:TextBox>
 						<div id="avisoPlaca" class="invalid-feedback">Favor inserir apenas numero</div>
 						<asp:RequiredFieldValidator ID="rfvPlacaDoItem" runat="server" ControlToValidate="txtPlacaDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 					</div>
@@ -31,7 +31,7 @@
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-						<div class="d-flex w-100 mt-5 justify-content-center">
+						<div class="d-flex w-100 pt-3 mt-2 justify-content-center rounded" style="background: rgb(177, 174, 174, 0.1);">
 							<div class="d-flex flex-column col-5">
 								<div class="">
 									<label for="text">Código *</label>
@@ -121,7 +121,7 @@
 									<label for="teste">Observação</label>
 									<asp:TextBox runat="server" ID="txtObservacao" TextMode="MultiLine" Rows="1" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
 								</div>
-								<div class="" style="height: 94px">
+								<div class="mb-3" style="height: 94px">
 									<label for="text">Responsável *</label>
 									<asp:TextBox runat="server" ID="txtResponsavel" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
 									<div id="avisoResponsavel" class="invalid-feedback">Favor inserir apenas letras</div>
@@ -132,9 +132,9 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-						<div class="d-flex justify-content-center">
+						<div class="d-flex w-100 pt-3 mt-2 justify-content-center rounded" style="background: rgb(177, 174, 174, 0.1);">
+							<div class="d-flex flex-column col-5">
 
-							<div class="d-flex w-100 mt-5 justify-content-center">
 								<div class="" style="">
 									<label for="text">Valor de Aquisição *</label>
 									<asp:TextBox runat="server" ID="txtValorAquisicao" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
@@ -153,7 +153,7 @@
 									<div id="avisoDepreciacaoAnual" class="invalid-feedback">Favor inserir um valor (R$)</div>
 									<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtDepreciacaoAnual" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 								</div>
-								<div class="" style="">
+								<div class="" style="height: 94px">
 									<label for="exemplo">Método de Depreciação *</label>
 									<asp:DropDownList runat="server" ID="ddlMetodoDepreciacao" CssClass="form-control col-12">
 										<asp:ListItem>Método Linear ou Cotas Constantes</asp:ListItem>
@@ -166,24 +166,24 @@
 								<!--Coluna 1-->
 							</div>
 
-							<div class="d-flex w-100 mt-5 justify-content-center">
-								<div class="" style="">
+							<div class="d-flex flex-column col-5">
+								<div class="" style="height: 94px">
 									<label for="text">Valor residual</label>
 									<asp:TextBox runat="server" ID="txtValorResidual" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
 								</div>
-								<div class="" style="">
+								<div class="" style="height: 94px">
 									<label for="text">Valor depreciável</label>
 									<asp:TextBox runat="server" ID="txtValorDepreciavel" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
 								</div>
-								<div class="" style="">
+								<div class="" style="height: 94px">
 									<label for="text">Valor depreciado</label>
 									<asp:TextBox runat="server" ID="txtValorDepreciado" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
 								</div>
-								<div class=" " style="">
+								<div class=" " style="height: 94px">
 									<label for="text">Saldo a depreciar</label>
 									<asp:TextBox runat="server" ID="txtSaldoDepreciar" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
 								</div>
-								<div class=" " style="">
+								<div class="mb-3" style="height: 94px">
 									<label for="text">Valor líquido</label>
 									<asp:TextBox runat="server" ID="txtValorLiquido" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
 								</div>

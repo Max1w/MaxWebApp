@@ -17,13 +17,13 @@ namespace MaxWebApp
 				SalvarInformacoesNoBanco();
 			}
 		}
-
+		
 		protected async void SalvarInformacoesNoBanco()
 		{
 			string apiUrl = "https://localhost:7279/v1/TodosOsItens";
 			var novoItem = CriarItemModelo();
 			await MetodosBancoDeDadosApi.AdicionarItemPOST(apiUrl, novoItem);
-			ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
+			ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificacaoCadastroSucesso", "NotificacaoCadastroSucesso();", true);
 		}
 		private ItemModelo CriarItemModelo()
 		{
@@ -103,7 +103,7 @@ namespace MaxWebApp
 				}
 				else
 				{
-					ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
+					ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificacaoCampoInvalido", "NotificacaoCampoInvalido();", true);
 				}
 			}
 			catch (FormatException ex)

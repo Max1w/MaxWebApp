@@ -1,39 +1,31 @@
-﻿function NotificaçãoCadastroSucesso() {
-    var alertBox = document.getElementById('notificacaoDeSucesso');
+﻿function exibirNotificacao(alertId) {
+    var alertBox = document.getElementById(alertId);
     alertBox.style.display = 'block';
     setTimeout(function () {
         alertBox.style.display = 'none';
-    }, 5000);
+    }, 3000);
+}
+
+function NotificacaoCadastroSucesso() {
+    exibirNotificacao('notificacaoDeSucesso');
+}
+
+function NotificacaoSaida() {
+    exibirNotificacao('notificacaoDeSaida');
 }
 
 function LimiteUltrapassadoDeCaracteres() {
-    var alertBox = document.getElementById('limiteUltrapassadoDeCaracteres');
-    alertBox.style.display = 'block';
-    setTimeout(function () {
-        alertBox.style.display = 'none';
-    }, 5000);
+    exibirNotificacao('limiteUltrapassadoDeCaracteres');
 }
 
 function CadastroDuplicado() {
-    var alertBox = document.getElementById('cadastroDuplicado');
-    alertBox.style.display = 'block';
-    setTimeout(function () {
-        alertBox.style.display = 'none';
-    }, 5000);
+    exibirNotificacao('cadastroDuplicado');
 }
 
-function NotificaçãoCampoInvalido() {
-    var alertBox = document.getElementById('notificacaoDeCampoInvalido');
-    alertBox.style.display = 'block';
-    setTimeout(function () {
-        alertBox.style.display = 'none';
-    }, 5000);
+function NotificacaoCampoInvalido() {
+    exibirNotificacao('notificacaoDeCampoInvalido');
 }
 
-function NotificaçãoCadastroCancelar() {
-    var alertBox = document.getElementById('notificacaoDeCancelar');
-    alertBox.style.display = 'block';
-    setTimeout(function () {
-        alertBox.style.display = 'none';
-    }, 5000);
+function NotificacaoCadastroCancelar() {
+    exibirNotificacao('notificacaoDeCancelar');
 }

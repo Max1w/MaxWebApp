@@ -77,7 +77,6 @@
 						box-shadow: 1px 1px 0px 0px #e8e8e8;
 					}
 		</style>
-
 		<div class="container-fluid">
 			<div class="d-flex row justify-content-center align-items-center align-middle" style="margin-top: 5em; margin-bottom: 7em;">
 				<div class="col-12">
@@ -85,8 +84,8 @@
 					<div class="d-flex rounded justify-content-center" style="background: rgb(177, 174, 174, 0.1);">
 
 						<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-							<label class="mt-2" for="text">Placa *</label>
-							<asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
+							<label class="mt-3" for="text">Placa *</label>
+							<asp:TextBox runat="server" ID="txtPlacaDoItem" CssClass="form-control mt-1 shadow p-3 bg-light"></asp:TextBox>
 							<div id="avisoPlaca" class="invalid-feedback">Favor inserir apenas numero</div>
 							<asp:RequiredFieldValidator ID="rfvPlacaDoItem" runat="server" ControlToValidate="txtPlacaDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 						</div>
@@ -98,187 +97,195 @@
 							<asp:RequiredFieldValidator ID="rfvDescricaoDoItem" runat="server" ControlToValidate="txtDescricaoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 						</div>
 					</div>
+
 					<nav>
-						<%--inicio--%>
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
 							<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Item</a>
 							<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Valor</a>
 						</div>
 					</nav>
-					<%--fim--%>
 					<div class="tab-content" id="nav-tabContent">
 						<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-							<div class="d-flex rounded justify-content-center mb-2 mt-5">
-								<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-									<label for="text">Código *</label>
-									<asp:TextBox runat="server" ID="txtCodigoDoItem" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-									<div id="avisoCodigo" class="invalid-feedback">Favor inserir um caracter válido</div>
-									<asp:RequiredFieldValidator ID="rfvCodigoDoItem" runat="server" ControlToValidate="txtCodigoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+							<div class="d-flex w-100 pt-3 mt-2 justify-content-center rounded" style="background: rgb(177, 174, 174, 0.1);">
+								<div class="d-flex flex-column col-5">
+									<div class="">
+										<label for="text">Código *</label>
+										<asp:TextBox runat="server" ID="txtCodigoDoItem" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+										<div id="avisoCodigo" class="invalid-feedback">Favor inserir um caracter válido</div>
+										<asp:RequiredFieldValidator ID="rfvCodigoDoItem" runat="server" ControlToValidate="txtCodigoDoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Tipo *</label>
+										<asp:DropDownList runat="server" ID="ddlTipoItem" CssClass="form-control col-12">
+											<asp:ListItem>Móvel</asp:ListItem>
+											<asp:ListItem>Imóvel</asp:ListItem>
+											<asp:ListItem>Dominical</asp:ListItem>
+										</asp:DropDownList>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="ddlTipoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Grupo *</label>
+										<asp:DropDownList runat="server" ID="ddlGrupoItem" CssClass="form-control col-12" onchange="teste()">
+											<asp:ListItem>Móvel Mobiliario</asp:ListItem>
+											<asp:ListItem>Imóvel residencia</asp:ListItem>
+											<asp:ListItem>Móvel Veículo</asp:ListItem>
+										</asp:DropDownList>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlGrupoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Estado de Conservação *</label>
+										<asp:DropDownList runat="server" ID="ddlConservacaoItem" CssClass="form-control col-12">
+											<asp:ListItem>Ótimo</asp:ListItem>
+											<asp:ListItem>Bom</asp:ListItem>
+											<asp:ListItem>Regular</asp:ListItem>
+											<asp:ListItem>Ruim</asp:ListItem>
+											<asp:ListItem>Péssimo</asp:ListItem>
+										</asp:DropDownList>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlConservacaoItem" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="">
+										<label for="text">Data da Aquisição *</label>
+										<asp:TextBox runat="server" ID="txtDataAquisicao" TextMode="Date" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="rfvDataAquisicao" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Tipo de Aquisição *</label>
+										<asp:DropDownList runat="server" ID="ddlTipoAquisicao" CssClass="form-control col-12">
+											<asp:ListItem>Compra</asp:ListItem>
+											<asp:ListItem>Doação</asp:ListItem>
+											<asp:ListItem>Emprestado</asp:ListItem>
+										</asp:DropDownList>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlTipoAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Tipo de Comprovante</label>
+										<asp:DropDownList runat="server" ID="ddlTipoComprovante" CssClass="form-control col-12">
+											<asp:ListItem>Nota Fiscal</asp:ListItem>
+											<asp:ListItem>Cupom Fiscal</asp:ListItem>
+										</asp:DropDownList>
+									</div>
+									<!--Coluna 1- -->
 								</div>
-								<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Tipo *</label>
-									<asp:DropDownList runat="server" ID="ddlTipoItem" CssClass="form-control col-12">
-										<asp:ListItem>Móvel</asp:ListItem>
-										<asp:ListItem>Imóvel</asp:ListItem>
-										<asp:ListItem>Dominical</asp:ListItem>
-									</asp:DropDownList>
-								</div>
-								<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Grupo *</label>
-									<asp:DropDownList runat="server" ID="ddlGrupoItem" CssClass="form-control col-12" onchange="teste()">
-										<asp:ListItem>Móvel Mobiliario</asp:ListItem>
-										<asp:ListItem>Imóvel residencia</asp:ListItem>
-										<asp:ListItem>Móvel Veículo</asp:ListItem>
-									</asp:DropDownList>
-								</div>
-								<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Estado de Conservação *</label>
-									<asp:DropDownList runat="server" ID="ddlConservacaoItem" CssClass="form-control col-12">
-										<asp:ListItem>Ótimo</asp:ListItem>
-										<asp:ListItem>Bom</asp:ListItem>
-										<asp:ListItem>Regular</asp:ListItem>
-										<asp:ListItem>Ruim</asp:ListItem>
-										<asp:ListItem>Péssimo</asp:ListItem>
-									</asp:DropDownList>
-								</div>
-							</div>
 
-							<div class="d-flex rounded justify-content-center" style="margin-bottom: -15px">
-								<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-									<label for="text">Data da Aquisição *</label>
-									<asp:TextBox runat="server" ID="txtDataAquisicao" TextMode="Date" CssClass="form-control shadow p-3 bg-light"></asp:TextBox>
-									<asp:RequiredFieldValidator ID="rfvDataAquisicao" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
-								</div>
-								<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Tipo de Aquisição *</label>
-									<asp:DropDownList runat="server" ID="ddlTipoAquisicao" CssClass="form-control">
-										<asp:ListItem>Compra</asp:ListItem>
-										<asp:ListItem>Doação</asp:ListItem>
-										<asp:ListItem>Emprestado</asp:ListItem>
-									</asp:DropDownList>
-								</div>
-								<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Tipo de Comprovante</label>
-									<asp:DropDownList runat="server" ID="ddlTipoComprovante" CssClass="form-control">
-										<asp:ListItem>Nota Fiscal</asp:ListItem>
-										<asp:ListItem>Cupom Fiscal</asp:ListItem>
-									</asp:DropDownList>
-								</div>
-								<div class="form-group m-1" style="padding-right: 0px; padding-left: 0px; width: 269px">
-									<label for="text">Nº do Comprovante</label>
-									<asp:TextBox runat="server" ID="txtNumeroComprovante" CssClass="form-control col-12 shadow p-3 bg-light"></asp:TextBox>
-									<div id="avisoNumeroComprovante" class="invalid-feedback">Favor inserir apenas numero</div>
-								</div>
-							</div>
-							<div class="d-flex rounded justify-content-center mb-2">
-								<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-									<label for="exemplo">Usa Combustível?</label>
-									<asp:DropDownList runat="server" ID="ddlCombustivel" CssClass="form-control" disabled="true" onchange="teste()">
-										<asp:ListItem Text=" " Value=" "></asp:ListItem>
-										<asp:ListItem Text="Sim" Value="Sim"></asp:ListItem>
-										<asp:ListItem Text="Não" Value="Não"></asp:ListItem>
-									</asp:DropDownList>
-								</div>
-								<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-									<label for="text">Placa do Veículo</label>
-									<asp:TextBox runat="server" ID="txtPlacaVeiculo" CssClass="form-control col-12 shadow p-3" disabled="true"></asp:TextBox>
-									<div id="avisoPlacaVeiculo" class="invalid-feedback">Favor inserir apenas numero e letras</div>
-								</div>
-								<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px">
-									<label for="text">Modelo do Veículo</label>
-									<asp:TextBox runat="server" ID="txtModeloVeiculo" CssClass="form-control col-12 shadow p-3" disabled="true"></asp:TextBox>
-									<div id="avisoModeloVeiculo" class="invalid-feedback">Favor inserir apenas numero e letras</div>
-								</div>
-								<div class="form-group m-1" style="padding-right: 8px; padding-left: 0px; width: 453px">
-									<label for="text">Localização Física</label>
-									<asp:TextBox runat="server" ID="txtLocalizacaoFisica" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
-									<div id="avisoLocalizacao" class="invalid-feedback">Favor inserir um caracter válido</div>
-								</div>
-							</div>
-							<div class="d-flex rounded justify-content-center mb-2">
-								<div class="form-group m-1" style="padding-right: 0px; padding-left: 0px; width: 530px">
-									<label for="teste">Observação</label>
-									<asp:TextBox runat="server" ID="txtObservacao" TextMode="MultiLine" Rows="1" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
-								</div>
-								<div class="form-group m-1" style="padding-right: 8px; padding-left: 0px; width: 500px">
-									<label for="text">Responsável *</label>
-									<asp:TextBox runat="server" ID="txtResponsavel" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
-									<div id="avisoResponsavel" class="invalid-feedback">Favor inserir apenas letras</div>
-									<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtResponsavel" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+								<div class="d-flex flex-column col-5">
+									<div class="" style="height: 94px">
+										<label for="text">Nº do Comprovante</label>
+										<asp:TextBox runat="server" ID="txtNumeroComprovante" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+										<div id="avisoNumeroComprovante" class="invalid-feedback">Favor inserir apenas numero</div>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="exemplo">Usa Combustível?</label>
+										<asp:DropDownList runat="server" ID="ddlCombustivel" CssClass="form-control col-12" disabled="true" onchange="teste()">
+											<asp:ListItem Text=" " Value=" "></asp:ListItem>
+											<asp:ListItem Text="Sim" Value="Sim"></asp:ListItem>
+											<asp:ListItem Text="Não" Value="Não"></asp:ListItem>
+										</asp:DropDownList>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="text">Placa do Veículo</label>
+										<asp:TextBox runat="server" ID="txtPlacaVeiculo" CssClass="form-control shadow col-12" disabled="true"></asp:TextBox>
+										<div id="avisoPlacaVeiculo" class="invalid-feedback">Favor inserir apenas numero e letras</div>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="text">Modelo do Veículo</label>
+										<asp:TextBox runat="server" ID="txtModeloVeiculo" CssClass="form-control shadow col-12" disabled="true"></asp:TextBox>
+										<div id="avisoModeloVeiculo" class="invalid-feedback">Favor inserir apenas numero e letras</div>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="text">Localização Física</label>
+										<asp:TextBox runat="server" ID="txtLocalizacaoFisica" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+										<div id="avisoLocalizacao" class="invalid-feedback">Favor inserir um caracter válido</div>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="teste">Observação</label>
+										<asp:TextBox runat="server" ID="txtObservacao" TextMode="MultiLine" Rows="1" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+									</div>
+									<div class="mb-3" style="height: 94px">
+										<label for="text">Responsável *</label>
+										<asp:TextBox runat="server" ID="txtResponsavel" CssClass="form-control shadow bg-light col-12"></asp:TextBox>
+										<div id="avisoResponsavel" class="invalid-feedback">Favor inserir apenas letras</div>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtResponsavel" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<!--Coluna 2 -->
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane fade d-flex rounded justify-content-center mt-5" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-							<%--inicio--%>
-							<div class="form-group m-1" style="padding-right: 0px; padding-left: 0px">
+						<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+							<div class="d-flex w-100 pt-3 mt-2 justify-content-center rounded" style="background: rgb(177, 174, 174, 0.1);">
+								<div class="d-flex flex-column col-5">
 
-								<div class="d-flex justify-content-center">
-									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Valor de Aquisição *</label>
-										<asp:TextBox runat="server" ID="txtValorAquisicao" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+									<div class="" style="height: 94px">
+										<label for="txtValorAquisicao">Valor de Aquisição *</label>
+										<input runat="server" class="form-control shadow p-3 bg-light col-12" type="text" id="txtValorAquisicao" oninput="calucularDepreciacao();"/>
 										<div id="avisoValor" class="invalid-feedback">Favor inserir um valor (R$)</div>
-										<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDataAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtValorAquisicao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Vida Útil</label>
-										<asp:TextBox runat="server" ID="txtVidaUtil" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+									<div class="" style="height: 94px">
+										<label for="txtVidaUtil">Vida Útil</label>
+										<input runat="server" type="text" class="form-control shadow p-3 bg-light col-12" id="txtVidaUtil" oninput="calucularDepreciacao()"/>
 										<div id="avisoVidaUtil" class="invalid-feedback">Favor inserir Apenas numeros</div>
-										<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtVidaUtil" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Depreciação Anual *</label>
-										<asp:TextBox runat="server" ID="txtDepreciacaoAnual" CssClass="form-control shadow p-3 bg-light col-12"></asp:TextBox>
+									<div class="" style="height: 94px">
+										<label for="txtDepreciacaoAnual">Depreciação Anual *</label>
+										<input runat="server" class="form-control shadow p-3 bg-light col-12" type="text" id="txtDepreciacaoAnual" oninput="calucularDepreciacao()"/>
 										<div id="avisoDepreciacaoAnual" class="invalid-feedback">Favor inserir um valor (R$)</div>
-										<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDepreciacaoAnual" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtDepreciacaoAnual" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-									<div class="form-group m-1 col-4" style="padding-right: 0px; padding-left: 0px;">
+									<div class="" style="height: 94px">
 										<label for="exemplo">Método de Depreciação *</label>
 										<asp:DropDownList runat="server" ID="ddlMetodoDepreciacao" CssClass="form-control col-12">
 											<asp:ListItem>Método Linear ou Cotas Constantes</asp:ListItem>
 										</asp:DropDownList>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlMetodoDepreciacao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-								</div>
-								<div class="d-flex justify-content-center">
-									<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Valor residual</label>
-										<asp:TextBox runat="server" ID="txtValorResidual" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
-									</div>
-									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Valor depreciável</label>
-										<asp:TextBox runat="server" ID="txtValorDepreciavel" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
-									</div>
-									<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px;">
-										<label for="text">Valor depreciado</label>
-										<asp:TextBox runat="server" ID="txtValorDepreciado" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
-									</div>
-									<div class="form-group m-1 col-2" style="padding-right: 0px; padding-left: 0px;">
+									<div class="" style="">
 										<label for="text">Ínicio da depreciação *</label>
 										<asp:TextBox runat="server" ID="txtDataDepreciacao" TextMode="Date" CssClass="form-control shadow p-3 col-12"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDataDepreciacao" ErrorMessage="Este campo é obrigatório" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
+									<!--Coluna 1-->
 								</div>
-								<div class="d-flex justify-content-center">
-									<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px;">
+
+								<div class="d-flex flex-column col-5">
+									<div class="" style="height: 94px">
+										<label for="text">Valor residual</label>
+										<asp:TextBox runat="server" ID="txtValorResidual" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtValorResidual" ErrorMessage="Preencha o campo V. de Aquisição, Vida Util e Dp.Anual" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="text">Valor depreciável</label>
+										<asp:TextBox runat="server" ID="txtValorDepreciavel" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtValorDepreciavel" ErrorMessage="Preencha o campo V. de Aquisição, Vida Util e Dp.Anual" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class="" style="height: 94px">
+										<label for="text">Valor depreciado</label>
+										<asp:TextBox runat="server" ID="txtValorDepreciado" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtValorDepreciado" ErrorMessage="Preencha o campo V. de Aquisição, Vida Util e Dp.Anual" CssClass="text-danger"></asp:RequiredFieldValidator>
+									</div>
+									<div class=" " style="height: 94px">
 										<label for="text">Saldo a depreciar</label>
 										<asp:TextBox runat="server" ID="txtSaldoDepreciar" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtSaldoDepreciar" ErrorMessage="Preencha o campo V. de Aquisição, Vida Util e Dp.Anual" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-									<div class="form-group m-1 col-3" style="padding-right: 0px; padding-left: 0px; width: 408px">
+									<div class="mb-3" style="height: 94px">
 										<label for="text">Valor líquido</label>
 										<asp:TextBox runat="server" ID="txtValorLiquido" CssClass="form-control shadow p-3 col-12" Enabled="false"></asp:TextBox>
+										<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtValorLiquido" ErrorMessage="Preencha o campo V. de Aquisição, Vida Util e Dp.Anual" CssClass="text-danger"></asp:RequiredFieldValidator>
 									</div>
-								</div>
-								<div class="d-flex justify-content-end mt-5" id="btnCancelar">
-									<button id="botaoCalcular" class="btn btn-info m-3" runat="server" onserverclick="botaoCalcular_ServerClick">Calcular Depreciacao</button>
-									<a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
-									<button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
+									<!--Coluna 2-->
 								</div>
 							</div>
+						</div>
+						<div class="d-flex justify-content-end mt-5" id="btnCancelar">
+							<a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
+							<button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -293,7 +300,7 @@
 						Deseja salvar este cadastro?
 					</div>
 					<div class="modal-footer" id="btnSalvar">
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Não</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificacaoCadastroCancelar()">Não</button>
 						<button id="btnEnviarEntrada" type="button" class="btn btn-success" runat="server" onserverclick="btnSalvar_Click">Sim</button>
 					</div>
 				</div>
@@ -320,6 +327,89 @@
 
 	<script src="../Scripts/Notificacao.js"></script>
 	<script>
+
+		function calucularDepreciacao() {
+
+			let valorAquisicao = parseFloat(document.getElementById('<%= txtValorAquisicao.ClientID %>').value)
+			let vidaUtil = parseInt(document.getElementById('<%= txtVidaUtil.ClientID %>').value)
+			let depreciacaoAnual = parseInt(document.getElementById('<%= txtDepreciacaoAnual.ClientID %>').value)
+
+			if (isNaN(valorAquisicao) || isNaN(vidaUtil) || isNaN(depreciacaoAnual)) {
+				return true;
+			}
+
+			function ValorResidual(valorAquisicao, vidaUtil) {
+				let result = valorAquisicao * vidaUtil;
+				let valorResidual = result / 100;
+				return valorResidual;
+			}
+
+			function ValorDepreciavel(valorResidual, valorAquisicao) {
+				let valorDepreciavel = valorAquisicao - valorResidual;
+				return valorDepreciavel;
+			}
+
+			function ValorDepreciado(valorDepreciavel, depreciacaoAnual) {
+				let valorDepreciado = valorDepreciavel * depreciacaoAnual / 100;
+				return valorDepreciado;
+			}
+
+			function ValorLiquidoContabil(valorAquisicao, valorDepreciado) {
+				let valorLiquidoContabil = valorAquisicao - valorDepreciado;
+				return valorLiquidoContabil;
+			}
+
+			function SaldoADepreciar(valorDepreciavel, valorDepreciado) {
+				let saldoADepreciar = valorDepreciavel - valorDepreciado;
+				return saldoADepreciar;
+			}
+
+			function CalcularDepreciacao_Parte2(valorAquisicao, vidaUtil, valorDepreciado, valorDepreciavel) {
+				let valorDepreciadoAcumulado = 0;
+				let valorLiquido = 0;
+				let saldoADepreciar = 0;
+
+				for (let i = 0; i < 2; i++) {
+					valorDepreciadoAcumulado += valorDepreciado;
+					valorLiquido = ValorLiquidoContabil(valorAquisicao, valorDepreciadoAcumulado);
+					saldoADepreciar = SaldoADepreciar(valorDepreciavel, valorDepreciadoAcumulado);
+				}
+
+				return {
+					saldoADepreciar: saldoADepreciar,
+					valorLiquido: valorLiquido,
+					valorDepreciadoAcumulado: valorDepreciadoAcumulado
+				};
+			}
+
+			function CalcularDepreciacao_Parte1(valorAquisicao, vidaUtil, depreciacaoAnual) {
+				let valorResidual = ValorResidual(valorAquisicao, vidaUtil);
+				let valorDepreciavel = ValorDepreciavel(valorResidual, valorAquisicao);
+				let valorDepreciado = ValorDepreciado(valorDepreciavel, depreciacaoAnual);
+
+				let parte2 = CalcularDepreciacao_Parte2(valorAquisicao, vidaUtil, valorDepreciado, valorDepreciavel);
+
+				return {
+					valorResidual: valorResidual,
+					valorDepreciavel: valorDepreciavel,
+					valorDepreciado: valorDepreciado,
+					saldoADepreciar: parte2.saldoADepreciar,
+					valorLiquido: parte2.valorLiquido,
+					valorDepreciadoAcumulado: parte2.valorDepreciadoAcumulado
+				};
+			}
+
+			// Calcular os valores
+			let resultado = CalcularDepreciacao_Parte1(valorAquisicao, vidaUtil, depreciacaoAnual);
+
+			// Exibir os resultados
+			document.getElementById("MainContent_txtValorResidual").value = resultado.valorResidual.toFixed(2);
+			document.getElementById("MainContent_txtValorDepreciavel").value = resultado.valorDepreciavel.toFixed(2);
+			document.getElementById("MainContent_txtValorDepreciado").value = resultado.valorDepreciadoAcumulado.toFixed(2);
+			document.getElementById("MainContent_txtSaldoDepreciar").value = resultado.saldoADepreciar.toFixed(2);
+			document.getElementById("MainContent_txtValorLiquido").value = resultado.valorLiquido.toFixed(2);
+		}
+
 		function teste() {
 			var grupo = document.getElementById('<%= ddlGrupoItem.ClientID %>');
 			var combustivel = document.getElementById('<%= ddlCombustivel.ClientID %>');

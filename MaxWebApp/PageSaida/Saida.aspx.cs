@@ -44,6 +44,7 @@ namespace MaxWebApp
 			{
 				await MetodosBancoDeDadosApi.DeletarItemDELETEemLote("https://localhost:7279/v1/TodosOsItens", idsParaExcluir);
 				BindGridView();
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificacaoSaida", "NotificacaoSaida();", true);
 			}
 
 		}

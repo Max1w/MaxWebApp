@@ -87,6 +87,15 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.DropDownList ddlTipoItem;
 
 		/// <summary>
+		/// RequiredFieldValidator7 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+
+		/// <summary>
 		/// ddlGrupoItem control.
 		/// </summary>
 		/// <remarks>
@@ -96,6 +105,15 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.DropDownList ddlGrupoItem;
 
 		/// <summary>
+		/// RequiredFieldValidator6 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+
+		/// <summary>
 		/// ddlConservacaoItem control.
 		/// </summary>
 		/// <remarks>
@@ -103,6 +121,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.DropDownList ddlConservacaoItem;
+
+		/// <summary>
+		/// RequiredFieldValidator5 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
 		/// <summary>
 		/// txtDataAquisicao control.
@@ -130,6 +157,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.DropDownList ddlTipoAquisicao;
+
+		/// <summary>
+		/// RequiredFieldValidator3 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
 		/// <summary>
 		/// ddlTipoComprovante control.
@@ -219,16 +255,16 @@ namespace MaxWebApp
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtValorAquisicao;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtValorAquisicao;
 
 		/// <summary>
-		/// RequiredFieldValidator1 control.
+		/// RequiredFieldValidator13 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
 
 		/// <summary>
 		/// txtVidaUtil control.
@@ -237,16 +273,16 @@ namespace MaxWebApp
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtVidaUtil;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtVidaUtil;
 
 		/// <summary>
-		/// RequiredFieldValidator3 control.
+		/// RequiredFieldValidator14 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
 
 		/// <summary>
 		/// txtDepreciacaoAnual control.
@@ -255,16 +291,16 @@ namespace MaxWebApp
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDepreciacaoAnual;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtDepreciacaoAnual;
 
 		/// <summary>
-		/// RequiredFieldValidator2 control.
+		/// RequiredFieldValidator15 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
 
 		/// <summary>
 		/// ddlMetodoDepreciacao control.
@@ -276,31 +312,13 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.DropDownList ddlMetodoDepreciacao;
 
 		/// <summary>
-		/// txtValorResidual control.
+		/// RequiredFieldValidator1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtValorResidual;
-
-		/// <summary>
-		/// txtValorDepreciavel control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciavel;
-
-		/// <summary>
-		/// txtValorDepreciado control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciado;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
 		/// <summary>
 		/// txtDataDepreciacao control.
@@ -312,6 +330,69 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.TextBox txtDataDepreciacao;
 
 		/// <summary>
+		/// RequiredFieldValidator2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+		/// <summary>
+		/// txtValorResidual control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorResidual;
+
+		/// <summary>
+		/// RequiredFieldValidator8 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+
+		/// <summary>
+		/// txtValorDepreciavel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciavel;
+
+		/// <summary>
+		/// RequiredFieldValidator9 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+
+		/// <summary>
+		/// txtValorDepreciado control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtValorDepreciado;
+
+		/// <summary>
+		/// RequiredFieldValidator10 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+
+		/// <summary>
 		/// txtSaldoDepreciar control.
 		/// </summary>
 		/// <remarks>
@@ -319,6 +400,15 @@ namespace MaxWebApp
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtSaldoDepreciar;
+
+		/// <summary>
+		/// RequiredFieldValidator11 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
 
 		/// <summary>
 		/// txtValorLiquido control.
@@ -330,13 +420,13 @@ namespace MaxWebApp
 		protected global::System.Web.UI.WebControls.TextBox txtValorLiquido;
 
 		/// <summary>
-		/// botaoCalcular control.
+		/// RequiredFieldValidator12 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlButton botaoCalcular;
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
 
 		/// <summary>
 		/// btnEnviarEntrada control.

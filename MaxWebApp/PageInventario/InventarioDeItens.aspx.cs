@@ -38,7 +38,7 @@ namespace MaxWebApp.PageInventario
 					{
 						string url = $"https://localhost:7279/v1/TodosOsItens/{item.Id}";
 						await MetodosBancoDeDadosApi.AtualizarItemPUT(url, item);
-						ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCadastroSucesso", "NotificaçãoCadastroSucesso();", true);
+						ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificacaoCadastroSucesso", "NotificacaoCadastroSucesso();", true);
 					}
 					else
 					{
@@ -52,7 +52,7 @@ namespace MaxWebApp.PageInventario
 			}
 			else
 			{
-				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificaçãoCampoInvalido", "NotificaçãoCampoInvalido();", true);
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "NotificacaoCampoInvalido", "NotificacaoCampoInvalido();", true);
 			}
 
 			BindGridView();
@@ -62,7 +62,7 @@ namespace MaxWebApp.PageInventario
 		{
 			return new ItemModelo
 			{
-				Id = int.Parse(hfItemId.Value),
+				Id = int.Parse(IdRandom.Value),
 				codigo_item = txtCodigoDoItem.Text,
 				placa_item = txtPlacaDoItem.Text,
 				descricao_item = txtDescricaoDoItem.Text,

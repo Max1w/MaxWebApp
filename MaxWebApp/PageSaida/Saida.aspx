@@ -7,6 +7,18 @@
 			<h1 style="margin-top: 60px; text-align: center">Saída de Itens</h1>
 		</div>
 		<style>
+			input, select, textarea {
+				max-width: none;
+			}
+
+			.alert {
+				position: fixed;
+				top: 100px;
+				right: 10px;
+				display: none;
+			}
+		</style>
+		<style>
 			.rounded-grid {
 				border-radius: 20px;
 				border-top: hidden;
@@ -57,13 +69,20 @@
 						Deseja realizar a Saída do(s) Item(ns)?
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificaçãoCadastroCancelar()">Não</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="NotificacaoCadastroCancelar()">Não</button>
 						<asp:Button ID="ExcluirItensSelecionados" runat="server" Text="Sim" OnClick="ExcluirItensSelecionados_Click" CssClass="btn btn-warning" />
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div id="notificacaoDeSaida" class="alert alert-warning" role="alert">
+		Realizado a Saida do(s) item(ns)!
+	</div>
+
+	<script src="../Scripts/Notificacao.js"></script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			var ckSelecionarTodos = document.getElementById('ckSelecionarTodos');

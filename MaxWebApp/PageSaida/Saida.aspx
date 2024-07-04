@@ -43,9 +43,7 @@
 				<asp:BoundField DataField="valor_aquisicao" HeaderText="Valor de Aquisição" DataFormatString="{0:N2}" />
 				<asp:BoundField DataField="data_aquisicao" HeaderText="Data de Aquisição" DataFormatString="{0:yyyy-MM-dd}" />
 			</Columns>
-
 			<PagerStyle HorizontalAlign="Center" />
-			<PagerSettings Mode="NextPreviousFirstLast" NextPageText="Próximo >" PreviousPageText="< Anterior" />
 		</asp:GridView>
 
 		<div class="d-flex justify-content-end mt-5">
@@ -79,6 +77,10 @@
 
 	<div id="notificacaoDeSaida" class="alert alert-warning" role="alert">
 		Realizado a Saida do(s) item(ns)!
+	</div>
+
+	<div id="notificacaoDeCancelar" class="alert alert-danger" role="alert">
+	Exclusão cancelada!
 	</div>
 
 	<script src="../Scripts/Notificacao.js"></script>

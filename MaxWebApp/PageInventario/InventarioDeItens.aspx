@@ -271,6 +271,10 @@
 		</div>
 	</div>
 
+	<div class="d-flex justify-content-end mt-5" id="btnVoltar">
+		<a id="botaoCancelar" href="/" class="btn btn-info m-3">Voltar</a>
+	</div>
+
 
 	<div id="notificacaoDeSucesso" class="alert alert-success" role="alert">
 		Cadastro salvo com sucesso!
@@ -333,7 +337,7 @@
 				let valorLiquido = 0;
 				let saldoADepreciar = 0;
 
-				for (let i = 0; i < 2; i++) {
+				for (let i = 0; i < 1; i++) {
 					valorDepreciadoAcumulado += valorDepreciado;
 					valorLiquido = ValorLiquidoContabil(valorAquisicao, valorDepreciadoAcumulado);
 					saldoADepreciar = SaldoADepreciar(valorDepreciavel, valorDepreciadoAcumulado);

@@ -279,7 +279,7 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-end mt-5" id="btnCancelar">
-							<a id="botaoCancelar" href="/" class="btn btn-danger m-3">Cancelar</a>
+							<a id="botaoCancelar" href="/" class="btn btn-info m-3">Voltar</a>
 							<button type="button" class="btn btn-success m-3" data-toggle="modal" data-target="#exampleModal">Salvar</button>
 						</div>
 					</div>
@@ -369,7 +369,7 @@
 				let valorLiquido = 0;
 				let saldoADepreciar = 0;
 
-				for (let i = 0; i < 2; i++) {
+				for (let i = 0; i < 1; i++) {
 					valorDepreciadoAcumulado += valorDepreciado;
 					valorLiquido = ValorLiquidoContabil(valorAquisicao, valorDepreciadoAcumulado);
 					saldoADepreciar = SaldoADepreciar(valorDepreciavel, valorDepreciadoAcumulado);

@@ -66,6 +66,5 @@ namespace MaxWebApp
 
 			return (valorResidual, valorDepreciavel, valorDepreciado);
 		}
-
 	}
 }

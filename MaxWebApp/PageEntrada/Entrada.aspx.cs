@@ -72,8 +72,6 @@ namespace MaxWebApp
 				var resultadoDepreciacao_pt1 = calc.CalcularDepreciacao_Parte1(valorDoItem, vidaUtil, depreciacaoAnual);
 				var resultadoDepreciacao_pt2 = calc.CalcularDepreciacao_Parte2(valorDoItem, vidaUtil, resultadoDepreciacao_pt1.Item3, resultadoDepreciacao_pt1.Item2);
 
-				PreencherCamposDepreciacao(resultadoDepreciacao_pt1, resultadoDepreciacao_pt2);
-
 				var itemModelo = CriarItemModelo();
 
 				itemModelo.valor_residual = resultadoDepreciacao_pt1.Item1.ToString();
@@ -116,15 +114,6 @@ namespace MaxWebApp
 			}
 
 			return false;
-		}
-
-		private void PreencherCamposDepreciacao((decimal, decimal, decimal) resultadoDepreciacao_pt1, (decimal, decimal, decimal) resultadoDepreciacao_pt2)
-		{
-			txtValorResidual.Text = resultadoDepreciacao_pt1.Item1.ToString();
-			txtValorDepreciavel.Text = resultadoDepreciacao_pt1.Item2.ToString();
-			txtValorDepreciado.Text = resultadoDepreciacao_pt2.Item3.ToString();
-			txtSaldoDepreciar.Text = resultadoDepreciacao_pt2.Item1.ToString();
-			txtValorLiquido.Text = resultadoDepreciacao_pt2.Item2.ToString();
 		}
 
 		protected void botaoCalcular_ServerClick(object sender, EventArgs e)

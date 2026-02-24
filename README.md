@@ -1,8 +1,8 @@
-# 🏛️ MaxWebApp
+# 🏛️ ProjetoPatrimonioCSharp
 
 ## Descrição
 
-O **MaxWebApp** é uma aplicação web para gestão de patrimônio, desenvolvida em **ASP.NET Web Forms (.NET Framework 4.8.1)**. Ela permite cadastrar, visualizar, editar e dar baixa em itens patrimoniais, com cálculo automático de depreciação integrado.
+O **ProjetoPatrimonioCSharp** é uma aplicação web para gestão de patrimônio, desenvolvida em **ASP.NET Web Forms (.NET Framework 4.8.1)**. Ela permite cadastrar, visualizar, editar e dar baixa em itens patrimoniais, com cálculo automático de depreciação integrado.
 
 Foi construída com **ASP.NET Web Forms**, **Bootstrap 5**, **jQuery** e **SQL Server**, se comunicando com a **PatrimonioAPI** para todas as operações de dados (GET, POST, PUT, DELETE).
 
@@ -21,13 +21,13 @@ O projeto foi criado para servir como interface visual (front-end web) do sistem
 **1. Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/MaxWebApp.git
+git clone https://github.com/seu-usuario/ProjetoPatrimonioCSharp.git
 ```
 
 **2. Abra a solução no Visual Studio**
 
 ```
-MaxWebAppA.sln
+ProjetoPatrimonioCSharpA.sln
 ```
 
 **3. Restaure os pacotes NuGet**
@@ -36,7 +36,7 @@ No Visual Studio: `Tools > NuGet Package Manager > Restore NuGet Packages`
 Ou via terminal:
 
 ```bash
-nuget restore MaxWebAppA.sln
+nuget restore ProjetoPatrimonioCSharpA.sln
 ```
 
 **4. Configure a connection string**
@@ -61,7 +61,7 @@ No arquivo `Web.config`, ajuste a connection string para o seu banco de dados lo
 
 **6. Inicie a PatrimonioAPI**
 
-A aplicação depende da PatrimonioAPI estar rodando. Inicie-a antes de rodar o MaxWebApp.
+A aplicação depende da PatrimonioAPI estar rodando. Inicie-a antes de rodar o ProjetoPatrimonioCSharp.
 
 **7. Execute o projeto**
 
@@ -144,7 +144,7 @@ Páginas informativas do sistema.
 ### Estrutura do Projeto
 
 ```
-MaxWebApp/
+ProjetoPatrimonioCSharp/
 ├── Calc/
 │   └── CalculoDepreciacaoDosItens.cs   # Lógica de cálculo de depreciação
 ├── Modelo/
